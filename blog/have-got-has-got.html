@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Have got или Has got: легко разберёмся — Блог LangWood</title>
+    <meta name="description" content="Have got или has got — в чём разница? Простое объяснение правила с примерами и лайфхаками. А для практики — интерактивный тренажёр.">
+    <meta name="keywords" content="have got, has got, have got правило, have got примеры, английский для детей, английская грамматика, have has разница">
+    <meta property="og:title" content="Have got или Has got: легко разберёмся | LangWood">
+    <meta property="og:description" content="Простое объяснение правила have/has got с примерами и лайфхаками.">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:url" content="https://langwood.ru/blog/have-got-has-got.html">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Have got или Has got: легко разберёмся",
+        "description": "Простое объяснение правила have/has got с примерами и лайфхаками.",
+        "author": {
+            "@type": "Person",
+            "name": "Наталья Анатольевна Ваненкова"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "LangWood"
+        },
+        "datePublished": "2026-09-16",
+        "inLanguage": "ru-RU"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://langwood.ru/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Блог",
+                "item": "https://langwood.ru/blog.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Have got или Has got",
+                "item": "https://langwood.ru/blog/have-got-has-got.html"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --accent: #7b2d3b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: var(--lw-ink); background: var(--lw-bg); line-height: 1.6; }
+
+        /* ШАПКА */
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .lw-logo-wrapper { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+        .lw-logo { text-decoration: none; color: var(--lw-ivory); font-size: 28px; font-weight: 800; letter-spacing: .02em; }
+        .lw-logo:hover { opacity: .85; }
+        .lw-slogan { color: var(--lw-ivory); font-size: 16px; font-weight: 300; font-style: italic; opacity: .7; }
+        .lw-nav { display: flex; align-items: center; gap: 4px; list-style: none; flex-wrap: wrap; }
+        .lw-nav-link { color: var(--lw-ivory); text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 14px; border-radius: 8px; transition: background .2s; }
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+        .lw-burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 4px; }
+        .lw-burger span { display: block; width: 22px; height: 2px; background: var(--lw-ivory); border-radius: 2px; }
+        @media (max-width: 900px) { .lw-slogan { display: none; } }
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        /* ХЛЕБНЫЕ КРОШКИ */
+        .lw-breadcrumbs { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; font-size: 14px; color: #6a6a72; font-weight: 600; }
+        .lw-breadcrumbs a { color: var(--lw-teal); text-decoration: none; font-weight: 700; }
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+        .lw-breadcrumbs span { margin: 0 6px; color: #c0c0c8; }
+        .lw-breadcrumbs .lw-current { color: var(--lw-ink); font-weight: 700; }
+
+        /* ПОДВАЛ */
+        .lw-footer {
+            background: var(--lw-teal);
+            color: #ffffff;
+            padding: 48px 24px 32px;
+            margin-top: 40px;
+        }
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+        .lw-footer-logo { font-size: 30px; color: #ffffff; text-decoration: none; font-weight: 800; }
+        .lw-footer-text { font-size: 15px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: #ffffff; text-decoration: none; font-size: 15px; opacity: .75; font-weight: 500; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+        @media (max-width: 900px) { .lw-footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 26px; }
+        }
+
+        /* ===== СТАТЬЯ ===== */
+        .hhb {
+            --hhb-bg: #FFF5F0;
+            --hhb-card-bg: #FFE8DF;
+            --hhb-ink: #2C1A14;
+            --hhb-ink-muted: #6B4A3D;
+            --hhb-coral: #E8765A;
+            --hhb-coral-soft: #FFD5C5;
+            --hhb-coral-deep: #C75C3D;
+            --hhb-peach-border: #D98060;
+            --hhb-olive: #5B7A3C;
+            --hhb-olive-light: #E7EDE0;
+            --hhb-mustard: #D4A017;
+            --hhb-mustard-light: #FFF4D6;
+            --hhb-cream: #FFF9F5;
+            --hhb-shadow: rgba(217, 128, 96, 0.12);
+            --hhb-shadow-strong: rgba(217, 128, 96, 0.22);
+            background-color: var(--hhb-bg);
+            color: var(--hhb-ink);
+            padding: 60px 0;
+            border-radius: 32px;
+            margin: 24px auto;
+            max-width: 1200px;
+            border: 1px solid var(--hhb-peach-border);
+        }
+
+        .hhb__container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .hhb__title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            text-wrap: balance;
+            color: var(--hhb-ink);
+            margin: 0 0 16px;
+        }
+        .hhb__title-accent { display: block; color: var(--hhb-coral-deep); }
+
+        .hhb__subtitle {
+            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            line-height: 1.6;
+            color: var(--hhb-ink-muted);
+            max-width: 600px;
+            margin: 0 0 56px;
+        }
+
+        .hhb__section-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: var(--hhb-ink);
+            margin: 0 0 24px;
+        }
+
+        .hhb__label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--hhb-coral-deep);
+            margin: 0 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hhb__label-icon { width: 20px; height: 20px; color: var(--hhb-coral-deep); }
+
+        .hhb__hero { margin-bottom: 80px; }
+        .hhb__hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--hhb-coral-soft);
+            color: var(--hhb-coral-deep);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            border: 1px solid var(--hhb-peach-border);
+        }
+        .hhb__hero-badge svg { width: 16px; height: 16px; }
+
+        .hhb__card {
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 24px var(--hhb-shadow);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .hhb__card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--hhb-shadow-strong); }
+        .hhb__card--olive { border-left: 6px solid var(--hhb-peach-border); }
+
+        .hhb__card-text {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.7;
+            color: var(--hhb-ink-muted);
+            margin: 0;
+        }
+        .hhb__card-text strong { color: var(--hhb-ink); font-weight: 700; }
+        .hhb__card-text a {
+            color: var(--hhb-coral-deep);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--hhb-peach-border);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .hhb__card-text a:hover { color: var(--hhb-ink); border-color: var(--hhb-ink); }
+
+        .hhb__examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 64px;
+        }
+
+        .hhb__example-card {
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 20px;
+            padding: 32px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px var(--hhb-shadow);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+        }
+        .hhb__example-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 32px var(--hhb-shadow-strong); }
+        .hhb__example-card--active { border-color: var(--hhb-coral-deep); }
+
+        .hhb__example-card__header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .hhb__example-card__icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: var(--hhb-coral-deep);
+        }
+        .hhb__example-card__icon svg { width: 22px; height: 22px; color: #fff; }
+
+        .hhb__example-card__title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--hhb-ink);
+            margin: 0;
+        }
+        .hhb__example-card__pronouns {
+            font-size: 0.875rem;
+            color: var(--hhb-ink-muted);
+            margin: 0 0 12px;
+            line-height: 1.5;
+        }
+        .hhb__example-card__examples { list-style: none; padding: 0; margin: 0; }
+        .hhb__example-card__examples li {
+            font-size: 1rem;
+            line-height: 1.6;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--hhb-peach-border);
+        }
+        .hhb__example-card__examples li:last-child { border-bottom: none; }
+        .hhb__example-card__examples .hhb__verb { font-weight: 700; color: var(--hhb-coral-deep); }
+
+        .hhb__pattern {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 700;
+            color: var(--hhb-coral-deep);
+            flex-direction: column;
+        }
+        .hhb__pattern-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+        .hhb__pattern-box {
+            background: var(--hhb-cream);
+            padding: 8px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--hhb-shadow);
+            border: 1px solid var(--hhb-peach-border);
+        }
+        .hhb__pattern-arrow { font-size: 1.5rem; line-height: 1; }
+
+        .hhb__tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 64px; }
+        .hhb__tip {
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 16px var(--hhb-shadow);
+            transition: transform 0.3s ease;
+        }
+        .hhb__tip:hover { transform: translateY(-2px); }
+        .hhb__tip-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            background: var(--hhb-coral-deep);
+        }
+        .hhb__tip-icon svg { width: 24px; height: 24px; color: #fff; }
+        .hhb__tip-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: var(--hhb-ink);
+            margin: 0 0 8px;
+        }
+        .hhb__tip-text { font-size: 0.9375rem; line-height: 1.6; color: var(--hhb-ink-muted); margin: 0; }
+
+        /* ===== ПРОМО-БЛОКИ ===== */
+        .hhb__promo {
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 24px;
+            padding: 32px 36px;
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            box-shadow: 0 4px 20px var(--hhb-shadow);
+        }
+        .hhb__promo-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--hhb-ink-muted);
+            margin: 0;
+        }
+        .hhb__promo-text strong { color: var(--hhb-ink); }
+        .hhb__promo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 100px;
+            background: var(--hhb-coral-deep);
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(199, 92, 61, 0.3);
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .hhb__promo-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(199, 92, 61, 0.4); background: var(--hhb-coral); }
+        .hhb__promo-btn svg { width: 18px; height: 18px; }
+
+        @media (max-width: 760px) {
+            .hhb__promo { grid-template-columns: 1fr; text-align: center; padding: 24px; }
+            .hhb__promo-btn { justify-content: center; }
+        }
+
+        /* ===== CTA ВНИЗУ ===== */
+        .hhb__cta {
+            text-align: center;
+            background: var(--hhb-card-bg);
+            border: 1px solid var(--hhb-peach-border);
+            border-radius: 32px;
+            padding: clamp(40px, 6vw, 64px);
+            box-shadow: 0 4px 24px var(--hhb-shadow);
+        }
+        .hhb__cta-text {
+            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            line-height: 1.6;
+            color: var(--hhb-ink-muted);
+            margin: 0 auto 24px;
+            max-width: 500px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hhb__card, .hhb__example-card, .hhb__tip, .hhb__promo-btn { transition: none !important; animation: none !important; }
+            .hhb__example-card:hover, .hhb__card:hover, .hhb__tip:hover { transform: none !important; }
+        }
+
+        @media (max-width: 640px) {
+            .hhb { padding: 32px 0; border-radius: 24px; }
+            .hhb__card { padding: 24px; border-radius: 20px; }
+            .hhb__example-card { padding: 24px; }
+        }
+
+        /* ===== БЛОК ДРУГИХ СТАТЕЙ (8 карточек) ===== */
+        .blog-related {
+            max-width: 1200px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+        }
+        .blog-related h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 800;
+            color: var(--lw-teal);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .blog-related p {
+            text-align: center;
+            color: #8a8a92;
+            font-size: 15px;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        .blog-related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        .blog-related-card {
+            background: linear-gradient(170deg, #fff5f0 0%, #ffede5 100%);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(123,45,59,.08);
+            transition: transform .25s, box-shadow .25s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(123,45,59,.1);
+            text-decoration: none;
+            color: inherit;
+        }
+        .blog-related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(123,45,59,.15);
+            border-color: rgba(123,45,59,.3);
+        }
+        .blog-related-card-img {
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+            background: linear-gradient(160deg, #fff5f0 0%, #ffe8dc 100%);
+        }
+        .blog-related-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+        }
+        .blog-related-card:hover .blog-related-card-img img { transform: scale(1.05); }
+        .blog-related-card-body { padding: 16px 18px; flex: 1; display: flex; flex-direction: column; }
+        .blog-related-card-cat {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        .blog-related-card-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            color: var(--lw-ink);
+        }
+        .blog-related-card-meta {
+            font-size: 12px;
+            color: #8a8a92;
+            margin-top: auto;
+        }
+        @media (max-width: 1100px) { .blog-related-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .blog-related-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 540px) { .blog-related-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="../index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="../lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="../board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="../blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="../shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="../about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="../index.html">Главная</a><span>→</span><a href="../blog.html">Блог</a><span>→</span><span class="lw-current">Have got или Has got</span>
+    </nav>
+
+    <section class="hhb" aria-labelledby="hhb-title">
+        <div class="hhb__container">
+            <!-- Hero -->
+            <div class="hhb__hero">
+                <div class="hhb__hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    Грамматика на практике
+                </div>
+                <h1 id="hhb-title" class="hhb__title">
+                    Have got или Has got:
+                    <span class="hhb__title-accent">легко разберёмся!</span>
+                </h1>
+                <p class="hhb__subtitle">
+                    Доступное объяснение правила с примерами и лайфхаками. Теорию можно подкрепить практикой в серии интерактивных тренажёров.
+                </p>
+            </div>
+
+            <!-- Rule cards -->
+            <div class="hhb__label">
+                <svg class="hhb__label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+                Главное правило
+            </div>
+            <h2 class="hhb__section-title">Когда использовать have, а когда — has?</h2>
+
+            <div class="hhb__card hhb__card--olive">
+                <p class="hhb__card-text">
+                    В английском языке <strong>have got</strong> означает «иметь, обладать». Форма зависит от подлежащего (кто обладает чем-то).
+                    Если говорим о себе, о вас или о них — используем <strong>have</strong>. А если о ком-то одном — <strong>he, she, it</strong> — используем <strong>has</strong>.
+                    А чтобы отработать это правило до автоматизма, попробуйте <a href="../trainers/grammar/have-has-got-interactive.html">интерактивный тренажёр Have got / Has got</a> — 4 режима: утверждение, отрицание, вопросы и wh-слова.
+                </p>
+            </div>
+
+            <!-- Pattern visual -->
+            <div class="hhb__pattern">
+                <div class="hhb__pattern-row">
+                    <span class="hhb__pattern-box">I / You / We / They</span>
+                    <span class="hhb__pattern-arrow">→</span>
+                    <span class="hhb__pattern-box" style="color: var(--hhb-olive);">have got</span>
+                </div>
+                <div class="hhb__pattern-row">
+                    <span class="hhb__pattern-box">He / She / It</span>
+                    <span class="hhb__pattern-arrow">→</span>
+                    <span class="hhb__pattern-box" style="color: var(--hhb-olive);">has got</span>
+                </div>
+            </div>
+
+            <!-- Interactive Examples -->
+            <div class="hhb__label" style="margin-top: 64px;">
+                <svg class="hhb__label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H3v10h6zM21 3h-6v18h6zM15 7H9v14h6z"/></svg>
+                Примеры
+            </div>
+            <h2 class="hhb__section-title">Реальные примеры в контексте</h2>
+
+            <div class="hhb__examples" role="tablist" aria-label="Примеры с have got и has got">
+                <article class="hhb__example-card hhb__example-card--have" role="tab" tabindex="0" aria-selected="true">
+                    <div class="hhb__example-card__header">
+                        <div class="hhb__example-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+                        </div>
+                        <h3 class="hhb__example-card__title">I / You / We / They</h3>
+                    </div>
+                    <p class="hhb__example-card__pronouns">Множественное число или «я», «ты»</p>
+                    <ul class="hhb__example-card__examples">
+                        <li>I <span class="hhb__verb">have got</span> a cat.</li>
+                        <li>You <span class="hhb__verb">have got</span> a bike.</li>
+                        <li>We <span class="hhb__verb">have got</span> time.</li>
+                        <li>They <span class="hhb__verb">have got</span> a new car.</li>
+                    </ul>
+                </article>
+
+                <article class="hhb__example-card hhb__example-card--has" role="tab" tabindex="0">
+                    <div class="hhb__example-card__header">
+                        <div class="hhb__example-card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13l1.5 8-5-3-5 3 1.5-8"/></svg>
+                        </div>
+                        <h3 class="hhb__example-card__title">He / She / It</h3>
+                    </div>
+                    <p class="hhb__example-card__pronouns">Третье лицо, единственное число</p>
+                    <ul class="hhb__example-card__examples">
+                        <li>He <span class="hhb__verb">has got</span> a dog.</li>
+                        <li>She <span class="hhb__verb">has got</span> long hair.</li>
+                        <li>It <span class="hhb__verb">has got</span> four legs.</li>
+                        <li>Tom <span class="hhb__verb">has got</span> a guitar.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- Tips -->
+            <div class="hhb__label">
+                <svg class="hhb__label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5c0 1.5.7 2.9 1.7 3.8.5.5.8 1.1.8 1.8V14h5v-1.4c0-.7.3-1.3.8-1.8A5 5 0 0 0 12 2zM10 18h4M10 22h4"/></svg>
+                Лайфхаки
+            </div>
+            <h2 class="hhb__section-title">Что помнить</h2>
+            <div class="hhb__tips">
+                <div class="hhb__tip">
+                    <div class="hhb__tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+                    </div>
+                    <h3 class="hhb__tip-title">Сокращённая форма</h3>
+                    <p class="hhb__tip-text">
+                        В разговорной речи got часто опускают: <em>I've got a pen</em> = <em>I have a pen</em>. А вот <strong>have got</strong> звучит чуть более разговорно.
+                    </p>
+                </div>
+                <div class="hhb__tip">
+                    <div class="hhb__tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    </div>
+                    <h3 class="hhb__tip-title">Вопрос и отрицание</h3>
+                    <p class="hhb__tip-text">
+                        В вопросе got уходит в конец: <em>Have you got any money?</em> В отрицании: <em>She hasn't got a car.</em>
+                    </p>
+                </div>
+                <div class="hhb__tip">
+                    <div class="hhb__tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3 class="hhb__tip-title">Синонимы</h3>
+                    <p class="hhb__tip-text">
+                        <em>Have got</em> = <em>have</em>. Оба значат «иметь». Разница в стилистике: <em>have got</em> более неформальное.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA — игра Зоо-Домино -->
+            <div class="hhb__promo">
+                <p class="hhb__promo-text">
+                    🎲 Хотите, чтобы правило закрепилось на автомате? Попробуйте <strong>«Зоо-Домино»</strong> — 54 карточки с животными и конструкцией have/has got. Играют и дети, и взрослые.
+                </p>
+                <a href="../image/shop/zoo-domino-have-got.html" class="hhb__promo-btn">
+                    Смотреть игру
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+
+            <!-- CTA — уроки -->
+            <div class="hhb__cta" style="margin-top: 40px;">
+                <h2 class="hhb__section-title" style="margin-bottom: 16px;">Знать правило — это полдела.</h2>
+                <p class="hhb__cta-text">
+                     На уроках мы отрабатываем <strong>have got / has got</strong> в живой речи, чтобы вы говорили уверенно и без запинок.
+                </p>
+                <a href="../lessons-english.html" class="hhb__promo-btn" style="margin-top: 8px;">
+                    Познакомиться с преподавателем
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК ДРУГИХ СТАТЕЙ — 8 КАРТОЧЕК -->
+    <section class="blog-related">
+        <h2>Другие статьи блога</h2>
+        <p>Возможно, Вам будет интересно</p>
+        <div class="blog-related-grid">
+            <a href="article-1.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="cover_phonetics.jpg" alt="Английский, которого Вы не слышите"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Кое-что о произношении</div>
+                    <div class="blog-related-card-title">Английский, которого Вы не слышите</div>
+                    <div class="blog-related-card-meta">12 июня 2026</div>
+                </div>
+            </a>
+            <a href="article-2.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="why_english.jpg" alt="Зачем учить английский, когда мир распадается глобально"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Заглянуть в завтрашний день</div>
+                    <div class="blog-related-card-title">Зачем учить английский, когда мир распадается глобально</div>
+                    <div class="blog-related-card-meta">28 июня 2026</div>
+                </div>
+            </a>
+            <a href="article-3.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="natives.jpg" alt="Носитель языка: Иллюзия или помощь?"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Мифы и рифы английского языка</div>
+                    <div class="blog-related-card-title">Носитель языка: Иллюзия или помощь?</div>
+                    <div class="blog-related-card-meta">15 июля 2026</div>
+                </div>
+            </a>
+            <a href="article-4.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="cover_ottenki.jpg" alt="Зачем миру столько оттенков?"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Как расширить словарный запас</div>
+                    <div class="blog-related-card-title">Зачем миру столько оттенков? Как цвета влияют на реальность</div>
+                    <div class="blog-related-card-meta">2 августа 2026</div>
+                </div>
+            </a>
+            <a href="article-5.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="market.jpg" alt="Как изменился рынок английского"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Случайные люди в репетиторстве</div>
+                    <div class="blog-related-card-title">Как изменился рынок английского за последние 10 лет</div>
+                    <div class="blog-related-card-meta">20 августа 2026</div>
+                </div>
+            </a>
+            <a href="article-6.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="ideal_me_cover.jpg" alt="Как мы учим язык ради идеального Я"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Можно ли достичь совершенства</div>
+                    <div class="blog-related-card-title">Как мы учим язык ради идеального «Я»</div>
+                    <div class="blog-related-card-meta">8 сентября 2026</div>
+                </div>
+            </a>
+            <a href="article-7.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="colors_cover.jpg" alt="Зачем знать оттенки цвета на английском"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Почувствуйте себя дизайнером</div>
+                    <div class="blog-related-card-title">Зачем знать оттенки цвета на английском?</div>
+                    <div class="blog-related-card-meta">25 сентября 2026</div>
+                </div>
+            </a>
+            <a href="article-8.html" class="blog-related-card">
+                <div class="blog-related-card-img"><img src="prizvanie_cover.jpg" alt="Учитель — это призвание"></div>
+                <div class="blog-related-card-body">
+                    <div class="blog-related-card-cat">Манипуляции профессией</div>
+                    <div class="blog-related-card-title">Учитель — это призвание: как красивая фраза стала инструментом эксплуатации</div>
+                    <div class="blog-related-card-meta">12 октября 2026</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div><a href="../index.html" class="lw-footer-logo">LangWood</a><p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p></div>
+            <div><div class="lw-footer-title">Меню</div><ul class="lw-footer-list"><li><a href="../trainers/trainers.html">Тренажёры</a></li><li><a href="../lessons-english.html">Уроки</a></li><li><a href="../board.html">StoryBoard</a></li><li><a href="../blog.html">Блог</a></li><li><a href="../shop.html">Магазин</a></li><li><a href="../about.html">О сайте</a></li><li><a href="../contacts.html">Контакты</a></li></ul></div>
+            <div><div class="lw-footer-title">Соцсети</div><ul class="lw-footer-list"><li><a href="https://vk.ru/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li><li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li></ul></div>
+            <div><div class="lw-footer-title">Правовая информация</div><ul class="lw-footer-list"><li><a href="../legal/privacy.html">Политика обработки персональных данных</a></li><li><a href="../legal/soglasie.html">Согласие на обработку персональных данных</a></li><li><a href="../legal/terms.html">Пользовательское соглашение</a></li><li><a href="../legal/offer.html">Публичная оферта</a></li></ul></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.getElementById('lwBurger').addEventListener('click', function() {
+            document.getElementById('lwNavWrapper').classList.toggle('is-open');
+        });
+
+        // Интерактив примеров (активация карточки по клику)
+        const exampleCards = document.querySelectorAll('.hhb__example-card');
+        exampleCards.forEach(card => {
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('hhb__example-card--active');
+                }
+            });
+            card.addEventListener('click', function() {
+                card.classList.toggle('hhb__example-card--active');
+            });
+        });
+
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    </script>
+</body>
+</html>
