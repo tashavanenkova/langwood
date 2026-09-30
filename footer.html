@@ -1,0 +1,165 @@
+<!-- ===== ПОДВАЛ LANGWOOD ===== -->
+<style>
+    .lw-footer {
+        background: #008080;
+        color: #ffffff;
+        padding: 48px 24px 32px;
+        margin-top: 24px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    .lw-footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 32px;
+    }
+
+    .lw-footer-logo-wrapper {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        white-space: nowrap;
+        margin-bottom: 12px;
+    }
+
+    .lw-footer-logo {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        font-size: 28px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: .02em;
+        transition: opacity .2s;
+    }
+
+    .lw-footer-logo:hover {
+        opacity: .85;
+    }
+
+    .lw-footer-slogan {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        letter-spacing: .02em;
+        opacity: .7;
+        white-space: nowrap;
+        font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+    .lw-footer-text {
+        font-size: 14px;
+        line-height: 1.7;
+        opacity: .9;
+    }
+
+    .lw-footer-title {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        margin-bottom: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        opacity: .8;
+    }
+
+    .lw-footer-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .lw-footer-list li {
+        margin-bottom: 10px;
+    }
+
+    .lw-footer-list a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: opacity .2s;
+        opacity: .75;
+    }
+
+    .lw-footer-list a:hover {
+        opacity: 1;
+        text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+        .lw-footer-inner {
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .lw-footer {
+            padding: 32px 16px 24px;
+        }
+
+        .lw-footer-inner {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            text-align: center;
+        }
+
+        .lw-footer-logo-wrapper {
+            justify-content: center;
+        }
+
+        .lw-footer-slogan {
+            display: none;
+        }
+
+        .lw-footer-logo {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<footer class="lw-footer">
+    <div class="lw-footer-inner">
+        <div>
+            <div class="lw-footer-logo-wrapper">
+                <a href="/" class="lw-footer-logo">LangWood</a>
+            </div>
+            <p class="lw-footer-text">
+                © 2026 LangWood<br>
+                Все права защищены
+            </p>
+        </div>
+        <div>
+            <div class="lw-footer-title">Меню</div>
+            <ul class="lw-footer-list">
+                <li><a href="/trainers">Тренажёры</a></li>
+                <li><a href="/lessons">Уроки</a></li>
+                <li><a href="/board.html">Storyboard</a></li>
+                <li><a href="/blog">Блог</a></li>
+                <li><a href="/shop">Магазин</a></li>
+                <li><a href="/about">О сайте</a></li>
+                <li><a href="/contacts">Контакты</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="lw-footer-title">Соцсети</div>
+            <ul class="lw-footer-list">
+                <li><a href="https://vk.com/neiroschooling" target="_blank" rel="noreferrer noopener">ВКонтакте</a></li>
+                <li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noreferrer noopener">Одноклассники</a></li>
+                <li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noreferrer noopener">Pinterest</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="lw-footer-title">Правовая информация</div>
+            <ul class="lw-footer-list">
+                <li><a href="/">Главная страница</a></li>
+<li><a href="legal/privacy.html">Политика обработки персональных данных</a></li>
+<li><a href="legal/soglasie.html">Согласие на обработку персональных данных</a></li>
+<li><a href="legal/terms.html">Пользовательское соглашение</a></li>
+<li><a href="legal/offer.html">Публичная оферта</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

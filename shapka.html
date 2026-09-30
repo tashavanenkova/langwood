@@ -1,0 +1,197 @@
+<!-- ===== ШАПКА LANGWOOD ===== -->
+<style>
+    .lw-header {
+        background: #008080;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    .lw-header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 56px;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .lw-logo-wrapper {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        white-space: nowrap;
+    }
+
+    .lw-logo {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: .02em;
+        transition: opacity .2s;
+        white-space: nowrap;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    .lw-logo:hover {
+        opacity: .85;
+    }
+
+    .lw-slogan {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        letter-spacing: .02em;
+        opacity: .7;
+        white-space: nowrap;
+        font-family: 'Georgia', 'Times New Roman', serif;
+    }
+
+    /* Основные разделы */
+    .lw-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        list-style: none;
+        flex-wrap: wrap;
+    }
+
+    .lw-nav-item {
+        display: inline-block;
+    }
+
+    .lw-nav-link {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: background .2s, color .2s;
+        white-space: nowrap;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    .lw-nav-link:hover {
+        background: rgba(255,255,255,.12);
+        color: #ffffff;
+    }
+
+    .lw-burger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .lw-burger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fdf6e3;
+        transition: all .2s;
+        border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+        .lw-slogan {
+            display: none;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .lw-header-inner {
+            padding: 0 14px;
+            min-height: 48px;
+        }
+
+        .lw-logo {
+            font-size: 22px;
+        }
+
+        .lw-burger {
+            display: flex;
+        }
+
+        .lw-nav-wrapper {
+            display: none;
+            width: 100%;
+            position: absolute;
+            top: 48px;
+            left: 0;
+            right: 0;
+            background: #008080;
+            box-shadow: 0 10px 20px rgba(0,0,0,.15);
+            z-index: 999;
+        }
+
+        .lw-nav-wrapper.is-open {
+            display: block;
+        }
+
+        .lw-nav {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 8px 16px 16px;
+            gap: 0;
+        }
+
+        .lw-nav-item {
+            display: block;
+        }
+
+        .lw-nav-link {
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            font-size: 16px;
+        }
+    }
+</style>
+
+<header class="lw-header" id="lwHeader">
+    <div class="lw-header-inner">
+        <div class="lw-logo-wrapper">
+            <a href="/" class="lw-logo">LangWood</a>
+            <span class="lw-slogan">английский, который радует</span>
+        </div>
+
+        <button class="lw-burger" id="lwBurger" aria-label="Меню">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="lw-nav-wrapper" id="lwNavWrapper">
+            <ul class="lw-nav">
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/trainers">Тренажёры</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/lessons">Уроки</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/board.html">Storyboard</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/blog">Блог</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/shop">Магазин</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/about">О сайте</a></li>
+                <li class="lw-nav-item"><a class="lw-nav-link" href="/contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<script>
+    (function() {
+        var burger = document.getElementById('lwBurger');
+        var navWrapper = document.getElementById('lwNavWrapper');
+        if (burger && navWrapper) {
+            burger.addEventListener('click', function() {
+                navWrapper.classList.toggle('is-open');
+            });
+        }
+    })();
+</script>

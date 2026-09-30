@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уроки английского с преподавателем — LangWood</title>
+    <meta name="description" content="Индивидуальные уроки английского с Натальей Анатольевной — опытным преподавателем с 20-летним стажем. Онлайн и оффлайн, подготовка к экзаменам, бизнес-английский, английский для детей и нейросетей.">
+    <meta property="og:title" content="Уроки английского с преподавателем — LangWood">
+    <meta property="og:description" content="Индивидуальные уроки английского с опытным преподавателем. Онлайн и оффлайн.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Наталья Ваненкова",
+        "jobTitle": "Преподаватель английского языка",
+        "description": "Опытный преподаватель английского языка с 20-летним стажем. Индивидуальные уроки онлайн и оффлайн, подготовка к экзаменам, бизнес-английский, английский для детей и нейросетей.",
+        "knowsLanguage": ["en", "ru"],
+        "email": "tasha.vanenkova@yandex.ru",
+        "telephone": "+79003219479"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://langwood.ru/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Уроки",
+                "item": "https://langwood.ru/lessons.html"
+            }
+        ]
+    }
+    </script>
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --accent: #7b2d3b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.6;
+        }
+
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .lw-logo {
+            text-decoration: none;
+            color: var(--lw-ivory);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .lw-logo:hover { opacity: .85; }
+
+        .lw-slogan {
+            color: var(--lw-ivory);
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        .lw-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .lw-nav-link {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+
+        .lw-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lw-burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--lw-ivory);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .lw-slogan { display: none; }
+        }
+
+        @media (max-width: 760px) {
+            .lw-header-inner {
+                padding: 0 14px;
+                min-height: 48px;
+            }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 48px;
+                left: 0;
+                right: 0;
+                background: var(--lw-teal);
+                z-index: 999;
+            }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px 16px 16px;
+                gap: 0;
+            }
+            .lw-nav-link {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,.08);
+            }
+        }
+
+        .lw-breadcrumbs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px 0;
+            font-size: 13px;
+            color: #8a8a92;
+        }
+
+        .lw-breadcrumbs a {
+            color: var(--lw-teal);
+            text-decoration: none;
+        }
+
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+
+        .lw-breadcrumbs span {
+            margin: 0 6px;
+            color: #c0c0c8;
+        }
+
+        .lw-breadcrumbs .lw-current {
+            color: #6a6a72;
+            font-weight: 500;
+        }
+
+        /* ===== КОНТЕНТ УРОКОВ ===== */
+        .nt-hero { padding: 80px 0 60px; background: #faf5ee; position: relative; overflow: hidden; }
+        .nt-hero__grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nt-hero__title { font-family: Georgia, serif; font-size: clamp(40px, 6vw, 70px); font-weight: 800; line-height: 1; color: #1a2332; margin-bottom: 20px; }
+        .nt-hero__title span { display: block; font-style: italic; font-weight: 400; color: #008080; font-size: 0.5em; margin-top: 8px; }
+        .nt-hero__lead { font-size: 18px; color: #4a5568; max-width: 520px; margin-bottom: 30px; }
+        .nt-hero__badges { display: flex; gap: 30px; flex-wrap: wrap; }
+        .nt-hero__badge-num { font-family: Georgia, serif; font-size: 34px; font-weight: 800; color: #008080; }
+        .nt-hero__badge-label { font-size: 13px; color: #6b7280; }
+        .nt-hero__photo { border-radius: 200px 200px 40px 40px; overflow: hidden; aspect-ratio: 4/5; box-shadow: 0 30px 60px -20px rgba(10,92,92,.3); }
+        .nt-hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .nt-section { padding: 60px 0; background: #fff; }
+        .nt-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nt-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #008080; margin-bottom: 15px; }
+        .nt-title { font-family: Georgia, serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; color: #1a2332; margin-bottom: 20px; }
+        .nt-title em { font-style: italic; color: #008080; }
+        .nt-text { font-size: 16px; color: #4a5568; margin-bottom: 20px; }
+
+        .nt-stats { background: #008080; color: #fff; padding: 60px 0; }
+        .nt-stats__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        .nt-stats__num { font-family: Georgia, serif; font-size: clamp(36px, 4vw, 56px); font-weight: 800; }
+        .nt-stats__num em { font-style: italic; color: #f0d5d5; font-weight: 400; }
+        .nt-stats__label { font-size: 13px; opacity: .7; text-transform: uppercase; }
+
+        .nt-about__grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .nt-about__image { border-radius: 30px; overflow: hidden; aspect-ratio: 4/5; box-shadow: 0 30px 60px -20px rgba(10,92,92,.2); }
+        .nt-about__image img { width: 100%; height: 100%; object-fit: cover; }
+        .nt-about__list { margin-top: 30px; display: grid; gap: 15px; }
+        .nt-about__list-item { background: #faf5ee; border-left: 3px solid #008080; border-radius: 15px; padding: 15px 20px; }
+        .nt-about__list-item strong { font-family: Georgia, serif; font-weight: 600; color: #1a2332; }
+
+        .nt-services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .nt-service { background: #faf5ee; border: 1px solid rgba(0,128,128,.15); border-radius: 25px; padding: 30px; transition: all .3s; }
+        .nt-service:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,128,128,.1); }
+        .nt-service__title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .nt-service__text { font-size: 14px; color: #4a5568; margin-bottom: 15px; }
+        .nt-service__meta { font-size: 13px; color: #008080; font-weight: 600; }
+
+        .nt-method__steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .nt-method__step { background: #faf5ee; border: 1px solid rgba(0,128,128,.15); border-radius: 30px; padding: 35px 30px; }
+        .nt-method__step-num { font-family: Georgia, serif; font-size: 80px; font-weight: 800; color: #008080; opacity: .15; line-height: 1; margin-bottom: 10px; }
+        .nt-method__step-title { font-family: Georgia, serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .nt-method__step-text { font-size: 14px; color: #4a5568; }
+
+        .nt-reviews { background: #f2ebde; }
+        .nt-reviews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+        .nt-review { background: #fff; border: 1px solid rgba(0,128,128,.15); border-radius: 25px; padding: 30px; }
+        .nt-review__quote { font-family: Georgia, serif; font-size: 60px; line-height: .6; color: #d4a5a5; margin-bottom: 8px; }
+        .nt-review__text { font-size: 15px; font-style: italic; color: #1a2332; margin-bottom: 20px; }
+        .nt-review__author { display: flex; align-items: center; gap: 12px; padding-top: 15px; border-top: 1px solid rgba(0,128,128,.15); }
+        .nt-review__avatar { width: 46px; height: 46px; border-radius: 50%; background: #008080; color: #fff; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; }
+        .nt-review__author-name { font-size: 15px; font-weight: 700; }
+        .nt-review__author-role { font-size: 13px; color: #6b7280; }
+
+        /* Курс нейросетей */
+        .nt-neuro { background: #fff; }
+        .nt-neuro__dict-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 40px; }
+        .nt-neuro__dict-card { background: #faf5ee; border: 1px solid #008080; border-radius: 12px; padding: 20px; text-align: center; }
+        .nt-neuro__dict-word { font-size: 20px; font-weight: 700; color: #008080; }
+        .nt-neuro__dict-meaning { font-size: 13px; color: #4a4a4a; margin-top: 5px; font-style: italic; }
+        .nt-neuro__program-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+        .nt-neuro__program-card { background: #faf5ee; border: 1px solid #7b2d3b; border-radius: 12px; padding: 25px; }
+        .nt-neuro__program-card h3 { font-size: 18px; font-weight: 700; color: #7b2d3b; margin-bottom: 10px; }
+        .nt-neuro__program-card li { font-size: 13px; color: #4a4a4a; padding: 5px 0; padding-left: 25px; position: relative; list-style: none; }
+        .nt-neuro__program-card li::before { content: "✦"; position: absolute; left: 0; color: #008080; }
+
+        .nt-faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 40px; }
+        .nt-faq-item { background: #fff; border: 1px solid #008080; border-radius: 12px; padding: 15px 20px; cursor: pointer; }
+        .nt-faq-q { font-size: 14px; font-weight: 700; color: #2d2d2d; display: flex; justify-content: space-between; align-items: center; }
+        .nt-faq-icon { font-size: 22px; color: #008080; }
+        .nt-faq-a { font-size: 13px; color: #4a4a4a; line-height: 1.5; max-height: 0; overflow: hidden; opacity: 0; transition: all .4s; }
+        .nt-faq-item.active .nt-faq-a { max-height: 200px; opacity: 1; padding-top: 12px; }
+        .nt-faq-item.active .nt-faq-icon { color: #7b2d3b; }
+
+        .nt-consult { background: linear-gradient(135deg, #008080, #006666); border-radius: 20px; padding: 50px; color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 40px; }
+        .nt-consult h2 { font-size: 32px; font-weight: 700; margin-bottom: 15px; }
+        .nt-consult p { font-size: 16px; opacity: .9; }
+        .nt-consult form { display: grid; gap: 12px; }
+        .nt-consult input { padding: 14px 18px; border-radius: 12px; border: none; width: 100%; }
+        .nt-consult button { background: #7b2d3b; color: #fff; padding: 14px; border-radius: 100px; border: none; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; }
+        .nt-consult button:hover { background: #5a1a28; }
+
+        .lw-footer {
+            background: var(--lw-teal);
+            color: #ffffff;
+            padding: 48px 24px 32px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo { font-size: 28px; color: #ffffff; text-decoration: none; font-weight: 700; }
+        .lw-footer-text { font-size: 14px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: #ffffff; text-decoration: none; font-size: 14px; opacity: .75; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .lw-footer-inner { grid-template-columns: 1fr 1fr; }
+            .nt-hero__grid, .nt-about__grid { grid-template-columns: 1fr; }
+            .nt-services__grid, .nt-method__steps, .nt-reviews__grid, .nt-stats__grid { grid-template-columns: repeat(2, 1fr); }
+            .nt-neuro__dict-grid { grid-template-columns: repeat(2, 1fr); }
+            .nt-neuro__program-grid, .nt-faq-grid { grid-template-columns: 1fr; }
+            .nt-consult { grid-template-columns: 1fr; padding: 30px 20px; }
+        }
+
+        @media (max-width: 640px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 24px; }
+            .nt-services__grid, .nt-method__steps, .nt-reviews__grid, .nt-stats__grid { grid-template-columns: 1fr; }
+            .nt-neuro__dict-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .nt-section div[style*="grid-template-columns:repeat(3"] {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><span style="opacity:.5;cursor:default;">Уроки</span></li>
+                    <li><a class="lw-nav-link" href="board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="index.html">Главная</a><span>→</span><span class="lw-current">Уроки</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="nt-hero">
+        <div class="nt-hero__grid">
+            <div>
+                <div class="nt-eyebrow">English with elegance</div>
+                <h1 class="nt-hero__title">Свободный<br>английский<span>с Натальей Ваненковой</span></h1>
+                <p class="nt-hero__lead">Опытный преподаватель помогает заговорить уверенно — <strong>с индивидуальным подходом</strong> и вниманием к Вашим целям и Вашему темпу.</p>
+                <div class="nt-hero__badges">
+                    <div><div class="nt-hero__badge-num">20+</div><div class="nt-hero__badge-label">ЛЕТ ОПЫТА</div></div>
+                    <div><div class="nt-hero__badge-num">800+</div><div class="nt-hero__badge-label">УЧЕНИКОВ</div></div>
+                    <div><div class="nt-hero__badge-num">5</div><div class="nt-hero__badge-label">КНИГ</div></div>
+                </div>
+            </div>
+            <div class="nt-hero__photo">
+                <img src="image/me.jpg" alt="Наталья Ваненкова — преподаватель английского">
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="nt-stats">
+        <div class="nt-stats__grid">
+            <div><div class="nt-stats__num"><em>20</em>+</div><div class="nt-stats__label">лет преподавания</div></div>
+            <div><div class="nt-stats__num"><em>800</em>+</div><div class="nt-stats__label">довольных учеников</div></div>
+            <div><div class="nt-stats__num"><em>97</em>%</div><div class="nt-stats__label">сдали экзамены</div></div>
+            <div><div class="nt-stats__num"><em>5</em>★</div><div class="nt-stats__label">книг по английскому</div></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="nt-section">
+        <div class="nt-container">
+            <div class="nt-about__grid">
+                <div class="nt-about__image">
+                    <img src="image/student.jpg" alt="Занятие английским с Натальей Ваненковой">
+                </div>
+                <div>
+                    <div class="nt-eyebrow">Обо мне</div>
+                    <h2 class="nt-title">Преподаю так, <em>как хотела бы</em> учиться сама</h2>
+                    <p class="nt-text">Помогаю людям заговорить на английском свободно и с удовольствием. За 20 лет работы я обучила более 800 учеников — от топ-менеджеров до школьников, готовящихся к ЕГЭ.</p>
+                    <p class="nt-text">Моя методика сочетает коммуникативный подход, элементы классической лингвистики и психологии обучения. Живой язык, который приживается и остаётся с Вами навсегда.</p>
+                    <div class="nt-about__list">
+                        <div class="nt-about__list-item"><strong>Высшее лингвистическое образование</strong> КГПУ, факультет английского языка.</div>
+                        <div class="nt-about__list-item"><strong>Авторская методика</strong> Система, проверенная на сотнях учеников разного уровня и возраста.</div>
+                        <div class="nt-about__list-item"><strong>Живая практика с первого урока</strong> 80% времени — разговорная практика, 20% — грамматика и лексика.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="nt-section" style="background:#faf5ee;">
+        <div class="nt-container">
+            <div class="nt-eyebrow">Услуги</div>
+            <h2 class="nt-title">Программы <em>для любых</em> целей</h2>
+            <p style="font-size:16px;color:#4a5568;">Подберу формат под Ваш темп и цели. Индивидуальные занятия оффлайн и онлайн.</p>
+            <div class="nt-services__grid">
+                <div class="nt-service"><h3 class="nt-service__title">Мой подход</h3><p class="nt-service__text">Персональная программа, полное внимание преподавателя и гибкий график.</p><div class="nt-service__meta">45 минут</div></div>
+                <div class="nt-service"><h3 class="nt-service__title">Онлайн-уроки</h3><p class="nt-service__text">Увлекательные и результативные занятия из любой точки мира. Авторские тренажёры онлайн.</p><div class="nt-service__meta">Zoom / Teams</div></div>
+                <div class="nt-service"><h3 class="nt-service__title">Мини-группы</h3><p class="nt-service__text">Занятия в группах 2-3 человека одного уровня. Разговорная практика.</p><div class="nt-service__meta">3–5 человек</div></div>
+                <div class="nt-service"><h3 class="nt-service__title">Подготовка к ВПР, экзаменам и олимпиадам</h3><p class="nt-service__text">Стратегии, разбор заданий, пробные тесты и работа с типичными ошибками.</p><div class="nt-service__meta">Олимпиады / ВПР / ОГЭ</div></div>
+                <div class="nt-service"><h3 class="nt-service__title">Бизнес-английский + ИИ</h3><p class="nt-service__text">Переговоры, презентации, деловая переписка и профессиональная лексика.</p><div class="nt-service__meta">Business / AI</div></div>
+                <div class="nt-service"><h3 class="nt-service__title">Английский для детей</h3><p class="nt-service__text">Игровая методика для детей 5–12 лет. Увлекательный интерактив.</p><div class="nt-service__meta">5–12 лет</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="nt-section">
+        <div class="nt-container">
+            <div class="nt-eyebrow" style="text-align:center;">Методика</div>
+            <h2 class="nt-title" style="text-align:center;">Как мы <em>приходим</em> к результату</h2>
+            <p style="text-align:center;font-style:italic;color:#4a5568;margin-bottom:40px;">Прозрачный путь от первого урока до свободной речи</p>
+            <div class="nt-method__steps">
+                <div class="nt-method__step"><div class="nt-method__step-num">01</div><h3 class="nt-method__step-title">Диагностика и цели</h3><p class="nt-method__step-text">На первом занятии определим Ваш уровень, обсудим цели и составим индивидуальный план развития.</p></div>
+                <div class="nt-method__step"><div class="nt-method__step-num">02</div><h3 class="nt-method__step-title">Системные занятия</h3><p class="nt-method__step-text">Регулярные уроки с погружением в живую речь, грамматику через контекст.</p></div>
+                <div class="nt-method__step"><div class="nt-method__step-num">03</div><h3 class="nt-method__step-title">Уверенный результат</h3><p class="nt-method__step-text">Свободное общение, успешная сдача экзаменов или новые карьерные возможности.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="nt-section nt-reviews">
+        <div class="nt-container">
+            <div class="nt-eyebrow" style="text-align:center;">Отзывы</div>
+            <h2 class="nt-title" style="text-align:center;">Что говорят <em>мои ученики</em></h2>
+            <div class="nt-reviews__grid">
+                <div class="nt-review"><div class="nt-review__quote">"</div><p class="nt-review__text">Наталья Анатольевна — тот редкий преподаватель, после урока с которым хочется говорить ещё. Ребёнок сдал ВПР на 5.</p><div class="nt-review__author"><div class="nt-review__avatar">АК</div><div><div class="nt-review__author-name">Анна К.</div><div class="nt-review__author-role">мама Ксении</div></div></div></div>
+                <div class="nt-review"><div class="nt-review__quote">"</div><p class="nt-review__text">За 8 месяцев подтянула английский с A2 до уверенного B2. Бизнес-встречи больше не проблема.</p><div class="nt-review__author"><div class="nt-review__avatar">ДМ</div><div><div class="nt-review__author-name">Диана М.</div><div class="nt-review__author-role">руководитель отдела</div></div></div></div>
+                <div class="nt-review"><div class="nt-review__quote">"</div><p class="nt-review__text">Дочь готовилась к свадьбе с канадцем — уже свободно общается. Я тоже подтянулась.</p><div class="nt-review__author"><div class="nt-review__avatar">ЕС</div><div><div class="nt-review__author-name">Елена С.</div><div class="nt-review__author-role">мама и ученица</div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея учебного процесса -->
+    <section class="nt-section" style="background:#fff;">
+        <div class="nt-container">
+            <div class="nt-eyebrow" style="text-align:center;">Учебный процесс</div>
+            <h2 class="nt-title" style="text-align:center;">Как проходят <em>занятия</em></h2>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;">
+                <div style="border-radius:20px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 10px 30px rgba(0,128,128,.1);">
+                    <img src="image/writing.jpg" alt="Учимся писать на английском" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div style="border-radius:20px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 10px 30px rgba(0,128,128,.1);">
+                    <img src="image/domino.jpg" alt="Занятие английским языком" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div style="border-radius:20px;overflow:hidden;aspect-ratio:1/1;box-shadow:0 10px 30px rgba(0,128,128,.1);">
+                    <img src="image/colors.jpg" alt="Ребёнок на уроке английского" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== КУРС «АНГЛИЙСКИЙ ДЛЯ НЕЙРОСЕТЕЙ» ===== -->
+    <section class="nt-section nt-neuro">
+        <div class="nt-container">
+            <div class="nt-eyebrow" style="text-align:center;">Специальный курс</div>
+            <h2 class="nt-title" style="text-align:center;">Английский для <em>нейросетей</em></h2>
+            <p style="text-align:center;color:#4a5568;margin-bottom:20px;">Говорите с ИИ на его языке — получайте результаты, которые удивляют</p>
+
+            <!-- Словарь нюансов -->
+            <div class="nt-neuro__dict-grid">
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Beautiful</div><div class="nt-neuro__dict-meaning">Красивый (гармоничный)</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Cute</div><div class="nt-neuro__dict-meaning">Милый (умилительный)</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Elegant</div><div class="nt-neuro__dict-meaning">Элегантный (изящный)</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Ethereal</div><div class="nt-neuro__dict-meaning">Воздушный, неземной</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Dreamy</div><div class="nt-neuro__dict-meaning">Мечтательный</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Serene</div><div class="nt-neuro__dict-meaning">Безмятежный</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Whimsical</div><div class="nt-neuro__dict-meaning">Причудливый, игривый</div></div>
+                <div class="nt-neuro__dict-card"><div class="nt-neuro__dict-word">Sophisticated</div><div class="nt-neuro__dict-meaning">Изысканный, глубокий</div></div>
+            </div>
+
+            <!-- Программа -->
+            <h3 style="text-align:center;font-size:24px;font-weight:700;color:#008080;margin:50px 0 30px;">Программа курса</h3>
+            <div class="nt-neuro__program-grid">
+                <div class="nt-neuro__program-card">
+                    <h3>✦ Модуль 1: словарь эстетики (200+ слов)</h3>
+                    <ul>
+                        <li>Beautiful vs Cute vs Pretty — в чём разница для ИИ</li>
+                        <li>Elegant vs Sophisticated — когда что использовать</li>
+                        <li>Dreamy vs Ethereal — создаём атмосферу</li>
+                        <li>Weird vs Whimsical — управляем фантазией</li>
+                    </ul>
+                </div>
+                <div class="nt-neuro__program-card">
+                    <h3>✦ Модуль 2: Создание промптов</h3>
+                    <ul>
+                        <li>Структура идеального промпта</li>
+                        <li>Комбинации эмоциональных слов</li>
+                        <li>Как добавить «аромат» и «атмосферу»</li>
+                        <li>Практика: генерация образов</li>
+                    </ul>
+                </div>
+                <div class="nt-neuro__program-card">
+                    <h3>✦ Модуль 3: Контекст и нюансы</h3>
+                    <ul>
+                        <li>Разные значения одного слова</li>
+                        <li>Как описать цвет, свет, текстуру</li>
+                        <li>Словарь стилей искусства</li>
+                        <li>Создание mood boards на английском</li>
+                    </ul>
+                </div>
+                <div class="nt-neuro__program-card">
+                    <h3>✦ Модуль 4: Творческие проекты</h3>
+                    <ul>
+                        <li>Серия изображений в одном стиле</li>
+                        <li>Генерация музыкальных композиций</li>
+                        <li>Написание поэтических текстов</li>
+                        <li>Разработка стиля для бренда</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <h3 style="text-align:center;font-size:24px;font-weight:700;color:#008080;margin:50px 0 30px;">Вопрос — ответ</h3>
+            <div class="nt-faq-grid" id="ntFaq">
+                <div class="nt-faq-item"><div class="nt-faq-q">Зачем учить английский для нейросетей?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Нейросети «мыслят» на английском. Прямой диалог с ИИ на его языке даёт более точные, глубокие результаты.</div></div>
+                <div class="nt-faq-item"><div class="nt-faq-q">Чем отличается от обычного английского?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Нейросетевой английский — это язык образов, атмосферы и нюансов, а не только грамматика.</div></div>
+                <div class="nt-faq-item"><div class="nt-faq-q">Какой уровень нужен для курса?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Базовый уровень (A2-B1) достаточен.</div></div>
+                <div class="nt-faq-item"><div class="nt-faq-q">Как проходит обучение?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Онлайн. Практика 80%, теории 20%.</div></div>
+                <div class="nt-faq-item"><div class="nt-faq-q">Что я получу после курса?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Словарь эстетического английского, сотни промптов, навык точного выражения.</div></div>
+                <div class="nt-faq-item"><div class="nt-faq-q">Эффективно ли заниматься онлайн?<span class="nt-faq-icon">+</span></div><div class="nt-faq-a">Да, но при условии стабильного интернета и наличия компьютера или ноутбука — я настоятельно не рекомендую заниматься через телефон.</div></div>
+            </div>
+
+                        <!-- Контакты для записи -->
+            <div class="nt-consult">
+                <div>
+                    <h2>Записаться на урок</h2>
+                    <p>Напишите или позвоните — подберу удобное время для первого занятия.</p>
+                </div>
+                <div style="display:grid;gap:15px;">
+                    <a href="mailto:tasha.vanenkova@yandex.ru" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:15px 20px;color:#fff;text-decoration:none;font-size:16px;">
+                        📧 tasha.vanenkova@yandex.ru
+                    </a>
+                    <a href="tel:+79003219479" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:15px;padding:15px 20px;color:#fff;text-decoration:none;font-size:16px;">
+                        📞 +7 (900) 321-94-79
+                    </a>
+                    <p style="font-size:13px;opacity:.7;text-align:center;margin:0;">Пишите или звоните — отвечу в течение дня</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div><a href="index.html" class="lw-footer-logo">LangWood</a><p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p></div>
+            <div><div class="lw-footer-title">Меню</div><ul class="lw-footer-list"><li><a href="trainers/trainers.html">Тренажёры</a></li><li><span style="opacity:.5;cursor:default;">Уроки</span></li><li><a href="board.html">StoryBoard</a></li><li><a href="blog.html">Блог</a></li><li><a href="shop.html">Магазин</a></li><li><a href="about.html">О сайте</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+            <div><div class="lw-footer-title">Соцсети</div><ul class="lw-footer-list"><li><a href="https://vk.ru/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li><li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li></ul></div>
+            <div><div class="lw-footer-title">Правовая информация</div><ul class="lw-footer-list"><li><a href="legal/privacy.html">Политика обработки персональных данных</a></li><li><a href="legal/soglasie.html">Согласие на обработку персональных данных</a></li><li><a href="legal/terms.html">Пользовательское соглашение</a></li><li><a href="legal/offer.html">Публичная оферта</a></li></ul></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.getElementById('lwBurger').addEventListener('click', function() {
+            document.getElementById('lwNavWrapper').classList.toggle('is-open');
+        });
+
+        // FAQ аккордеон
+        document.querySelectorAll('.nt-faq-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nt-faq-item').forEach(function(other) {
+                    if (other !== item) other.classList.remove('active');
+                });
+                this.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangWood — интерактивные тренажёры английского языкa</title>
+    <meta name="description" content="LangWood — авторские интерактивные тренажёры английского языка: лексика, грамматика, чтение, говорение. Создано репетитором с 30-летним опытом.">
+    <meta name="keywords" content="английский язык, тренажёры английского, лексика, грамматика, чтение, говорение, английский для русскоговорящих, LangWood, репетитор английского, пособия по английскому">
+    <meta property="og:title" content="LangWood — интерактивные тренажёры английского языка, уроки и наглядные пособия">
+    <meta property="og:description" content="Авторские тренажёры от репетитора с 30-летним опытом: лексика, грамматика, чтение, говорение.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "EducationalOrganization",
+            "name": "LangWood",
+            "description": "Сборник авторских интерактивных тренажёров английского языка: лексика, грамматика, чтение, говорение. Уроки английского. Наглядные пособия",
+            "knowsLanguage": ["en", "ru"],
+            "founder": {
+                "@type": "Person",
+                "jobTitle": "Репетитор английского языка",
+                "description": "30 лет опыта преподавания английского языка"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "LangWood",
+                "item": "https://langwood.ru/"
+            }]
+        }
+    </script>
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --teal-deep: #0a5554;
+            --teal-neon: #14b8a6;
+            --accent: #7b2d3b;
+            --mint: #4ECDC4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: #fafafa;
+            line-height: 1.6;
+            user-select: auto;
+        }
+
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .lw-logo {
+            text-decoration: none;
+            color: var(--lw-ivory);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .lw-logo:hover {
+            opacity: .85;
+        }
+
+        .lw-slogan {
+            color: var(--lw-ivory);
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        .lw-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .lw-nav-link {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .lw-nav-link:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .lw-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lw-burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--lw-ivory);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .lw-slogan {
+                display: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .lw-header-inner {
+                padding: 0 14px;
+                min-height: 48px;
+            }
+
+            .lw-logo {
+                font-size: 22px;
+            }
+
+            .lw-burger {
+                display: flex;
+            }
+
+            .lw-nav-wrapper {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 48px;
+                left: 0;
+                right: 0;
+                background: var(--lw-teal);
+                z-index: 999;
+            }
+
+            .lw-nav-wrapper.is-open {
+                display: block;
+            }
+
+            .lw-nav {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px 16px 16px;
+                gap: 0;
+            }
+
+            .lw-nav-link {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,.08);
+            }
+        }
+
+        .lw-main {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f4f5 100%);
+            color: var(--lw-ink);
+            overflow-x: hidden;
+            width: 100%;
+            isolation: isolate;
+            line-height: 1.55;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .lw-dots {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .lw-dot {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        .lw-dot--mint {
+            background: var(--mint);
+            width: 540px;
+            height: 540px;
+            bottom: 30px;
+            right: 60px;
+        }
+
+        .lw-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+        .lw-hero { position: relative; padding: 88px 0 72px; text-align: center; }
+        .lw-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 13px; letter-spacing: .28em; text-transform: uppercase;
+            color: var(--lw-teal); font-weight: 600; margin-bottom: 28px;
+        }
+        .lw-eyebrow::before, .lw-eyebrow::after {
+            content: ''; width: 38px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--teal-neon));
+        }
+        .lw-eyebrow::after { background: linear-gradient(90deg, var(--teal-neon), transparent); }
+        .lw-title {
+            font-size: clamp(44px, 7vw, 84px);
+            font-weight: 700; letter-spacing: -0.015em; line-height: 1.05;
+            color: var(--teal-deep); margin-bottom: 34px;
+            text-shadow: 0 1px 4px rgba(255,255,255,.8);
+        }
+        .lw-title em { font-style: italic; color: var(--lw-teal); }
+        .lw-quote {
+            position: relative; max-width: 720px; margin: 0 auto 44px;
+            font-style: italic; font-size: clamp(19px, 2.6vw, 26px);
+            line-height: 1.6; color: var(--lw-ink); padding: 26px 40px;
+            text-shadow: 0 1px 4px rgba(255,255,255,.8);
+        }
+        .lw-quote::before {
+            content: '“'; position: absolute; top: -22px; left: -6px;
+            font-size: 110px; line-height: 1; font-style: normal;
+            color: var(--teal-neon); opacity: .25;
+        }
+        .lw-quote::after {
+            content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+            width: 120px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: .4;
+        }
+        .lw-quote strong { font-style: normal; color: var(--teal-deep); }
+        .lw-cta {
+            display: inline-block;
+            font-size: 18px; font-weight: 700; letter-spacing: .06em;
+            color: #ffffff; background: linear-gradient(135deg, var(--lw-teal), var(--teal-deep));
+            padding: 18px 54px; border-radius: 999px; text-decoration: none;
+            box-shadow: 0 4px 12px rgba(14,124,123,.2), inset 0 1px 0 rgba(255,255,255,.25);
+            transition: transform .25s ease, box-shadow .25s ease;
+            cursor: pointer; border: none;
+        }
+        .lw-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(14,124,123,.25), 0 0 0 2px rgba(20,184,166,.15);
+        }
+        .lw-cta:active { transform: translateY(-1px); }
+
+        .lw-cats { padding: 30px 0 80px; }
+        .lw-cats-title {
+            text-align: center; font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700; color: var(--teal-deep); margin-bottom: 10px;
+            letter-spacing: -.01em;
+            text-shadow: 0 1px 4px rgba(255,255,255,.8);
+        }
+        .lw-cats-sub {
+            text-align: center; font-style: italic; color: rgba(22,48,47,.7);
+            font-size: 17px; margin-bottom: 46px;
+            text-shadow: 0 1px 4px rgba(255,255,255,.8);
+        }
+        .lw-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+        }
+        .lw-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: linear-gradient(145deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.75) 100%);
+            border: 1.5px solid transparent;
+            background-clip: padding-box;
+            border-radius: 24px;
+            padding: 34px 26px 28px;
+            text-decoration: none;
+            color: var(--lw-ink);
+            box-shadow: 
+                0 8px 32px rgba(10,85,84,.12),
+                0 2px 8px rgba(10,85,84,.06),
+                inset 0 1px 0 rgba(255,255,255,.9),
+                inset 0 -1px 0 rgba(20,184,166,.1);
+            transition: transform .3s cubic-bezier(.22,1.4,.36,1), box-shadow .3s ease, border-color .3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(16px);
+            overflow: hidden;
+        }
+        .lw-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--teal-neon), transparent);
+            opacity: .6;
+            border-radius: 24px 24px 0 0;
+        }
+        .lw-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1.5px solid rgba(20,184,166,.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        .lw-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(20,184,166,.6);
+            box-shadow: 
+                0 16px 48px rgba(10,85,84,.2),
+                0 4px 16px rgba(10,85,84,.1),
+                0 0 0 3px rgba(20,184,166,.15),
+                0 0 30px rgba(20,184,166,.25),
+                inset 0 1px 0 rgba(255,255,255,.95);
+        }
+        .lw-card:hover::after {
+            opacity: 1;
+        }
+        .lw-card:hover .lw-icon {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 6px 16px rgba(20,184,166,.3);
+        }
+        .lw-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(20,184,166,.2), rgba(14,124,123,.1));
+            margin-bottom: 22px;
+            transition: transform .3s cubic-bezier(.22,1.4,.36,1), box-shadow .3s ease;
+            box-shadow: 0 2px 8px rgba(20,184,166,.1);
+        }
+        .lw-icon svg { width: 34px; height: 34px; }
+        .lw-card h3 {
+            font-size: 27px; font-weight: 700; letter-spacing: -.01em;
+            color: var(--teal-deep); margin-bottom: 10px;
+            text-shadow: 0 1px 0 rgba(255,255,255,.8);
+        }
+        .lw-card p {
+            font-size: 15px; line-height: 1.55; color: rgba(22,48,47,.7);
+            font-style: italic; margin-bottom: 22px; flex-grow: 1;
+        }
+        .lw-go {
+            font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+            color: var(--lw-teal); display: inline-flex; align-items: center; gap: 8px;
+            cursor: pointer; padding: 8px 0; position: relative;
+            transition: color .25s ease, gap .25s ease;
+        }
+        .lw-go::after {
+            content: ''; position: absolute; left: 0; bottom: 2px; height: 1px; width: 0;
+            background: var(--accent); transition: width .3s ease;
+        }
+        .lw-go svg { width: 18px; height: 18px; transition: transform .25s ease; }
+        .lw-card:hover .lw-go { color: var(--accent); gap: 8px; }
+        .lw-card:hover .lw-go::after { width: 100%; }
+        .lw-card:hover .lw-go svg { transform: translateX(2px); }
+
+        .lw-teacher { padding: 10px 0 96px; }
+        .lw-teacher-card {
+            display: flex; align-items: center; gap: 36px;
+            background: linear-gradient(135deg, var(--teal-deep) 0%, var(--lw-teal) 100%);
+            border-radius: 28px; padding: 46px 52px;
+            color: #ffffff; text-decoration: none;
+            box-shadow: 0 6px 16px rgba(10,85,84,.15);
+            transition: transform .25s ease, box-shadow .25s ease; cursor: pointer;
+            position: relative; overflow: hidden;
+        }
+        .lw-teacher-card::before {
+            content: ''; position: absolute; top: -60px; right: -60px;
+            width: 240px; height: 240px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
+        }
+        .lw-teacher-card::after {
+            content: ''; position: absolute; bottom: -40px; left: 30%;
+            width: 160px; height: 160px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(123,45,59,.1), transparent 70%);
+        }
+        .lw-teacher-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(10,85,84,.2);
+        }
+        .lw-teacher-icon {
+            flex-shrink: 0; width: 88px; height: 88px; border-radius: 50%;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.3);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lw-teacher-icon svg { width: 44px; height: 44px; }
+        .lw-teacher-text { flex-grow: 1; position: relative; z-index: 1; }
+        .lw-teacher-text h2 {
+            font-size: clamp(24px, 3vw, 32px); font-weight: 700;
+            margin-bottom: 10px; letter-spacing: -.01em;
+        }
+        .lw-teacher-text h2 span { color: #7ff0e2; }
+        .lw-teacher-text p {
+            font-style: italic; font-size: 17px; line-height: 1.6;
+            color: rgba(255,255,255,.85); max-width: 560px;
+        }
+        .lw-teacher-btn {
+            flex-shrink: 0; position: relative; z-index: 1;
+            font-size: 17px; font-weight: 700; letter-spacing: .06em;
+            color: var(--teal-deep); background: #ffffff;
+            padding: 16px 44px; border-radius: 999px; border: none; cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,.1);
+            transition: transform .25s ease, box-shadow .25s ease, color .25s ease;
+        }
+        .lw-teacher-card:hover .lw-teacher-btn {
+            transform: scale(1.02); color: var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,.14), 0 0 0 1px rgba(123,45,59,.12);
+        }
+
+        @media (max-width: 900px) {
+            .lw-grid { grid-template-columns: repeat(2, 1fr); }
+            .lw-teacher-card { flex-direction: column; text-align: center; padding: 40px 28px; }
+            .lw-teacher-text p { margin: 0 auto; }
+        }
+        @media (max-width: 540px) {
+            .lw-hero { padding: 60px 0 48px; }
+            .lw-grid { grid-template-columns: 1fr; }
+            .lw-quote { padding: 20px 14px; }
+            .lw-cta { width: 100%; text-align: center; }
+            .lw-teacher-btn { width: 100%; }
+        }
+
+        .lw-footer {
+            background: var(--lw-teal);
+            color: #ffffff;
+            padding: 48px 24px 32px;
+            margin-top: 24px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo {
+            font-size: 28px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .lw-footer-text {
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: .9;
+        }
+
+        .lw-footer-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 16px;
+            font-weight: 700;
+            opacity: .8;
+        }
+
+        .lw-footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lw-footer-list li {
+            margin-bottom: 10px;
+        }
+
+        .lw-footer-list a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: .75;
+        }
+
+        .lw-footer-list a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .lw-footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .lw-footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .lw-footer-logo {
+                font-size: 24px;
+            }
+        }
+
+        .lw-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--lw-teal);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s, transform .2s;
+            z-index: 900;
+        }
+
+        .lw-to-top.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Открыть меню" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper" role="navigation" aria-label="Основное меню">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="lw-main" role="main">
+        <div class="lw-dots">
+            <div class="lw-dot lw-dot--mint"></div>
+        </div>
+
+        <section class="lw-hero" aria-labelledby="lw-hero-title">
+            <div class="lw-wrap">
+                <p class="lw-eyebrow">Английский · Интерактив</p>
+                <h1 class="lw-title" id="lw-hero-title">Lang<em>Wood</em></h1>
+                <svg viewBox="0 0 320 80" fill="none" style="display:block; margin: -20px auto 30px; width: 320px; height: 80px;" role="img" aria-label="Веточка с ягодами">
+                    <title>Веточка с ягодами</title>
+                    <path d="M10 40 Q 70 10 160 40 Q 250 70 310 40" stroke="#0e7c7b" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                    <ellipse cx="35" cy="24" rx="8" ry="4" fill="#14b8a6" transform="rotate(-35 35 24)"/>
+                    <ellipse cx="85" cy="16" rx="9" ry="4.5" fill="#14b8a6" transform="rotate(25 85 16)"/>
+                    <ellipse cx="160" cy="38" rx="8" ry="4" fill="#14b8a6" transform="rotate(-10 160 38)"/>
+                    <ellipse cx="220" cy="52" rx="9" ry="4.5" fill="#14b8a6" transform="rotate(10 220 52)"/>
+                    <ellipse cx="280" cy="44" rx="7" ry="3.5" fill="#14b8a6" transform="rotate(-5 280 44)"/>
+                    <circle cx="14" cy="38" r="5.5" fill="#7b2d3b"/>
+                    <circle cx="60" cy="14" r="5" fill="#7b2d3b"/>
+                    <circle cx="115" cy="19" r="6" fill="#7b2d3b"/>
+                    <circle cx="190" cy="45" r="5.5" fill="#7b2d3b"/>
+                    <circle cx="250" cy="58" r="5" fill="#7b2d3b"/>
+                    <circle cx="300" cy="41" r="4.5" fill="#7b2d3b"/>
+                    <circle cx="12" cy="36" r="1.4" fill="#ffffff" opacity=".6"/>
+                    <circle cx="58" cy="12" r="1.3" fill="#ffffff" opacity=".6"/>
+                    <circle cx="113" cy="17" r="1.5" fill="#ffffff" opacity=".6"/>
+                    <circle cx="188" cy="43" r="1.4" fill="#ffffff" opacity=".6"/>
+                    <circle cx="248" cy="56" r="1.3" fill="#ffffff" opacity=".6"/>
+                    <circle cx="298" cy="39" r="1.1" fill="#ffffff" opacity=".6"/>
+                </svg>
+                <blockquote class="lw-quote">
+                    <strong>LangWood</strong> — это сборник авторских тренажёров,
+                    созданных репетитором английского языка с
+                    <strong>30-летним опытом</strong>
+                </blockquote>
+                <a href="#lw-categories" class="lw-cta" id="lwCta">Начать свой путь</a>
+            </div>
+        </section>
+
+        <section class="lw-cats" id="lw-categories" aria-labelledby="lw-cats-title">
+            <div class="lw-wrap">
+                <h2 class="lw-cats-title" id="lw-cats-title">Четыре тропинки в Языковой Лес</h2>
+                <p class="lw-cats-sub">Выберите направление — и да поможет Вам Лесной Дух!</p>
+                <div class="lw-grid">
+                    <a class="lw-card" href="trainers/vocabulary.html" aria-label="Тренажёры по лексике — начать">
+                        <span class="lw-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                                <path d="M9 7h7M9 11h5" stroke="#7b2d3b" />
+                            </svg>
+                        </span>
+                        <h3>Лексика</h3>
+                        <p>Живые слова и выражения, которые остаются в памяти надолго</p>
+                        <span class="lw-go">Начать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                    </a>
+                    <a class="lw-card" href="trainers/grammar" aria-label="Тренажёры по грамматике — начать">
+                        <span class="lw-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                                <path d="M14 17.5h7M17.5 14v7" stroke="#7b2d3b" />
+                            </svg>
+                        </span>
+                        <h3>Грамматика</h3>
+                        <p>Стройная система правил — без зубрёжки, через практику</p>
+                        <span class="lw-go">Начать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                    </a>
+                    <a class="lw-card" href="trainers/reading" aria-label="Тренажёры по чтению — начать">
+                        <span class="lw-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 6.5C10 4.8 7.3 4 4 4v14c3.3 0 6 .8 8 2.5 2-1.7 4.7-2.5 8-2.5V4c-3.3 0-6 .8-8 2.5z" />
+                                <path d="M12 6.5v14" stroke="#7b2d3b" />
+                            </svg>
+                        </span>
+                        <h3>Чтение</h3>
+                        <p>Тексты, которые интересно читать и приятно понимать</p>
+                        <span class="lw-go">Начать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                    </a>
+                    <a class="lw-card" href="trainers/speaking" aria-label="Тренажёры по говорению — начать">
+                        <span class="lw-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#0e7c7b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a8 8 0 0 1-8 8H4l2.2-3.3A8 8 0 1 1 21 12z" />
+                                <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke="#7b2d3b" stroke-width="2.6" />
+                            </svg>
+                        </span>
+                        <h3>Говорение</h3>
+                        <p>Уверенная живая речь — шаг за шагом, без страха ошибки</p>
+                        <span class="lw-go">Начать <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="lw-teacher" aria-labelledby="lw-teacher-title">
+            <div class="lw-wrap">
+                <a class="lw-teacher-card" href="/about" aria-label="О преподавателе — начать знакомство">
+                    <span class="lw-teacher-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 9L12 4 2 9l10 5 10-5z" />
+                            <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5" />
+                            <path d="M22 9v5" stroke="#7ff0e2" />
+                        </svg>
+                    </span>
+                    <span class="lw-teacher-text">
+                        <h2 id="lw-teacher-title">Автор увлекательного интерактива — репетитор с <span>30-летним</span> стажем</h2>
+                        <p>Каждое упражнение выверено годами живой практики с русскоговорящими учениками. Тренажёры проверены коллегами и родителями.</p>
+                    </span>
+                    <span class="lw-teacher-btn">Познакомиться</span>
+                </a>
+            </div>
+        </section>
+    </main>
+<!-- ОТЗЫВЫ -->
+<div style="max-width:1200px;margin:0 auto;padding:48px 20px;">
+    <h2 style="text-align:center;font-size:32px;color:#0a5554;margin-bottom:8px;font-family:Georgia,serif;">Отзывы</h2>
+    <p style="text-align:center;color:#6a6a72;margin-bottom:40px;font-style:italic;">Что говорят те, кто уже тренируется с LangWood</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        
+        <div style="background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.05);">
+            <div style="color:#f5a623;font-size:20px;margin-bottom:16px;">★★★★★</div>
+            <p style="font-size:14px;color:#333;line-height:1.7;font-style:italic;margin-bottom:20px;">«У меня двое — третий и пятый класс. Одного английским не заставишь, другого от планшета не оторвёшь. А тут получилось совместить: я им открываю тренажёр, говорю „это игра" — и они сидят, проходят, повторяют вслух. Учительница в школе заметила, что слова стали легче запоминаться. Для меня главное — я не сижу над ними с учебником. Спасибо, что такие вещи делаете для обычных родителей!»</p>
+            <div style="border-top:1px solid #eee;padding-top:16px;">
+                <strong style="color:#0a5554;">Ольга</strong>
+                <span style="color:#8a8a92;font-size:12px;display:block;">мама двух школьников</span>
+            </div>
+        </div>
+
+        <div style="background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.05);">
+            <div style="color:#f5a623;font-size:20px;margin-bottom:16px;">★★★★★</div>
+            <p style="font-size:14px;color:#333;line-height:1.7;font-style:italic;margin-bottom:20px;">«Я люблю красоту во всём — даже в том, как учу английский. Поэтому обычные приложения с их угловатыми интерфейсами меня отталкивают. Здесь всё иначе: тренажёры оформлены как маленькие арт-объекты. Лаборатория цвета, путешествие мечты, карьерная матрица — это не „уроки", это удовольствие. Я занимаюсь дома за чашкой кофе, в своём темпе, и это стало моим ритуалом. Английский впервые ощущается не как обязанность, а как часть моего образа жизни.»</p>
+            <div style="border-top:1px solid #eee;padding-top:16px;">
+                <strong style="color:#0a5554;">Алина</strong>
+                <span style="color:#8a8a92;font-size:12px;display:block;">путешественница</span>
+            </div>
+        </div>
+
+        <div style="background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.05);">
+            <div style="color:#f5a623;font-size:20px;margin-bottom:16px;">★★★★★</div>
+            <p style="font-size:14px;color:#333;line-height:1.7;font-style:italic;margin-bottom:20px;">«Я работаю репетитором больше 15 лет и перепробовала десятки ресурсов. Обычно либо красиво, но бесполезно, либо полезно, но скучно. Здесь — редкий случай, когда оба качества вместе. Я даю тренажёры как домашнее задание: дети делают с удовольствием, потому что это игры, а я вижу результат на следующем уроке. Отдельное спасибо за то, что всё на русском объясняется, но закрепляется на английском. Для меня это теперь обязательный инструмент в работе.»</p>
+            <div style="border-top:1px solid #eee;padding-top:16px;">
+                <strong style="color:#0a5554;">Валентина</strong>
+                <span style="color:#8a8a92;font-size:12px;display:block;">репетитор английского</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div>
+                <a href="index.html" class="lw-footer-logo">LangWood</a>
+                <p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p>
+            </div>
+            <div>
+                <div class="lw-footer-title">Меню</div>
+                <ul class="lw-footer-list">
+                    <li><a href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><a href="lessons-english.html">Уроки</a></li>
+                    <li><a href="board.html">Storyboard</a></li> 
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="about.html">О сайте</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Соцсети</div>
+                <ul class="lw-footer-list">
+                    <li><a href="https://vk.ru/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li>
+                    <li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li>
+                    <li><a href="https://max.ru/u/f9LHodD0cOJLQP1sx_iePJ8IGJ7ruk41XRZSAwcdmOseHWmwgzJdIhF4FdI" target="_blank" rel="noopener noreferrer">Max</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Правовая информация</div>
+                <ul class="lw-footer-list">
+<li><a href="legal/privacy.html">Политика обработки персональных данных</a></li>
+<li><a href="legal/soglasie.html">Согласие на обработку персональных данных</a></li>
+<li><a href="legal/terms.html">Пользовательское соглашение</a></li>
+<li><a href="legal/offer.html">Публичная оферта</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <button class="lw-to-top" id="lwToTop" aria-label="Наверх" type="button">↑</button>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        var burger = document.getElementById('lwBurger');
+        var navWrapper = document.getElementById('lwNavWrapper');
+
+        function closeMenu() {
+            navWrapper.classList.remove('is-open');
+            burger.setAttribute('aria-label', 'Открыть меню');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+
+        burger.addEventListener('click', function() {
+            var isOpen = navWrapper.classList.contains('is-open');
+            
+            if (isOpen) {
+                closeMenu();
+            } else {
+                navWrapper.classList.add('is-open');
+                burger.setAttribute('aria-label', 'Закрыть меню');
+                burger.setAttribute('aria-expanded', 'true');
+                
+                var firstLink = navWrapper.querySelector('a');
+                if (firstLink) {
+                    setTimeout(function() { firstLink.focus(); }, 100);
+                }
+            }
+        });
+
+        burger.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+                burger.focus();
+            }
+        });
+
+        navWrapper.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+                burger.focus();
+            }
+        });
+
+        navWrapper.addEventListener('click', function(e) {
+            if (e.target === navWrapper && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+            }
+        });
+
+        var cta = document.getElementById('lwCta');
+        cta.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.getElementById('lw-categories');
+            if (target) {
+                window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+            }
+        });
+
+        var btn = document.getElementById('lwToTop');
+        var ticking = false;
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    if (window.scrollY > 300) {
+                        btn.classList.add('is-visible');
+                    } else {
+                        btn.classList.remove('is-visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
