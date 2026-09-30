@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название товара — LangWood</title>
+    <meta name="description" content="Описание товара для магазина LangWood.">
+    <meta property="og:title" content="Название товара — LangWood">
+    <meta property="og:description" content="Описание товара для магазина LangWood.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --accent: #7b2d3b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; color: var(--lw-ink); background: var(--lw-bg); line-height: 1.6; }
+
+        /* ШАПКА */
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .lw-logo-wrapper { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+        .lw-logo { text-decoration: none; color: var(--lw-ivory); font-size: 28px; font-weight: 800; letter-spacing: .02em; }
+        .lw-logo:hover { opacity: .85; }
+        .lw-slogan { color: var(--lw-ivory); font-size: 16px; font-weight: 300; font-style: italic; opacity: .7; }
+        .lw-nav { display: flex; align-items: center; gap: 4px; list-style: none; flex-wrap: wrap; }
+        .lw-nav-link { color: var(--lw-ivory); text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 14px; border-radius: 8px; transition: background .2s; }
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+        .lw-burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 4px; }
+        .lw-burger span { display: block; width: 22px; height: 2px; background: var(--lw-ivory); border-radius: 2px; }
+        @media (max-width: 900px) { .lw-slogan { display: none; } }
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        /* ХЛЕБНЫЕ КРОШКИ */
+        .lw-breadcrumbs { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; font-size: 14px; color: #6a6a72; font-weight: 600; }
+        .lw-breadcrumbs a { color: var(--lw-teal); text-decoration: none; font-weight: 700; }
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+        .lw-breadcrumbs span { margin: 0 6px; color: #c0c0c8; }
+        .lw-breadcrumbs .lw-current { color: var(--lw-ink); font-weight: 700; }
+
+        /* ===== СТРАНИЦА ТОВАРА ===== */
+        .product-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .product-gallery { position: sticky; top: 80px; }
+        .product-main-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f0f7f7;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0,128,128,.15);
+            cursor: zoom-in;
+        }
+        .product-main-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s ease; }
+        .product-main-img:hover img { transform: scale(1.02); }
+        .product-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .product-thumb {
+            aspect-ratio: 1/1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color .2s;
+            background: #f0f7f7;
+        }
+        .product-thumb.active { border-color: var(--lw-teal); }
+        .product-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .product-info h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            color: var(--lw-ink);
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -.01em;
+        }
+        .product-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+        .product-tag {
+            font-size: 13px;
+            padding: 5px 14px;
+            background: rgba(0,128,128,.1);
+            color: var(--lw-teal);
+            border-radius: 12px;
+            font-weight: 700;
+        }
+        .product-price {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 24px;
+            letter-spacing: -.02em;
+        }
+        .product-desc { font-size: 16px; color: #4a5568; line-height: 1.75; margin-bottom: 28px; }
+        .product-desc p { margin-bottom: 12px; }
+        .product-desc ul { padding-left: 24px; margin-bottom: 12px; }
+        .product-desc li { margin-bottom: 6px; }
+
+        .product-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+        .product-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 28px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all .2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            width: 100%;
+        }
+        .product-btn--primary { background: var(--lw-teal); color: #fff; }
+        .product-btn--primary:hover {
+            background: #006666;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,128,128,.25);
+        }
+        .product-note {
+            font-size: 14px;
+            color: #8a8a92;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* Табы */
+        .product-tabs { max-width: 1000px; margin: 60px auto 40px; padding: 0 20px; }
+        .product-tabs-nav {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid rgba(0,128,128,.15);
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .product-tab-btn {
+            background: none;
+            border: none;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #8a8a92;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all .2s;
+            font-family: inherit;
+        }
+        .product-tab-btn:hover { color: var(--lw-teal); }
+        .product-tab-btn.active { color: var(--lw-teal); border-bottom-color: var(--lw-teal); }
+        .product-tab-panel { display: none; }
+        .product-tab-panel.active { display: block; }
+
+        .review-item {
+            background: #fff;
+            padding: 24px 28px;
+            border-radius: 18px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0,128,128,.12);
+        }
+        .review-head { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+        .review-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--lw-teal);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .review-name { font-weight: 700; font-size: 16px; }
+        .review-date { font-size: 13px; color: #8a8a92; }
+        .review-text { font-size: 15px; color: #4a5568; line-height: 1.6; }
+        .review-stars { color: #f5a623; font-size: 16px; margin-bottom: 4px; }
+
+        .qa-item {
+            background: #fff;
+            padding: 20px 24px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0,128,128,.12);
+        }
+        .qa-question {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--lw-ink);
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .qa-question::before { content: '❓'; flex-shrink: 0; }
+        .qa-answer { font-size: 15px; color: #4a5568; line-height: 1.6; padding-left: 30px; }
+
+        /* ===== БЛОКИ «ДРУГИЕ ПОСОБИЯ» И «ТРЕНАЖЁРЫ» ===== */
+        .block-related {
+            max-width: 1200px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+        }
+        .block-related h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 800;
+            color: var(--lw-teal);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .block-related p {
+            text-align: center;
+            color: #8a8a92;
+            font-size: 15px;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        .block-related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .related-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,128,128,.08);
+            transition: transform .25s, box-shadow .25s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,128,128,.12);
+            text-decoration: none;
+            color: inherit;
+        }
+        .related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(0,128,128,.15);
+            border-color: var(--lw-teal);
+        }
+        .related-card-img {
+            height: 160px;
+            overflow: hidden;
+            background: linear-gradient(160deg, #f0f7f7 0%, #e6f2f2 100%);
+        }
+        .related-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .related-card-body { padding: 18px 20px; }
+        .related-card-title {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .related-card-meta {
+            font-size: 13px;
+            color: #8a8a92;
+        }
+
+        @media (max-width: 900px) {
+            .product-wrap { grid-template-columns: 1fr; gap: 32px; }
+            .product-gallery { position: static; }
+            .block-related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 760px) {
+            .product-thumbs { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .product-price { font-size: 32px; }
+            .product-tabs-nav { overflow-x: auto; flex-wrap: nowrap; }
+            .product-tab-btn { flex-shrink: 0; padding: 12px 18px; font-size: 15px; }
+        }
+        @media (max-width: 540px) {
+            .block-related-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .lw-footer {
+            background: var(--lw-teal);
+            color: #ffffff;
+            padding: 48px 24px 32px;
+            margin-top: 40px;
+        }
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+        .lw-footer-logo { font-size: 30px; color: #ffffff; text-decoration: none; font-weight: 800; }
+        .lw-footer-text { font-size: 15px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: #ffffff; text-decoration: none; font-size: 15px; opacity: .75; font-weight: 500; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+        @media (max-width: 900px) { .lw-footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 26px; }
+        }
+
+        /* ===== ЛАЙТБОКС ===== */
+        .lb-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 5, 15, 0.92);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .lb-overlay.is-open { display: flex; }
+        .lb-img-wrap {
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lb-img-wrap img {
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+            animation: lbZoom .3s ease;
+        }
+        @keyframes lbZoom {
+            from { opacity: 0; transform: scale(.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .lb-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.25);
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, transform .2s;
+            font-family: inherit;
+        }
+        .lb-close:hover { background: rgba(255,255,255,.25); transform: scale(1.05); }
+        .lb-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.25);
+            color: #fff;
+            font-size: 26px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, transform .2s;
+            font-family: inherit;
+        }
+        .lb-arrow:hover { background: rgba(255,255,255,.25); }
+        .lb-arrow--prev { left: 20px; }
+        .lb-arrow--next { right: 20px; }
+        @media (max-width: 760px) {
+            .lb-overlay { padding: 12px; }
+            .lb-img-wrap img { max-width: 96vw; max-height: 80vh; }
+            .lb-close { top: 10px; right: 10px; width: 42px; height: 42px; font-size: 22px; }
+            .lb-arrow { width: 46px; height: 46px; font-size: 22px; }
+            .lb-arrow--prev { left: 8px; }
+            .lb-arrow--next { right: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="../../index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="../../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="../../lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="../../board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="../../blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="../../shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="../../about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="../../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="../../index.html">Главная</a><span>→</span><a href="../../shop.html">Магазин</a><span>→</span><span class="lw-current">Название товара</span>
+    </nav>
+
+    <div class="product-wrap">
+        <!-- ГАЛЕРЕЯ -->
+        <div class="product-gallery">
+            <div class="product-main-img" onclick="openLightbox()">
+                <img id="mainImg" src="product-1.jpg" alt="Название товара">
+            </div>
+            <div class="product-thumbs" id="thumbs">
+                <div class="product-thumb active" onclick="setMainImage('product-1.jpg', this)">
+                    <img src="product-1.jpg" alt="Фото 1">
+                </div>
+                <div class="product-thumb" onclick="setMainImage('product-2.jpg', this)">
+                    <img src="product-2.jpg" alt="Фото 2">
+                </div>
+                <div class="product-thumb" onclick="setMainImage('product-3.jpg', this)">
+                    <img src="product-3.jpg" alt="Фото 3">
+                </div>
+                <div class="product-thumb" onclick="setMainImage('product-4.jpg', this)">
+                    <img src="product-4.jpg" alt="Фото 4">
+                </div>
+            </div>
+        </div>
+
+        <!-- ИНФОРМАЦИЯ -->
+        <div class="product-info">
+            <h1>Название товара</h1>
+
+            <div class="product-tags">
+                <span class="product-tag">Категория</span>
+                <span class="product-tag">Возраст</span>
+                <span class="product-tag">Уровень</span>
+            </div>
+
+            <div class="product-price">1000 ₽</div>
+
+            <div class="product-desc">
+                <p>Краткое описание товара: для кого, что внутри, чем полезен.</p>
+                <p><strong>Что входит в набор:</strong></p>
+                <ul>
+                    <li>Пункт 1</li>
+                    <li>Пункт 2</li>
+                    <li>Пункт 3</li>
+                </ul>
+                <p><strong>Материалы:</strong> ламинированный картон, липучки, безопасные материалы.</p>
+                <p><strong>Формат:</strong> А4 / набор карточек / игровое поле.</p>
+            </div>
+
+            <div class="product-actions">
+                <a href="mailto:tasha.vanenkova@yandex.ru?subject=Заказ: Название товара&body=Здравствуйте!%0D%0A%0D%0AХочу заказать: Название товара (1000 руб.)%0D%0A%0D%0AМоё имя:%0D%0AКонтактный телефон:%0D%0AГород:%0D%0AАдрес доставки (улица, дом, квартира):%0D%0AИндекс:%0D%0AСпособ доставки (Почта России / СДЭК):%0D%0A%0D%0AКомментарий:" class="product-btn product-btn--primary">
+                    ✉️ Написать для заказа
+                </a>
+                <p class="product-note">
+                    Отвечаю в течение дня. После подтверждения заказа отправлю ссылку для оплаты на карту (СБП).<br>
+                    Оплата только после подтверждения заказа.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ТАБЫ -->
+    <div class="product-tabs">
+        <div class="product-tabs-nav">
+            <button class="product-tab-btn active" onclick="openTab('desc', this)">Подробное описание</button>
+            <button class="product-tab-btn" onclick="openTab('reviews', this)">Отзывы</button>
+            <button class="product-tab-btn" onclick="openTab('qa', this)">Вопросы и ответы</button>
+        </div>
+
+        <div class="product-tab-panel active" id="tab-desc">
+            <div class="product-desc">
+                <p>Здесь Вы пишете подробное описание товара: методика, для какого возраста, какие цели, какие навыки развивает, как использовать на уроке и дома.</p>
+                <p>Чем больше деталей — тем выше доверие покупателя.</p>
+            </div>
+        </div>
+
+        <div class="product-tab-panel" id="tab-reviews">
+            <div class="review-item">
+                <div class="review-head">
+                    <div class="review-avatar">А</div>
+                    <div>
+                        <div class="review-name">Анна</div>
+                        <div class="review-date">15 сентября 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Отличное пособие, ребёнок занимается с удовольствием. Спасибо!</p>
+            </div>
+            <div class="review-item">
+                <div class="review-head">
+                    <div class="review-avatar">М</div>
+                    <div>
+                        <div class="review-name">Мария</div>
+                        <div class="review-date">28 сентября 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Качество отличное, всё продумано до мелочей. Использую на уроках с детьми — заходит на ура!</p>
+            </div>
+            <div class="review-item">
+                <div class="review-head">
+                    <div class="review-avatar">Е</div>
+                    <div>
+                        <div class="review-name">Елена</div>
+                        <div class="review-date">10 октября 2026</div>
+                    </div>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">Дочка сама просит заниматься. Рекомендую всем родителям, которые хотят увлечь ребёнка английским.</p>
+            </div>
+        </div>
+
+        <div class="product-tab-panel" id="tab-qa">
+            <div class="qa-item">
+                <div class="qa-question">Как быстро придёт заказ?</div>
+                <p class="qa-answer">Отправляю в течение 1–2 дней после оплаты. Доставка Почтой России или СДЭК — 3–7 дней в зависимости от региона.</p>
+            </div>
+            <div class="qa-item">
+                <div class="qa-question">Можно ли забрать в Казани?</div>
+                <p class="qa-answer">Да, самовывоз в Казани возможен. Напишите — согласуем время и место.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК: ДРУГИЕ ПОСОБИЯ -->
+    <section class="block-related">
+        <h2>Другие наглядные пособия</h2>
+        <p>Вам может понравиться что-то ещё из коллекции</p>
+        <div class="block-related-grid">
+            <a href="product-2.html" class="related-card">
+                <div class="related-card-img"><img src="product-2.jpg" alt="Другое пособие"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Название другого пособия</div>
+                    <div class="related-card-meta">800 ₽</div>
+                </div>
+            </a>
+            <a href="product-3.html" class="related-card">
+                <div class="related-card-img"><img src="product-3.jpg" alt="Другое пособие"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Название другого пособия</div>
+                    <div class="related-card-meta">1000 ₽</div>
+                </div>
+            </a>
+            <a href="product-4.html" class="related-card">
+                <div class="related-card-img"><img src="product-4.jpg" alt="Другое пособие"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Название другого пособия</div>
+                    <div class="related-card-meta">1200 ₽</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- БЛОК: ТРЕНАЖЁРЫ -->
+    <section class="block-related" style="background:rgba(0,128,128,.04);padding:40px 20px;border-radius:24px;max-width:1160px;">
+        <h2>Закрепите знания в тренажёрах</h2>
+        <p>Интерактивные задания к этой игре — чтобы материал остался в памяти надолго</p>
+        <div class="block-related-grid">
+            <a href="../../trainers/vocabulary.html" class="related-card">
+                <div class="related-card-img"><img src="../../image/shop/domino.jpg" alt="Тренажёр по лексике"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Тренажёры по лексике</div>
+                    <div class="related-card-meta">50+ тренажёров</div>
+                </div>
+            </a>
+            <a href="../../trainers/vocabulary/top-adjectives.html" class="related-card">
+                <div class="related-card-img"><img src="../../image/shop/domino.jpg" alt="Top Adjectives"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Top Adjectives</div>
+                    <div class="related-card-meta">120 прилагательных</div>
+                </div>
+            </a>
+            <a href="../../trainers/grammar.html" class="related-card">
+                <div class="related-card-img"><img src="../../image/shop/domino.jpg" alt="Грамматические тренажёры"></div>
+                <div class="related-card-body">
+                    <div class="related-card-title">Тренажёры по грамматике</div>
+                    <div class="related-card-meta">50+ тренажёров</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ЛАЙТБОКС -->
+    <div class="lb-overlay" id="lightbox" onclick="closeLightboxOnBg(event)">
+        <button class="lb-close" onclick="closeLightbox()" aria-label="Закрыть">✕</button>
+        <button class="lb-arrow lb-arrow--prev" onclick="lbPrev(event)" aria-label="Предыдущее фото">‹</button>
+        <div class="lb-img-wrap">
+            <img id="lbImg" src="" alt="Просмотр фото">
+        </div>
+        <button class="lb-arrow lb-arrow--next" onclick="lbNext(event)" aria-label="Следующее фото">›</button>
+    </div>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div><a href="../../index.html" class="lw-footer-logo">LangWood</a><p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p></div>
+            <div><div class="lw-footer-title">Меню</div><ul class="lw-footer-list"><li><a href="../../trainers/trainers.html">Тренажёры</a></li><li><a href="../../lessons-english.html">Уроки</a></li><li><a href="../../board.html">StoryBoard</a></li><li><a href="../../blog.html">Блог</a></li><li><a href="../../shop.html">Магазин</a></li><li><a href="../../about.html">О сайте</a></li><li><a href="../../contacts.html">Контакты</a></li></ul></div>
+            <div><div class="lw-footer-title">Соцсети</div><ul class="lw-footer-list"><li><a href="https://vk.ru/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li><li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li></ul></div>
+            <div><div class="lw-footer-title">Правовая информация</div><ul class="lw-footer-list"><li><a href="../../legal/privacy.html">Политика обработки персональных данных</a></li><li><a href="../../legal/soglasie.html">Согласие на обработку персональных данных</a></li><li><a href="../../legal/terms.html">Пользовательское соглашение</a></li><li><a href="../../legal/offer.html">Публичная оферта</a></li></ul></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.getElementById('lwBurger').addEventListener('click', function() {
+            document.getElementById('lwNavWrapper').classList.toggle('is-open');
+        });
+
+        function setMainImage(src, thumb) {
+            document.getElementById('mainImg').src = src;
+            document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        function openTab(id, btn) {
+            document.querySelectorAll('.product-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.product-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        /* ===== ЛАЙТБОКС ===== */
+        var lbImages = ['product-1.jpg', 'product-2.jpg', 'product-3.jpg', 'product-4.jpg'];
+        var lbIndex = 0;
+
+        function openLightbox() {
+            var mainSrc = document.getElementById('mainImg').src;
+            var fileName = mainSrc.substring(mainSrc.lastIndexOf('/') + 1);
+            var idx = lbImages.indexOf(fileName);
+            lbIndex = idx >= 0 ? idx : 0;
+            document.getElementById('lbImg').src = lbImages[lbIndex];
+            document.getElementById('lightbox').classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        function closeLightboxOnBg(e) {
+            if (e.target.id === 'lightbox') closeLightbox();
+        }
+
+        function lbNext(e) {
+            if (e) e.stopPropagation();
+            lbIndex = (lbIndex + 1) % lbImages.length;
+            document.getElementById('lbImg').src = lbImages[lbIndex];
+        }
+
+        function lbPrev(e) {
+            if (e) e.stopPropagation();
+            lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+            document.getElementById('lbImg').src = lbImages[lbIndex];
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('lightbox').classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') lbNext();
+            if (e.key === 'ArrowLeft') lbPrev();
+        });
+
+        /* ===== БЛОКИРОВКА ПКМ ===== */
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
