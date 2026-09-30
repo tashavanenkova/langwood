@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Согласие на обработку персональных данных | LangWood</title>
+    <meta name="description" content="Согласие на обработку персональных данных на сайте langwood.ru. Узнайте, какие данные собираются, как они обрабатываются и как отозвать согласие.">
+    <meta property="og:title" content="Согласие на обработку персональных данных | LangWood">
+    <meta property="og:description" content="Согласие на обработку персональных данных на сайте langwood.ru.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #132a29;
+            --lw-bg: #f6faf9;
+            --lw-muted: #5b6b6a;
+            --lw-accent: #7b2d3b;
+            --lw-teal-dark: #065f5b;
+            --lw-teal-deep: #043d3b;
+            --lw-teal-bright: #14b8a6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .lw-logo {
+            text-decoration: none;
+            color: var(--lw-ivory);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .lw-logo:hover {
+            opacity: .85;
+        }
+
+        .lw-slogan {
+            color: var(--lw-ivory);
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        .lw-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .lw-nav-link {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .lw-nav-link:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .lw-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lw-burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--lw-ivory);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .lw-slogan {
+                display: none;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .lw-header-inner {
+                padding: 0 14px;
+                min-height: 48px;
+            }
+
+            .lw-logo {
+                font-size: 22px;
+            }
+
+            .lw-burger {
+                display: flex;
+            }
+
+            .lw-nav-wrapper {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 48px;
+                left: 0;
+                right: 0;
+                background: var(--lw-teal);
+                z-index: 999;
+            }
+
+            .lw-nav-wrapper.is-open {
+                display: block;
+            }
+
+            .lw-nav {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px 16px 16px;
+                gap: 0;
+            }
+
+            .lw-nav-link {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,.08);
+            }
+        }
+
+        .lw-breadcrumbs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px 0;
+            font-size: 13px;
+            color: #8a9a99;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lw-breadcrumbs a {
+            color: var(--lw-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .lw-breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .lw-breadcrumbs .lw-current {
+            color: var(--lw-muted);
+            font-weight: 500;
+        }
+
+        .lw-main {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lw-content {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 48px 52px;
+            box-shadow: 0 10px 30px rgba(4,61,59,.08);
+            border: 1px solid rgba(0,128,128,.1);
+        }
+
+        .lw-content h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--lw-teal-deep);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .lw-content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--lw-teal-dark);
+            margin: 32px 0 16px;
+            letter-spacing: -.01em;
+        }
+
+        .lw-content p {
+            font-size: 16px;
+            color: var(--lw-ink);
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        .lw-content ul {
+            margin: 0 0 20px 24px;
+            padding: 0;
+        }
+
+        .lw-content li {
+            font-size: 16px;
+            color: var(--lw-ink);
+            margin-bottom: 8px;
+            line-height: 1.75;
+        }
+
+        .lw-content a {
+            color: var(--lw-teal);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .lw-content a:hover {
+            color: var(--lw-teal-dark);
+        }
+
+        .lw-content strong {
+            color: var(--lw-teal-deep);
+        }
+
+        @media (max-width: 760px) {
+            .lw-content {
+                padding: 32px 24px;
+                border-radius: 18px;
+            }
+
+            .lw-main {
+                padding: 24px 16px 60px;
+            }
+        }
+
+        .lw-footer {
+            background: var(--lw-teal);
+            color: var(--lw-ivory);
+            padding: 48px 24px 32px;
+            margin-top: 24px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo {
+            font-size: 28px;
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .lw-footer-text {
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: .9;
+        }
+
+        .lw-footer-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin-bottom: 16px;
+            font-weight: 700;
+            opacity: .8;
+        }
+
+        .lw-footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lw-footer-list li {
+            margin-bottom: 10px;
+        }
+
+        .lw-footer-list a {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 14px;
+            opacity: .75;
+            transition: opacity .2s;
+        }
+
+        .lw-footer-list a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .lw-footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .lw-footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .lw-footer-logo {
+                font-size: 24px;
+            }
+        }
+
+        .lw-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--lw-teal);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s, transform .2s;
+            z-index: 900;
+        }
+
+        .lw-to-top.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="../index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Открыть меню" aria-expanded="false" type="button">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper" role="navigation" aria-label="Основное меню">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="../lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="../board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="../blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="../shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="../about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span style="color:#a9c4c2;">→</span>
+        <span class="lw-current">Согласие на обработку персональных данных</span>
+    </nav>
+
+    <main class="lw-main">
+        <div class="lw-content">
+            <h1>Согласие на обработку персональных данных</h1>
+
+            <p>Настоящим я, субъект персональных данных, свободно, своей волей и в своем интересе даю согласие <strong>Ваненковой Наталье Анатольевне</strong> (самозанятый, плательщик налога на профессиональный доход, ИНН 165008576406, далее — Оператор) на обработку моих персональных данных, предоставленных мной при заполнении форм на сайте <a href="https://langwood.ru">langwood.ru</a> (далее — Сайт).</p>
+
+            <h2>Перечень персональных данных, на обработку которых дается согласие:</h2>
+            <ul>
+                <li>Фамилия, имя, отчество;</li>
+                <li>Адрес электронной почты;</li>
+                <li>Номер контактного телефона;</li>
+                <li>Иные данные, добровольно указанные мной при заполнении форм на Сайте.</li>
+            </ul>
+
+            <h2>Цели обработки персональных данных:</h2>
+            <ul>
+                <li>Предоставление доступа к сервисам и материалам Сайта;</li>
+                <li>Направление информационных, рекламных и маркетинговых материалов;</li>
+                <li>Обратная связь и консультирование;</li>
+                <li>Улучшение качества работы Сайта и сервисов.</li>
+            </ul>
+
+            <h2>Перечень действий с персональными данными:</h2>
+            <p>Сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача (в том числе поручение обработки третьим лицам), обезличивание, блокирование, удаление, уничтожение персональных данных как с использованием средств автоматизации, так и без их использования.</p>
+
+            <h2>Срок действия согласия:</h2>
+            <p>Настоящее согласие действует с момента его предоставления и до момента его отзыва в порядке, предусмотренном Политикой обработки персональных данных.</p>
+
+            <h2>Порядок отзыва согласия:</h2>
+            <p>Согласие может быть отозвано мной в любое время путем направления письменного уведомления на адрес электронной почты Оператора: <a href="mailto:tasha.vanenkova@yandex.ru">tasha.vanenkova@yandex.ru</a> с пометкой «Отзыв согласия на обработку персональных данных».</p>
+
+            <h2>Ознакомление с Политикой обработки персональных данных:</h2>
+            <p>С Политикой обработки персональных данных Оператора, размещенной по адресу <a href="https://langwood.ru/legal/privacy">https://langwood.ru/legal/privacy</a>, я ознакомлен(а) и согласен(а).</p>
+        </div>
+    </main>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div>
+                <a href="../index.html" class="lw-footer-logo">LangWood</a>
+                <p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p>
+            </div>
+            <div>
+                <div class="lw-footer-title">Меню</div>
+                <ul class="lw-footer-list">
+                    <li><a href="../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a href="../lessons-english.html">Уроки</a></li>
+                    <li><a href="../board.html">Storyboard</a></li>
+                    <li><a href="../blog.html">Блог</a></li>
+                    <li><a href="../shop.html">Магазин</a></li>
+                    <li><a href="../about.html">О сайте</a></li>
+                    <li><a href="../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Соцсети</div>
+                <ul class="lw-footer-list">
+                    <li><a href="https://vk.com/neiroschooling" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li>
+                    <li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li>
+                    <li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Правовая информация</div>
+                <ul class="lw-footer-list">
+                    <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+                    <li><a href="soglasie.html">Согласие на обработку персональных данных</a></li>
+                    <li><a href="terms.html">Пользовательское соглашение</a></li>
+                    <li><a href="offer.html">Публичная оферта</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <button class="lw-to-top" id="lwToTop" aria-label="Наверх" type="button">↑</button>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        var burger = document.getElementById('lwBurger');
+        var navWrapper = document.getElementById('lwNavWrapper');
+
+        function closeMenu() {
+            navWrapper.classList.remove('is-open');
+            burger.setAttribute('aria-label', 'Открыть меню');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+
+        burger.addEventListener('click', function() {
+            var isOpen = navWrapper.classList.contains('is-open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                navWrapper.classList.add('is-open');
+                burger.setAttribute('aria-label', 'Закрыть меню');
+                burger.setAttribute('aria-expanded', 'true');
+                var firstLink = navWrapper.querySelector('a');
+                if (firstLink) {
+                    setTimeout(function() { firstLink.focus(); }, 100);
+                }
+            }
+        });
+
+        burger.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+                burger.focus();
+            }
+        });
+
+        navWrapper.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+                burger.focus();
+            }
+        });
+
+        navWrapper.addEventListener('click', function(e) {
+            if (e.target === navWrapper && navWrapper.classList.contains('is-open')) {
+                closeMenu();
+            }
+        });
+
+        var btn = document.getElementById('lwToTop');
+        var ticking = false;
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    if (window.scrollY > 300) {
+                        btn.classList.add('is-visible');
+                    } else {
+                        btn.classList.remove('is-visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
