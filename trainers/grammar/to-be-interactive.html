@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Be - Интерактивный тренажёр</title>
+    <style>
+        :root {
+            --bg-color: #fdfae7;
+            --blue: #4a90e2;
+            --green: #4caf50;
+            --pink: #e91e63;
+            --dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #1a237e;
+            text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Контейнер для виммельбуха */
+        .vimmelbuch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Карточки */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 3px solid #eee;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        /* Секция с местоимениями */
+        .pronouns-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .pronoun-box {
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .box-i { background-color: #e8f5e9; color: var(--green); }
+        .box-he { background-color: #fce4ec; color: var(--pink); }
+        .box-you { background-color: #e3f2fd; color: var(--blue); }
+
+        .pronoun-box span {
+            display: block;
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+
+        /* Примеры */
+        .example-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+
+        .example-row .emoji {
+            font-size: 2rem;
+        }
+
+        .highlight { font-weight: bold; font-size: 1.2rem; }
+        .hl-green { color: var(--green); }
+        .hl-pink { color: var(--pink); }
+        .hl-blue { color: var(--blue); }
+
+        /* Секция правил */
+        .rules-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rule-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            border-left: 8px solid;
+        }
+
+        .rule-positive { border-color: var(--green); background: #e8f5e9; }
+        .rule-negative { border-color: var(--pink); background: #fce4ec; }
+        .rule-question { border-color: var(--blue); background: #e3f2fd; }
+
+        .rule-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+        }
+
+        .icon-plus { background: var(--green); }
+        .icon-minus { background: var(--pink); }
+        .icon-question { background: var(--blue); }
+
+        /* Мини-игра */
+        .game-section {
+            margin-top: 40px;
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1a237e;
+        }
+
+        .game-area {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .drag-item {
+            padding: 15px 25px;
+            background: #fff;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: grab;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .drag-item:active {
+            cursor: grabbing;
+            transform: scale(0.95);
+        }
+
+        .drop-zone {
+            width: 150px;
+            height: 80px;
+            border: 4px solid #ddd;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--blue);
+            background: #e3f2fd;
+        }
+
+        .drop-zone.correct {
+            border-color: var(--green);
+            background: #e8f5e9;
+            color: var(--green);
+        }
+
+        .drop-zone.wrong {
+            border-color: var(--pink);
+            background: #fce4ec;
+            color: var(--pink);
+            animation: shake 0.4s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .reset-btn:hover { background: #1a252f; }
+
+        /* Всплывающая подсказка */
+        .tooltip {
+            position: fixed;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 100;
+            max-width: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .vimmelbuch { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>TO BE ✨</h1>
+
+    <div class="vimmelbuch">
+        <!-- ЛЕВАЯ ЧАСТЬ: Местоимения и примеры -->
+        <div class="card" onclick="showTooltip(event, 'I am = Я есть. Используется только с I.')">
+            <div class="pronouns-grid">
+                <div class="pronoun-box box-i">I am <span>am</span></div>
+                <div class="pronoun-box box-he">He/She/It is <span>is</span></div>
+                <div class="pronoun-box box-you">You/We/They are <span>are</span></div>
+            </div>
+
+            <div class="example-row">
+                <div class="emoji">🧑‍🎓</div>
+                <div><span class="highlight hl-green">I am</span> a student</div>
+            </div>
+            <div class="example-row">
+                <div class="emoji">😊</div>
+                <div><span class="highlight hl-pink">She is</span> happy</div>
+            </div>
+            <div class="example-row">
+                <div class="emoji">👫</div>
+                <div><span class="highlight hl-blue">They are</span> friends</div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ: Правила -->
+        <div class="rules-section">
+            <div class="card" onclick="showTooltip(event, 'Утверждение: Подлежащее + am/is/are + сказуемое.')">
+                <div class="rule-card rule-positive">
+                    <div class="rule-icon icon-plus">+</div>
+                    <div>
+                        <div style="color: #2e7d32; font-weight: bold;">УТВЕРЖДЕНИЕ</div>
+                        <div style="font-size: 1.2rem;">I <span class="hl-green">am</span> happy.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showTooltip(event, 'Отрицание: Добавляем частицу NOT после глагола.')">
+                <div class="rule-card rule-negative">
+                    <div class="rule-icon icon-minus">-</div>
+                    <div>
+                        <div style="color: #c2185b; font-weight: bold;">ОТРИЦАНИЕ</div>
+                        <div style="font-size: 1.2rem;">I <span class="hl-pink">am not</span> happy.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="showTooltip(event, 'Вопрос: Глагол to be выносится на первое место.')">
+                <div class="rule-card rule-question">
+                    <div class="rule-icon icon-question">?</div>
+                    <div>
+                        <div style="color: #1565c0; font-weight: bold;">ВОПРОС</div>
+                        <div style="font-size: 1.2rem;"><span class="hl-blue">Am</span> I happy?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МИНИ-ИГРА -->
+    <div class="game-section">
+        <div class="game-title">🎮 Соедини местоимение с правильной формой:</div>
+        <div class="game-area" id="gameArea">
+            <!-- Зоны для перетаскивания -->
+            <div class="drop-zone" data-answer="am" id="zone-i">I</div>
+            <div class="drop-zone" data-answer="is" id="zone-he">He</div>
+            <div class="drop-zone" data-answer="are" id="zone-they">They</div>
+            
+            <!-- Перетаскиваемые элементы -->
+            <div class="drag-item" draggable="true" data-value="am">am</div>
+            <div class="drag-item" draggable="true" data-value="is">is</div>
+            <div class="drag-item" draggable="true" data-value="are">are</div>
+        </div>
+        <button class="reset-btn" onclick="resetGame()">🔄 Сбросить игру</button>
+    </div>
+
+    <!-- Всплывающая подсказка -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script>
+        // --- Логика для всплывающих подсказок ---
+        const tooltip = document.getElementById('tooltip');
+
+        function showTooltip(event, text) {
+            tooltip.innerText = text;
+            tooltip.style.opacity = '1';
+            
+            // Позиционирование рядом с курсором
+            let x = event.clientX + 15;
+            let y = event.clientY + 15;
+            
+            // Чтобы не уходило за экран
+            if (x + 250 > window.innerWidth) x = event.clientX - 260;
+            if (y + 100 > window.innerHeight) y = event.clientY - 80;
+
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+
+            // Скрыть через 2 секунды
+            clearTimeout(window.tooltipTimeout);
+            window.tooltipTimeout = setTimeout(() => {
+                tooltip.style.opacity = '0';
+            }, 2000);
+        }
+
+        // --- Логика для Drag and Drop игры ---
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropZones = document.querySelectorAll('.drop-zone');
+
+        // Обработчики для перетаскиваемых элементов
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', item.dataset.value);
+                e.dataTransfer.effectAllowed = 'move';
+                // Небольшая задержка, чтобы элемент не исчезал сразу
+                setTimeout(() => item.style.opacity = '0.5', 0);
+            });
+
+            item.addEventListener('dragend', (e) => {
+                item.style.opacity = '1';
+            });
+        });
+
+        // Обработчики для зон сброса
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault(); // Разрешаем сброс
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                
+                const draggedValue = e.dataTransfer.getData('text/plain');
+                const correctAnswer = zone.dataset.answer;
+
+                // Проверка правильности
+                if (draggedValue === correctAnswer) {
+                    zone.classList.add('correct');
+                    zone.innerText = correctAnswer;
+                    zone.style.borderStyle = 'solid';
+                    
+                    // Находим и скрываем перетаскиваемый элемент
+                    const draggedElement = document.querySelector(`.drag-item[data-value="${draggedValue}"]`);
+                    if (draggedElement) draggedElement.style.display = 'none';
+                } else {
+                    zone.classList.add('wrong');
+                    setTimeout(() => zone.classList.remove('wrong'), 500);
+                }
+            });
+        });
+
+        // Сброс игры
+        function resetGame() {
+            dropZones.forEach(zone => {
+                zone.classList.remove('correct', 'wrong');
+                zone.style.borderStyle = 'dashed';
+                zone.innerText = zone.id === 'zone-i' ? 'I' : zone.id === 'zone-he' ? 'He' : 'They';
+            });
+
+            dragItems.forEach(item => {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+            });
+        }
+    </script>
+</body>
+</html>

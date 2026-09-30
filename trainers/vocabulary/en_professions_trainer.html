@@ -1,0 +1,434 @@
+<!-- ============ EN PROFESSIONS TRAINER · Tilda embed block ============ -->
+<div id="eptTrainer">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap');
+
+/* ---------- Полная изоляция контейнера ---------- */
+#eptTrainer{all:initial; display:block; width:100%; box-sizing:border-box;
+  font-family:'Manrope',-apple-system,'Segoe UI',Roboto,sans-serif;
+  contain:layout style; position:relative; isolation:isolate;
+  -webkit-font-smoothing:antialiased;}
+#eptTrainer *,#eptTrainer *::before,#eptTrainer *::after{box-sizing:border-box; margin:0; padding:0;}
+#eptTrainer button{font-family:inherit; cursor:pointer; border:none; background:none;}
+
+/* ---------- Каркас ---------- */
+#eptTrainer .ept-wrap{max-width:1100px; margin:0 auto; padding:28px 16px 40px;
+  background:radial-gradient(1200px 600px at 15% -10%,#3b2f7d 0%,transparent 55%),
+             radial-gradient(1000px 700px at 110% 15%,#0e4d64 0%,transparent 55%),
+             linear-gradient(160deg,#141034 0%,#1b1545 45%,#0f1e3d 100%);
+  border-radius:28px; position:relative; overflow:hidden;
+  box-shadow:0 30px 80px rgba(10,8,40,.55), inset 0 1px 0 rgba(255,255,255,.08);}
+#eptTrainer .ept-deco{position:absolute; inset:0; pointer-events:none; z-index:0;}
+#eptTrainer .ept-inner{position:relative; z-index:1;}
+
+/* ---------- Шапка блока ---------- */
+#eptTrainer .ept-head{display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; margin-bottom:18px;}
+#eptTrainer .ept-title{color:#fff; font-size:30px; font-weight:800; line-height:1.15; letter-spacing:-.5px;}
+#eptTrainer .ept-title span{background:linear-gradient(90deg,#ffd166,#ff6b9d 55%,#7cf5ff); -webkit-background-clip:text; background-clip:text; color:transparent;}
+#eptTrainer .ept-sub{color:#b7b3e6; font-size:15px; font-weight:500; margin-top:6px; max-width:560px;}
+
+/* переключатель озвучки */
+#eptTrainer .ept-sound{display:flex; align-items:center; gap:10px; background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14); padding:10px 16px; border-radius:999px; color:#e8e6ff; font-size:14px; font-weight:700;}
+#eptTrainer .ept-switch{position:relative; width:52px; height:28px; border-radius:999px; background:rgba(255,255,255,.15); transition:.25s; flex:none;}
+#eptTrainer .ept-switch::after{content:''; position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; transition:.25s; box-shadow:0 2px 6px rgba(0,0,0,.35);}
+#eptTrainer .ept-switch.on{background:linear-gradient(90deg,#ffd166,#ff6b9d);}
+#eptTrainer .ept-switch.on::after{left:27px;}
+
+/* табы режимов */
+#eptTrainer .ept-tabs{display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;}
+#eptTrainer .ept-tab{padding:12px 22px; border-radius:14px; font-size:15px; font-weight:800; color:#cfcbf5;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); transition:.2s;}
+#eptTrainer .ept-tab.act{color:#1b1545; background:linear-gradient(90deg,#ffd166,#ffb84d); box-shadow:0 8px 24px rgba(255,190,70,.35);}
+
+/* ---------- Mind map ---------- */
+#eptTrainer .ept-map{width:100%; height:auto; display:block;}
+#eptTrainer .ept-node{cursor:pointer; transition:transform .2s;}
+#eptTrainer .ept-node:hover circle.ept-bub{filter:brightness(1.2);}
+#eptTrainer .ept-node.sel circle.ept-bub{stroke:#ffd166; stroke-width:4;}
+#eptTrainer .ept-chips{display:none; grid-template-columns:1fr 1fr; gap:10px;}
+#eptTrainer .ept-chip{display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:16px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14); color:#fff; font-size:14px; font-weight:700; transition:.2s;}
+#eptTrainer .ept-chip.sel{background:linear-gradient(90deg,#ffd166,#ff6b9d); color:#1b1545;}
+#eptTrainer .ept-chip b{font-size:20px;}
+
+/* ---------- Панель профессии ---------- */
+#eptTrainer .ept-panel{margin-top:18px; background:rgba(255,255,255,.06); backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.14); border-radius:22px; padding:22px; animation:eptIn .35s ease;}
+@keyframes eptIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+#eptTrainer .ept-ptitle{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+#eptTrainer .ept-ptitle h3{color:#fff; font-size:24px; font-weight:800;}
+#eptTrainer .ept-ptitle em{color:#b7b3e6; font-style:normal; font-size:15px; font-weight:600;}
+#eptTrainer .ept-say{width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#7cf5ff,#5e8bff);
+  display:inline-flex; align-items:center; justify-content:center; font-size:17px; flex:none; transition:.2s; box-shadow:0 6px 16px rgba(90,140,255,.4);}
+#eptTrainer .ept-say:hover{transform:scale(1.1);}
+#eptTrainer .ept-say:disabled{opacity:.35; cursor:not-allowed; transform:none;}
+#eptTrainer .ept-sent{margin-top:10px; color:#e8e6ff; font-size:16px; line-height:1.5; background:rgba(0,0,0,.22); border-left:4px solid #ffd166; padding:12px 16px; border-radius:0 14px 14px 0;}
+#eptTrainer .ept-hint{color:#9a95d6; font-size:13px; font-weight:600; margin-top:14px;}
+#eptTrainer .ept-words{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; margin-top:12px;}
+#eptTrainer .ept-word{position:relative; padding:14px 14px 12px; border-radius:16px; background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16); color:#fff; text-align:left; transition:.2s; overflow:hidden;}
+#eptTrainer .ept-word:hover{transform:translateY(-3px); background:rgba(255,255,255,.13);}
+#eptTrainer .ept-word .en{font-size:17px; font-weight:800; display:flex; align-items:center; gap:8px;}
+#eptTrainer .ept-word .ru{font-size:13.5px; font-weight:600; color:#ffd166; margin-top:5px; min-height:18px;}
+#eptTrainer .ept-word .ru.hid{color:transparent; text-shadow:0 0 10px rgba(255,209,102,.9);}
+#eptTrainer .ept-word.done::after{content:'✓'; position:absolute; top:8px; right:10px; color:#5ef2b8; font-weight:800;}
+
+/* ---------- Квиз ---------- */
+#eptTrainer .ept-quiz{margin-top:6px;}
+#eptTrainer .ept-bar{height:10px; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden; margin-bottom:14px;}
+#eptTrainer .ept-bar i{display:block; height:100%; width:0%; border-radius:999px; background:linear-gradient(90deg,#7cf5ff,#ffd166,#ff6b9d); transition:width .4s;}
+#eptTrainer .ept-meta{display:flex; justify-content:space-between; color:#b7b3e6; font-size:14px; font-weight:700; margin-bottom:14px;}
+#eptTrainer .ept-meta b{color:#ffd166;}
+#eptTrainer .ept-q{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:22px; padding:24px; animation:eptIn .3s ease;}
+#eptTrainer .ept-qtext{color:#fff; font-size:19px; font-weight:800; line-height:1.4; display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap;}
+#eptTrainer .ept-qword{display:inline-block; background:linear-gradient(90deg,#ffd166,#ff9d6b); color:#1b1545; padding:3px 12px; border-radius:10px;}
+#eptTrainer .ept-opts{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;}
+#eptTrainer .ept-opt{padding:15px 16px; border-radius:16px; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.16);
+  color:#fff; font-size:16px; font-weight:700; text-align:left; transition:.2s;}
+#eptTrainer .ept-opt:hover:not(:disabled){background:rgba(255,255,255,.15); transform:translateY(-2px);}
+#eptTrainer .ept-opt.ok{background:rgba(52,211,153,.22); border-color:#34d399; color:#a7f3d0;}
+#eptTrainer .ept-opt.bad{background:rgba(248,113,113,.2); border-color:#f87171; color:#fecaca; animation:eptShake .35s;}
+@keyframes eptShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#eptTrainer .ept-fb{margin-top:16px; padding:14px 16px; border-radius:14px; font-size:15px; font-weight:700; line-height:1.5; display:none;}
+#eptTrainer .ept-fb.ok{display:block; background:rgba(52,211,153,.14); color:#a7f3d0; border:1px solid rgba(52,211,153,.4);}
+#eptTrainer .ept-fb.bad{display:block; background:rgba(248,113,113,.12); color:#fecaca; border:1px solid rgba(248,113,113,.4);}
+#eptTrainer .ept-next{margin-top:16px; display:none; padding:13px 30px; border-radius:14px; font-size:16px; font-weight:800;
+  color:#1b1545; background:linear-gradient(90deg,#7cf5ff,#5e8bff); box-shadow:0 10px 26px rgba(90,140,255,.4); transition:.2s;}
+#eptTrainer .ept-next:hover{transform:translateY(-2px);}
+
+/* итоги */
+#eptTrainer .ept-final{text-align:center; padding:34px 20px; animation:eptIn .4s;}
+#eptTrainer .ept-final .big{font-size:56px;}
+#eptTrainer .ept-final h3{color:#fff; font-size:26px; font-weight:800; margin:10px 0 6px;}
+#eptTrainer .ept-final p{color:#b7b3e6; font-size:15.5px; font-weight:600; max-width:520px; margin:0 auto;}
+#eptTrainer .ept-mist{margin:18px auto 0; max-width:560px; text-align:left; background:rgba(0,0,0,.22); border-radius:16px; padding:14px 18px; color:#e8e6ff; font-size:14px; line-height:1.7;}
+#eptTrainer .ept-mist b{color:#ffd166;}
+
+/* ---------- Мобильная адаптация ---------- */
+@media (max-width:620px){
+  #eptTrainer .ept-wrap{padding:20px 12px 28px; border-radius:20px;}
+  #eptTrainer .ept-title{font-size:23px;}
+  #eptTrainer .ept-map{display:none;}
+  #eptTrainer .ept-chips{display:grid;}
+  #eptTrainer .ept-opts{grid-template-columns:1fr;}
+  #eptTrainer .ept-qtext{font-size:17px;}
+  #eptTrainer .ept-words{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:380px){ #eptTrainer .ept-words{grid-template-columns:1fr;} }
+</style>
+
+<div class="ept-wrap">
+  <!-- SVG-декор -->
+  <svg class="ept-deco" viewBox="0 0 1100 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="eptG1" cx="50%" cy="50%"><stop offset="0%" stop-color="#ff6b9d" stop-opacity=".35"/><stop offset="100%" stop-color="#ff6b9d" stop-opacity="0"/></radialGradient>
+      <radialGradient id="eptG2" cx="50%" cy="50%"><stop offset="0%" stop-color="#7cf5ff" stop-opacity=".3"/><stop offset="100%" stop-color="#7cf5ff" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="80" cy="90" r="220" fill="url(#eptG1)"/>
+    <circle cx="1040" cy="620" r="260" fill="url(#eptG2)"/>
+    <g stroke="rgba(255,255,255,.14)" stroke-width="1.5" fill="none">
+      <path d="M40 640 q60 -40 120 0 t120 0"/>
+      <path d="M880 60 q50 -30 100 0 t100 0"/>
+    </g>
+    <g fill="#ffd166"><path d="M990 130 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z" opacity=".8"/><circle cx="140" cy="560" r="4" opacity=".7"/><circle cx="1030" cy="200" r="3" opacity=".6"/></g>
+    <g fill="#7cf5ff" opacity=".7"><path d="M70 300 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/></g>
+  </svg>
+
+  <div class="ept-inner">
+    <div class="ept-head">
+      <div>
+        <div class="ept-title">Professions · <span>English Trainer</span></div>
+        <div class="ept-sub">Интерактивная mind map: 10 профессий уровня B1–B2. Изучай слова, слушай произношение и проверяй себя в квизе.</div>
+      </div>
+      <button class="ept-sound" id="eptSoundBtn" type="button" aria-pressed="true">
+        <span>🔊 Озвучка</span><span class="ept-switch on" id="eptSwitch"></span>
+      </button>
+    </div>
+
+    <div class="ept-tabs">
+      <button class="ept-tab act" id="eptTabLearn" type="button">🧠 Изучение</button>
+      <button class="ept-tab" id="eptTabQuiz" type="button">🎯 Квиз</button>
+    </div>
+
+    <!-- РЕЖИМ ИЗУЧЕНИЯ -->
+    <div id="eptLearn">
+      <svg class="ept-map" id="eptMap" viewBox="0 0 1000 640" role="img" aria-label="Mind map профессий"></svg>
+      <div class="ept-chips" id="eptChips"></div>
+      <div id="eptPanelHost"></div>
+    </div>
+
+    <!-- РЕЖИМ КВИЗА -->
+    <div id="eptQuiz" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* =============== ДАННЫЕ =============== */
+var DATA=[
+ {name:'Architect',ru:'Архитектор',emoji:'📐',color:'#ff6b9d',
+  sent:'An architect designs buildings and turns ideas into blueprints.',
+  words:[['blueprint','чертёж, проект'],['design','проектировать'],['construction','строительство'],['sustainable','экологичный'],['layout','планировка']]},
+ {name:'Surgeon',ru:'Хирург',emoji:'🩺',color:'#5ef2b8',
+  sent:'A surgeon performs operations and helps patients recover.',
+  words:[['operation','операция'],['scalpel','скальпель'],['patient','пациент'],['recovery','выздоровление'],['anaesthesia','анестезия']]},
+ {name:'Lawyer',ru:'Юрист',emoji:'⚖️',color:'#ffd166',
+  sent:'A lawyer defends clients and presents evidence in court.',
+  words:[['court','суд'],['evidence','доказательство'],['contract','договор'],['client','клиент'],['trial','судебный процесс']]},
+ {name:'Journalist',ru:'Журналист',emoji:'📰',color:'#7cf5ff',
+  sent:'A journalist interviews people and writes stories before the deadline.',
+  words:[['interview','интервью'],['headline','заголовок'],['source','источник'],['deadline','крайний срок'],['investigation','расследование']]},
+ {name:'Software Developer',ru:'Разработчик ПО',emoji:'💻',color:'#5e8bff',
+  sent:'A software developer writes code and fixes bugs in applications.',
+  words:[['code','код'],['debug','отлаживать'],['application','приложение'],['database','база данных'],['release','релиз, выпуск']]},
+ {name:'Accountant',ru:'Бухгалтер',emoji:'📊',color:'#c084fc',
+  sent:'An accountant manages budgets, taxes and financial reports.',
+  words:[['budget','бюджет'],['tax','налог'],['invoice','счёт-фактура'],['audit','аудит'],['profit','прибыль']]},
+ {name:'Chef',ru:'Шеф-повар',emoji:'👨‍🍳',color:'#ff9d6b',
+  sent:'A chef creates recipes and manages the kitchen.',
+  words:[['recipe','рецепт'],['ingredient','ингредиент'],['cuisine','кухня (нац.)'],['seasoning','приправа'],['apron','фартук']]},
+ {name:'Psychologist',ru:'Психолог',emoji:'🧩',color:'#f9a8d4',
+  sent:'A psychologist studies behaviour and supports mental health.',
+  words:[['behaviour','поведение'],['therapy','терапия'],['counselling','консультирование'],['emotions','эмоции'],['mental health','психическое здоровье']]},
+ {name:'Electrician',ru:'Электрик',emoji:'⚡',color:'#fde047',
+  sent:'An electrician installs wiring and checks circuits for safety.',
+  words:[['wiring','проводка'],['circuit','электрическая цепь'],['voltage','напряжение'],['socket','розетка'],['safety','безопасность']]},
+ {name:'Marketing Manager',ru:'Маркетолог',emoji:'📣',color:'#67e8f9',
+  sent:'A marketing manager runs campaigns for the target audience.',
+  words:[['campaign','кампания'],['brand','бренд'],['target audience','целевая аудитория'],['promotion','продвижение'],['advertisement','реклама']]}
+];
+
+var root=document.getElementById('eptTrainer');
+var soundOn=true, selIdx=-1;
+var learned={}; // key "profIdx:wordIdx"
+
+/* =============== ОЗВУЧКА =============== */
+var voice=null;
+function pickVoice(){
+  try{
+    var vs=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+    voice=vs.find(function(v){return /en[-_](US|GB)/i.test(v.lang)&&/female|Samantha|Google/i.test(v.name);})||
+          vs.find(function(v){return /^en/i.test(v.lang);})||null;
+  }catch(e){}
+}
+if(window.speechSynthesis){pickVoice(); window.speechSynthesis.onvoiceschanged=pickVoice;}
+function speak(text){
+  if(!soundOn||!window.speechSynthesis) return;
+  try{
+    window.speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=.92; if(voice)u.voice=voice;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+var swEl=document.getElementById('eptSwitch');
+document.getElementById('eptSoundBtn').addEventListener('click',function(){
+  soundOn=!soundOn;
+  swEl.classList.toggle('on',soundOn);
+  this.setAttribute('aria-pressed',soundOn);
+  this.firstElementChild.textContent=soundOn?'🔊 Озвучка':'🔇 Озвучка';
+  if(!soundOn&&window.speechSynthesis) window.speechSynthesis.cancel();
+  root.querySelectorAll('.ept-say').forEach(function(b){b.disabled=!soundOn;});
+});
+
+/* =============== MIND MAP (SVG) =============== */
+var NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+var map=document.getElementById('eptMap');
+var CX=500,CY=320,RX=390,RY=245;
+
+function buildMap(){
+  while(map.firstChild)map.removeChild(map.firstChild);
+  var links=el('g',{}), nodes=el('g',{});
+  map.appendChild(links); map.appendChild(nodes);
+  DATA.forEach(function(p,i){
+    var a=-Math.PI/2+i*(2*Math.PI/DATA.length);
+    var x=CX+RX*Math.cos(a), y=CY+RY*Math.sin(a);
+    var path=el('path',{d:'M'+CX+' '+CY+' Q '+((CX+x)/2+(y-CY)*0.12)+' '+((CY+y)/2-(x-CX)*0.12)+' '+x+' '+y,
+      stroke:p.color,'stroke-width':'2.5',fill:'none',opacity:'.55','stroke-dasharray':'6 5'});
+    links.appendChild(path);
+    var g=el('g',{'class':'ept-node','data-i':i,tabindex:'0',role:'button'});
+    g.appendChild(el('circle',{cx:x,cy:y,r:46,fill:'rgba(255,255,255,.07)',stroke:p.color,'stroke-width':'2.5','class':'ept-bub'}));
+    var em=el('text',{x:x,y:y-6,'text-anchor':'middle','font-size':'26'}); em.textContent=p.emoji; g.appendChild(em);
+    var t=el('text',{x:x,y:y+22,'text-anchor':'middle','font-size':'12','font-weight':'800',fill:'#fff','font-family':'Manrope,sans-serif'});
+    t.textContent=p.name.length>12?p.name.split(' ')[0]:p.name; g.appendChild(t);
+    var t2=el('text',{x:x,y:y+62,'text-anchor':'middle','font-size':'12','font-weight':'600',fill:'#b7b3e6','font-family':'Manrope,sans-serif'});
+    t2.textContent=p.ru; g.appendChild(t2);
+    g.addEventListener('click',function(){selectProf(i);});
+    g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();selectProf(i);}});
+    nodes.appendChild(g);
+  });
+  // центральный узел
+  var c=el('g',{});
+  c.appendChild(el('circle',{cx:CX,cy:CY,r:78,fill:'rgba(255,255,255,.1)',stroke:'#ffd166','stroke-width':'3'}));
+  c.appendChild(el('circle',{cx:CX,cy:CY,r:90,fill:'none',stroke:'rgba(255,209,102,.35)','stroke-width':'1.5','stroke-dasharray':'4 6'}));
+  var ce=el('text',{x:CX,y:CY-12,'text-anchor':'middle','font-size':'30'}); ce.textContent='💼'; c.appendChild(ce);
+  var ct=el('text',{x:CX,y:CY+16,'text-anchor':'middle','font-size':'17','font-weight':'800',fill:'#fff','font-family':'Manrope,sans-serif'}); ct.textContent='PROFESSIONS'; c.appendChild(ct);
+  var ct2=el('text',{x:CX,y:CY+36,'text-anchor':'middle','font-size':'12',fill:'#b7b3e6','font-family':'Manrope,sans-serif'}); ct2.textContent='B1–B2 · 50 words'; c.appendChild(ct2);
+  nodes.appendChild(c);
+}
+buildMap();
+
+/* чипы для мобильных */
+var chips=document.getElementById('eptChips');
+DATA.forEach(function(p,i){
+  var b=document.createElement('button');
+  b.type='button'; b.className='ept-chip'; b.innerHTML='<b>'+p.emoji+'</b><span>'+p.name+'<br><small style="opacity:.7">'+p.ru+'</small></span>';
+  b.addEventListener('click',function(){selectProf(i);});
+  chips.appendChild(b);
+});
+
+/* =============== ПАНЕЛЬ ПРОФЕССИИ =============== */
+var host=document.getElementById('eptPanelHost');
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function selectProf(i){
+  selIdx=i;
+  map.querySelectorAll('.ept-node').forEach(function(n){n.classList.toggle('sel',+n.getAttribute('data-i')===i);});
+  chips.querySelectorAll('.ept-chip').forEach(function(c,j){c.classList.toggle('sel',j===i);});
+  var p=DATA[i];
+  speak(p.name);
+  var html='<div class="ept-panel">'
+    +'<div class="ept-ptitle"><h3>'+p.emoji+' '+esc(p.name)+'</h3><em>'+esc(p.ru)+'</em>'
+    +'<button class="ept-say" type="button" data-say="'+esc(p.name)+'" title="Произнести">🔊</button></div>'
+    +'<div class="ept-sent">'+esc(p.sent)+' <button class="ept-say" type="button" data-say="'+esc(p.sent)+'" title="Произнести предложение" style="width:30px;height:30px;font-size:13px;vertical-align:middle">🔊</button></div>'
+    +'<div class="ept-hint">👆 Нажми на карточку: услышишь слово и откроешь перевод (активное запоминание).</div>'
+    +'<div class="ept-words">';
+  p.words.forEach(function(w,j){
+    var key=i+':'+j, opened=!!learned[key];
+    html+='<button class="ept-word'+(opened?' done':'')+'" type="button" data-w="'+j+'">'
+      +'<span class="en">'+esc(w[0])+'</span>'
+      +'<span class="ru'+(opened?'':' hid')+'">'+esc(w[1])+'</span></button>';
+  });
+  html+='</div></div>';
+  host.innerHTML=html;
+  host.querySelectorAll('.ept-say').forEach(function(b){
+    b.disabled=!soundOn;
+    b.addEventListener('click',function(ev){ev.stopPropagation();speak(this.getAttribute('data-say'));});
+  });
+  host.querySelectorAll('.ept-word').forEach(function(b){
+    b.addEventListener('click',function(){
+      var j=+this.getAttribute('data-w');
+      learned[i+':'+j]=true;
+      this.classList.add('done');
+      this.querySelector('.ru').classList.remove('hid');
+      speak(DATA[i].words[j][0]);
+    });
+  });
+  host.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* =============== КВИЗ =============== */
+var quizBox=document.getElementById('eptQuiz');
+var learnBox=document.getElementById('eptLearn');
+var tabL=document.getElementById('eptTabLearn'), tabQ=document.getElementById('eptTabQuiz');
+tabL.addEventListener('click',function(){setTab(true);});
+tabQ.addEventListener('click',function(){setTab(false);});
+function setTab(learn){
+  tabL.classList.toggle('act',learn); tabQ.classList.toggle('act',!learn);
+  learnBox.style.display=learn?'':'none'; quizBox.style.display=learn?'none':'';
+  if(!learn&&!quizBox.hasChildNodes()) startQuiz();
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+var Q=[],qi=0,score=0,streak=0,mistakes=[];
+var PRAISE=['Отлично! 🎉','Верно! Так держать! 💪','Great job! ⭐','Точно в цель! 🎯','Perfect! 🚀'];
+function startQuiz(){
+  Q=[]; qi=0; score=0; streak=0; mistakes=[];
+  var order=shuffle(DATA.map(function(_,i){return i;}));
+  order.forEach(function(pi,k){
+    var p=DATA[pi];
+    if(k%2===0){ // тип 1: слово → профессия
+      var w=p.words[Math.floor(Math.random()*p.words.length)];
+      Q.push({type:'word',pi:pi,word:w,say:w[0],
+        text:'К какой профессии относится слово <span class="ept-qword">'+esc(w[0])+'</span>?'});
+    }else{ // тип 2: описание → профессия
+      Q.push({type:'def',pi:pi,say:p.sent,
+        text:'Кто это? <span class="ept-qword" style="display:block;margin-top:8px;padding:8px 14px">'+esc(p.sent.replace(new RegExp(p.name.split(' ')[0],'ig'),'…'))+'</span>'});
+    }
+  });
+  renderQ();
+}
+function options(correct){
+  var pool=shuffle(DATA.map(function(_,i){return i;}).filter(function(i){return i!==correct;})).slice(0,3);
+  return shuffle(pool.concat([correct]));
+}
+function renderQ(){
+  if(qi>=Q.length){return renderFinal();}
+  var q=Q[qi], p=DATA[q.pi], opts=options(q.pi);
+  var html='<div class="ept-quiz">'
+    +'<div class="ept-bar"><i style="width:'+(qi/Q.length*100)+'%"></i></div>'
+    +'<div class="ept-meta"><span>Вопрос <b>'+(qi+1)+'</b> / '+Q.length+'</span><span>Очки: <b>'+score+'</b>'+(streak>1?' · серия 🔥'+streak:'')+'</span></div>'
+    +'<div class="ept-q"><div class="ept-qtext">'+q.text
+    +' <button class="ept-say" type="button" id="eptQSay" title="Озвучить">🔊</button></div>'
+    +'<div class="ept-opts">';
+  opts.forEach(function(oi){
+    html+='<button class="ept-opt" type="button" data-o="'+oi+'">'+DATA[oi].emoji+' '+esc(DATA[oi].name)+'</button>';
+  });
+  html+='</div><div class="ept-fb" id="eptFb"></div>'
+    +'<button class="ept-next" id="eptNext" type="button">Дальше →</button></div></div>';
+  quizBox.innerHTML=html;
+  speak(q.say);
+  var sb=document.getElementById('eptQSay'); sb.disabled=!soundOn;
+  sb.addEventListener('click',function(){speak(q.say);});
+  quizBox.querySelectorAll('.ept-opt').forEach(function(b){
+    b.addEventListener('click',function(){answer(+this.getAttribute('data-o'),q,p);});
+  });
+  document.getElementById('eptNext').addEventListener('click',function(){qi++;renderQ();});
+}
+function answer(oi,q,p){
+  var fb=document.getElementById('eptFb');
+  quizBox.querySelectorAll('.ept-opt').forEach(function(b){
+    b.disabled=true;
+    var v=+b.getAttribute('data-o');
+    if(v===q.pi)b.classList.add('ok');
+    else if(v===oi)b.classList.add('bad');
+  });
+  if(oi===q.pi){
+    score+=10+(streak>=2?5:0); streak++;
+    fb.className='ept-fb ok';
+    fb.innerHTML=PRAISE[Math.floor(Math.random()*PRAISE.length)]
+      +(q.type==='word'?' <b>'+esc(q.word[0])+'</b> — '+esc(q.word[1])+'. ':' ')
+      +esc(p.name)+' = '+esc(p.ru)+'.';
+    speak(p.name);
+  }else{
+    streak=0;
+    mistakes.push(q);
+    fb.className='ept-fb bad';
+    fb.innerHTML='Не совсем. Правильный ответ: <b>'+esc(p.name)+'</b> ('+esc(p.ru)+').'
+      +(q.type==='word'?' Слово <b>'+esc(q.word[0])+'</b> значит «'+esc(q.word[1])+'».':'')
+      +' Загляни в mind map — и это слово закрепится!';
+    speak(p.name);
+  }
+  document.getElementById('eptNext').style.display='inline-block';
+}
+function renderFinal(){
+  var pct=Math.round((Q.length-mistakes.length)/Q.length*100);
+  var ico,ttl,msg;
+  if(pct===100){ico='🏆';ttl='Безупречно!';msg='Ты освоил все десять профессий на уровне B1–B2. Попробуй теперь употребить эти слова в собственных предложениях!';}
+  else if(pct>=70){ico='🌟';ttl='Отличный результат!';msg='Большинство слов уже в активном словаре. Вернись в mind map и повтори темы, где были ошибки.';}
+  else if(pct>=40){ico='💪';ttl='Хорошее начало!';msg='База заложена. Пройди режим «Изучение» ещё раз с озвучкой — слух помогает запоминать.';}
+  else{ico='🌱';ttl='Всё впереди!';msg='Начни с трёх любимых профессий в mind map, послушай слова и возвращайся в квиз — прогресс не заставит ждать.';}
+  var html='<div class="ept-quiz"><div class="ept-bar"><i style="width:100%"></i></div>'
+    +'<div class="ept-q"><div class="ept-final"><div class="big">'+ico+'</div><h3>'+ttl+'</h3>'
+    +'<p>Правильных ответов: <b style="color:#ffd166">'+(Q.length-mistakes.length)+' из '+Q.length+'</b> ('+pct+'%) · Очки: <b style="color:#ffd166">'+score+'</b></p><p style="margin-top:8px">'+msg+'</p>';
+  if(mistakes.length){
+    html+='<div class="ept-mist">📌 Повтори: ';
+    html+=mistakes.map(function(q){var p=DATA[q.pi];return '<b>'+esc(p.name)+'</b> ('+esc(p.ru)+')'
+      +(q.type==='word'?' — '+esc(q.word[0])+' «'+esc(q.word[1])+'»':'');}).join(' · ');
+    html+='</div>';
+  }
+  html+='<div style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
+    +'<button class="ept-next" id="eptRetry" type="button" style="display:inline-block">🔄 Ещё раз</button>'
+    +'<button class="ept-next" id="eptToMap" type="button" style="display:inline-block;background:linear-gradient(90deg,#ffd166,#ff9d6b)">🧠 В mind map</button>'
+    +'</div></div></div></div>';
+  quizBox.innerHTML=html;
+  document.getElementById('eptRetry').addEventListener('click',startQuiz);
+  document.getElementById('eptToMap').addEventListener('click',function(){setTab(true);});
+}
+})();
+</script>
+</div>
+<!-- ============ /EN PROFESSIONS TRAINER ============ -->

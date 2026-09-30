@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To Be — интерактивная таблица</title>
+<style>
+  /* ===== ИЗОЛЯЦИЯ КОНТЕЙНЕРА ===== */
+  .tbe-root *,
+  .tbe-root *::before,
+  .tbe-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tbe-root {
+    /* Премиальный светлый дизайн */
+    --tbe-bg: #f7f5f2;
+    --tbe-card: #ffffff;
+    --tbe-ink: #1a1a2e;
+    --tbe-ink-soft: #4a4a5a;
+    --tbe-muted: #8a8a9a;
+    --tbe-line: #e8e4de;
+    --tbe-accent: #c9a227;      /* золото */
+    --tbe-accent-soft: #f5edda;
+    --tbe-green: #2e9e6b;
+    --tbe-green-soft: #e6f5ee;
+    --tbe-red: #d64545;
+    --tbe-red-soft: #fdeaea;
+    --tbe-blue: #3a6ea5;
+    --tbe-blue-soft: #eaf1f9;
+    --tbe-purple: #7b5ea7;
+    --tbe-purple-soft: #f1ecf8;
+    --tbe-shadow: 0 4px 24px rgba(26, 26, 46, 0.06);
+    --tbe-shadow-hover: 0 8px 32px rgba(26, 26, 46, 0.10);
+    --tbe-radius: 16px;
+    --tbe-radius-sm: 10px;
+    --tbe-font: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+    font-family: var(--tbe-font);
+    color: var(--tbe-ink);
+    background: var(--tbe-bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    border-radius: var(--tbe-radius);
+  }
+
+  /* ===== ЗАГОЛОВОК ===== */
+  .tbe-header {
+    text-align: center;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .tbe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--tbe-accent-soft);
+    color: #8a6d1a;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(201, 162, 39, 0.25);
+  }
+
+  .tbe-header h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .tbe-header h1 em {
+    font-style: normal;
+    color: var(--tbe-accent);
+    position: relative;
+  }
+
+  .tbe-header h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--tbe-accent-soft);
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  .tbe-header p {
+    font-size: clamp(14px, 2vw, 16px);
+    color: var(--tbe-ink-soft);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ===== СЕТКА КАРТОЧЕК ===== */
+  .tbe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .tbe-card {
+    background: var(--tbe-card);
+    border-radius: var(--tbe-radius);
+    box-shadow: var(--tbe-shadow);
+    border: 1px solid var(--tbe-line);
+    padding: 24px 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tbe-card:hover {
+    box-shadow: var(--tbe-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .tbe-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--tbe-radius) var(--tbe-radius) 0 0;
+  }
+
+  .tbe-card--am::before { background: var(--tbe-blue); }
+  .tbe-card--is::before { background: var(--tbe-green); }
+  .tbe-card--are::before { background: var(--tbe-purple); }
+
+  .tbe-card__pronoun {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tbe-muted);
+    margin-bottom: 8px;
+  }
+
+  .tbe-card__form {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .tbe-card--am .tbe-card__form { color: var(--tbe-blue); }
+  .tbe-card--is .tbe-card__form { color: var(--tbe-green); }
+  .tbe-card--are .tbe-card__form { color: var(--tbe-purple); }
+
+  .tbe-card__hint {
+    font-size: 13px;
+    color: var(--tbe-muted);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+
+  .tbe-card__example {
+    background: var(--tbe-bg);
+    border-radius: var(--tbe-radius-sm);
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--tbe-ink-soft);
+    line-height: 1.6;
+    border-left: 3px solid var(--tbe-line);
+  }
+
+  .tbe-card--am .tbe-card__example { border-left-color: var(--tbe-blue); }
+  .tbe-card--is .tbe-card__example { border-left-color: var(--tbe-green); }
+  .tbe-card--are .tbe-card__example { border-left-color: var(--tbe-purple); }
+
+  .tbe-card__example strong {
+    color: var(--tbe-ink);
+    font-weight: 600;
+  }
+
+  .tbe-card__example .tbe-en {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tbe-card__example .tbe-ru {
+    font-size: 12.5px;
+    color: var(--tbe-muted);
+  }
+
+  /* ===== ПРАВИЛА ===== */
+  .tbe-rules {
+    background: var(--tbe-card);
+    border-radius: var(--tbe-radius);
+    box-shadow: var(--tbe-shadow);
+    border: 1px solid var(--tbe-line);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+
+  .tbe-rules h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tbe-rules h2 svg {
+    flex-shrink: 0;
+  }
+
+  .tbe-rules__list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .tbe-rules__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: var(--tbe-radius-sm);
+    background: var(--tbe-bg);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--tbe-ink-soft);
+  }
+
+  .tbe-rules__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+
+  .tbe-rules__item strong {
+    color: var(--tbe-ink);
+    font-weight: 600;
+  }
+
+  .tbe-rules__item code {
+    background: var(--tbe-accent-soft);
+    color: #8a6d1a;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Consolas', monospace;
+  }
+
+  /* ===== ТАБЛИЦА СПРЯЖЕНИЯ ===== */
+  .tbe-table-wrap {
+    background: var(--tbe-card);
+    border-radius: var(--tbe-radius);
+    box-shadow: var(--tbe-shadow);
+    border: 1px solid var(--tbe-line);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+  }
+
+  .tbe-table-wrap h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tbe-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14.5px;
+    min-width: 520px;
+  }
+
+  .tbe-table th {
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tbe-muted);
+    border-bottom: 2px solid var(--tbe-line);
+  }
+
+  .tbe-table td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--tbe-line);
+    color: var(--tbe-ink-soft);
+    vertical-align: middle;
+  }
+
+  .tbe-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .tbe-table tr:hover td {
+    background: var(--tbe-bg);
+  }
+
+  .tbe-table .tbe-pron {
+    font-weight: 600;
+    color: var(--tbe-ink);
+  }
+
+  .tbe-table .tbe-form {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .tbe-table .tbe-form--am { color: var(--tbe-blue); }
+  .tbe-table .tbe-form--is { color: var(--tbe-green); }
+  .tbe-table .tbe-form--are { color: var(--tbe-purple); }
+
+  .tbe-table .tbe-negative {
+    color: var(--tbe-red);
+    font-weight: 600;
+  }
+
+  /* ===== КВИЗ ===== */
+  .tbe-quiz {
+    background: var(--tbe-card);
+    border-radius: var(--tbe-radius);
+    box-shadow: var(--tbe-shadow);
+    border: 1px solid var(--tbe-line);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+
+  .tbe-quiz h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tbe-quiz__subtitle {
+    font-size: 14px;
+    color: var(--tbe-muted);
+    margin-bottom: 22px;
+  }
+
+  .tbe-quiz__progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .tbe-quiz__dot {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--tbe-line);
+    transition: background 0.4s ease;
+  }
+
+  .tbe-quiz__dot--done {
+    background: var(--tbe-green);
+  }
+
+  .tbe-quiz__dot--wrong {
+    background: var(--tbe-red);
+  }
+
+  .tbe-quiz__dot--active {
+    background: var(--tbe-accent);
+  }
+
+  .tbe-quiz__question {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .tbe-quiz__sentence {
+    font-size: 16px;
+    color: var(--tbe-ink-soft);
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    background: var(--tbe-bg);
+    border-radius: var(--tbe-radius-sm);
+    border-left: 3px solid var(--tbe-accent);
+    line-height: 1.7;
+  }
+
+  .tbe-quiz__sentence .tbe-blank {
+    display: inline-block;
+    min-width: 60px;
+    border-bottom: 2px dashed var(--tbe-accent);
+    text-align: center;
+    font-weight: 700;
+    color: var(--tbe-accent);
+    padding: 0 4px;
+  }
+
+  .tbe-quiz__options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .tbe-quiz__option {
+    padding: 14px 12px;
+    border: 2px solid var(--tbe-line);
+    border-radius: var(--tbe-radius-sm);
+    background: var(--tbe-card);
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--tbe-font);
+    color: var(--tbe-ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tbe-quiz__option:hover:not(:disabled) {
+    border-color: var(--tbe-accent);
+    background: var(--tbe-accent-soft);
+    transform: translateY(-1px);
+  }
+
+  .tbe-quiz__option:disabled {
+    cursor: default;
+  }
+
+  .tbe-quiz__option--correct {
+    border-color: var(--tbe-green) !important;
+    background: var(--tbe-green-soft) !important;
+    color: var(--tbe-green) !important;
+  }
+
+  .tbe-quiz__option--wrong {
+    border-color: var(--tbe-red) !important;
+    background: var(--tbe-red-soft) !important;
+    color: var(--tbe-red) !important;
+    animation: tbe-shake 0.4s ease;
+  }
+
+  @keyframes tbe-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  .tbe-quiz__feedback {
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: var(--tbe-radius-sm);
+    margin-bottom: 18px;
+    display: none;
+    line-height: 1.6;
+    animation: tbe-fadeIn 0.3s ease;
+  }
+
+  .tbe-quiz__feedback--show {
+    display: block;
+  }
+
+  .tbe-quiz__feedback--correct {
+    background: var(--tbe-green-soft);
+    color: #1d6b47;
+    border-left: 3px solid var(--tbe-green);
+  }
+
+  .tbe-quiz__feedback--wrong {
+    background: var(--tbe-red-soft);
+    color: #9b2c2c;
+    border-left: 3px solid var(--tbe-red);
+  }
+
+  @keyframes tbe-fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tbe-quiz__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .tbe-quiz__score {
+    font-size: 14px;
+    color: var(--tbe-muted);
+    font-weight: 600;
+  }
+
+  .tbe-quiz__score strong {
+    color: var(--tbe-ink);
+  }
+
+  .tbe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--tbe-font);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+  }
+
+  .tbe-btn--primary {
+    background: var(--tbe-ink);
+    color: #fff;
+  }
+
+  .tbe-btn--primary:hover {
+    background: #2a2a45;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(26, 26, 46, 0.2);
+  }
+
+  .tbe-btn--primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .tbe-btn--ghost {
+    background: transparent;
+    color: var(--tbe-ink-soft);
+    border: 1.5px solid var(--tbe-line);
+  }
+
+  .tbe-btn--ghost:hover {
+    border-color: var(--tbe-muted);
+    color: var(--tbe-ink);
+  }
+
+  .tbe-btn--accent {
+    background: var(--tbe-accent);
+    color: #fff;
+  }
+
+  .tbe-btn--accent:hover {
+    background: #b8941f;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.3);
+  }
+
+  .tbe-btn svg {
+    flex-shrink: 0;
+  }
+
+  /* ===== РЕЗУЛЬТАТ ===== */
+  .tbe-result {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    animation: tbe-fadeIn 0.4s ease;
+  }
+
+  .tbe-result--show {
+    display: block;
+  }
+
+  .tbe-result__icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tbe-accent-soft);
+  }
+
+  .tbe-result__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .tbe-result__text {
+    font-size: 15px;
+    color: var(--tbe-muted);
+    margin-bottom: 24px;
+  }
+
+  .tbe-result__score {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--tbe-accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tbe-result__score-label {
+    font-size: 14px;
+    color: var(--tbe-muted);
+    margin-bottom: 24px;
+  }
+
+  /* ===== АДАПТИВ ===== */
+  @media (max-width: 768px) {
+    .tbe-root {
+      padding: 16px 12px 36px;
+    }
+
+    .tbe-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .tbe-card {
+      padding: 20px 16px;
+    }
+
+    .tbe-card__form {
+      font-size: 30px;
+    }
+
+    .tbe-rules {
+      padding: 22px 16px;
+    }
+
+    .tbe-table-wrap {
+      padding: 22px 16px;
+    }
+
+    .tbe-quiz {
+      padding: 22px 16px;
+    }
+
+    .tbe-quiz__options {
+      grid-template-columns: 1fr;
+    }
+
+    .tbe-quiz__sentence {
+      font-size: 15px;
+      padding: 12px 14px;
+    }
+
+    .tbe-quiz__actions {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+
+    .tbe-btn {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .tbe-header {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tbe-header h1 {
+      font-size: 24px;
+    }
+
+    .tbe-card__form {
+      font-size: 28px;
+    }
+
+    .tbe-table {
+      font-size: 13.5px;
+    }
+
+    .tbe-table th,
+    .tbe-table td {
+      padding: 10px 12px;
+    }
+  }
+
+  /* ===== ДОСТУПНОСТЬ ===== */
+  .tbe-quiz__option:focus-visible,
+  .tbe-btn:focus-visible {
+    outline: 2px solid var(--tbe-accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tbe-root *,
+    .tbe-root *::before,
+    .tbe-root *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ИЗОЛИРОВАННЫЙ КОНТЕЙНЕР ===== -->
+<div class="tbe-root" id="tbeRoot">
+
+  <!-- ЗАГОЛОВОК -->
+  <header class="tbe-header">
+    <div class="tbe-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      English Grammar
+    </div>
+    <h1>Глагол <em>to be</em> — основа английского</h1>
+    <p>Спряжение, правила и интерактивный квиз. Освойте am / is / are за 5 минут.</p>
+  </header>
+
+  <!-- СЕТКА AM / IS / ARE -->
+  <section class="tbe-grid" aria-label="Формы глагола to be">
+    <div class="tbe-card tbe-card--am">
+      <div class="tbe-card__pronoun">I</div>
+      <div class="tbe-card__form">am</div>
+      <div class="tbe-card__hint">I am = I'm</div>
+      <div class="tbe-card__example">
+        <span class="tbe-en"><strong>I am</strong> a student.</span>
+        <span class="tbe-ru">Я студент.</span>
+      </div>
+    </div>
+    <div class="tbe-card tbe-card--is">
+      <div class="tbe-card__pronoun">He / She / It</div>
+      <div class="tbe-card__form">is</div>
+      <div class="tbe-card__hint">He is = He's</div>
+      <div class="tbe-card__example">
+        <span class="tbe-en"><strong>She is</strong> happy.</span>
+        <span class="tbe-ru">Она счастлива.</span>
+      </div>
+    </div>
+    <div class="tbe-card tbe-card--are">
+      <div class="tbe-card__pronoun">We / You / They</div>
+      <div class="tbe-card__form">are</div>
+      <div class="tbe-card__hint">They are = They're</div>
+      <div class="tbe-card__example">
+        <span class="tbe-en"><strong>They are</strong> friends.</span>
+        <span class="tbe-ru">Они друзья.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРАВИЛА -->
+  <section class="tbe-rules" aria-label="Правила">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      Ключевые правила
+    </h2>
+    <ul class="tbe-rules__list">
+      <li class="tbe-rules__item">
+        <span class="tbe-rules__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e9e6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span><strong>To be</strong> — это глагол-связка. В русском мы говорим «Я — студент», в английском обязательно нужна форма: <code>I am a student</code>.</span>
+      </li>
+      <li class="tbe-rules__item">
+        <span class="tbe-rules__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a6ea5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span><strong>I</strong> всегда идёт с <code>am</code> — даже если рядом другие слова: <code>My friend and I are</code> → но <code>I am</code>.</span>
+      </li>
+      <li class="tbe-rules__item">
+        <span class="tbe-rules__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7b5ea7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span><strong>He, she, it</strong> (единственное число, 3-е лицо) → <code>is</code>. <strong>We, you, they</strong> (множественное или 2-е лицо) → <code>are</code>.</span>
+      </li>
+      <li class="tbe-rules__item">
+        <span class="tbe-rules__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d64545" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </span>
+        <span><strong>Отрицание:</strong> добавьте <code>not</code> после формы. <code>I am not</code>, <code>she is not (isn't)</code>, <code>they are not (aren't)</code>.</span>
+      </li>
+      <li class="tbe-rules__item">
+        <span class="tbe-rules__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+        <span><strong>Вопрос:</strong> вынесите форму в начало. <code>Are you happy?</code> <code>Is she a doctor?</code> <code>Am I late?</code></span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ТАБЛИЦА СПРЯЖЕНИЯ -->
+  <section class="tbe-table-wrap" aria-label="Таблица спряжения">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+      Полная таблица спряжения
+    </h2>
+    <table class="tbe-table">
+      <thead>
+        <tr>
+          <th>Местоимение</th>
+          <th>Утверждение</th>
+          <th>Отрицание</th>
+          <th>Вопрос</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tbe-pron">I</td>
+          <td class="tbe-form tbe-form--am">am</td>
+          <td class="tbe-negative">am not</td>
+          <td>Am I…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">He</td>
+          <td class="tbe-form tbe-form--is">is</td>
+          <td class="tbe-negative">is not / isn't</td>
+          <td>Is he…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">She</td>
+          <td class="tbe-form tbe-form--is">is</td>
+          <td class="tbe-negative">is not / isn't</td>
+          <td>Is she…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">It</td>
+          <td class="tbe-form tbe-form--is">is</td>
+          <td class="tbe-negative">is not / isn't</td>
+          <td>Is it…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">We</td>
+          <td class="tbe-form tbe-form--are">are</td>
+          <td class="tbe-negative">are not / aren't</td>
+          <td>Are we…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">You</td>
+          <td class="tbe-form tbe-form--are">are</td>
+          <td class="tbe-negative">are not / aren't</td>
+          <td>Are you…?</td>
+        </tr>
+        <tr>
+          <td class="tbe-pron">They</td>
+          <td class="tbe-form tbe-form--are">are</td>
+          <td class="tbe-negative">are not / aren't</td>
+          <td>Are they…?</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- КВИЗ -->
+  <section class="tbe-quiz" aria-label="Квиз">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
+      Проверьте себя
+    </h2>
+    <p class="tbe-quiz__subtitle">Выберите правильную форму глагола to be</p>
+
+    <div class="tbe-quiz__progress" id="tbeProgress" aria-hidden="true"></div>
+
+    <div id="tbeQuizBody">
+      <div class="tbe-quiz__question" id="tbeQuestion"></div>
+      <div class="tbe-quiz__sentence" id="tbeSentence"></div>
+      <div class="tbe-quiz__options" id="tbeOptions"></div>
+      <div class="tbe-quiz__feedback" id="tbeFeedback"></div>
+      <div class="tbe-quiz__actions">
+        <span class="tbe-quiz__score" id="tbeScore">Счёт: <strong>0</strong> / 6</span>
+        <button class="tbe-btn tbe-btn--primary" id="tbeNextBtn" disabled>
+          Далее
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- РЕЗУЛЬТАТ -->
+    <div class="tbe-result" id="tbeResult">
+      <div class="tbe-result__icon" id="tbeResultIcon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="tbe-result__title" id="tbeResultTitle">Отлично!</div>
+      <div class="tbe-result__score" id="tbeResultScore">6/6</div>
+      <div class="tbe-result__score-label">правильных ответов</div>
+      <div class="tbe-result__text" id="tbeResultText"></div>
+      <button class="tbe-btn tbe-btn--accent" id="tbeRestartBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Пройти заново
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ===== ДАННЫЕ КВИЗА =====
+  var questions = [
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'I ___ a teacher.',
+      options: ['am', 'is', 'are'],
+      correct: 'am',
+      explanation: 'С местоимением <strong>I</strong> всегда используется <strong>am</strong>.'
+    },
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'She ___ my sister.',
+      options: ['am', 'is', 'are'],
+      correct: 'is',
+      explanation: '<strong>She</strong> — 3-е лицо, единственное число → <strong>is</strong>.'
+    },
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'They ___ from Canada.',
+      options: ['am', 'is', 'are'],
+      correct: 'are',
+      explanation: '<strong>They</strong> — множественное число → <strong>are</strong>.'
+    },
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'It ___ a beautiful day.',
+      options: ['am', 'is', 'are'],
+      correct: 'is',
+      explanation: '<strong>It</strong> — 3-е лицо, единственное число → <strong>is</strong>.'
+    },
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'We ___ ready for the test.',
+      options: ['am', 'is', 'are'],
+      correct: 'are',
+      explanation: '<strong>We</strong> — множественное число → <strong>are</strong>.'
+    },
+    {
+      question: 'Вставьте правильную форму:',
+      sentence: 'You ___ a great student!',
+      options: ['am', 'is', 'are'],
+      correct: 'are',
+      explanation: '<strong>You</strong> всегда используется с <strong>are</strong> (и в единственном, и во множественном числе).'
+    }
+  ];
+
+  // ===== СОСТОЯНИЕ =====
+  var current = 0;
+  var score = 0;
+  var answered = false;
+  var results = []; // true/false для каждого вопроса
+
+  // ===== DOM =====
+  var root = document.getElementById('tbeRoot');
+  var progressEl = document.getElementById('tbeProgress');
+  var questionEl = document.getElementById('tbeQuestion');
+  var sentenceEl = document.getElementById('tbeSentence');
+  var optionsEl = document.getElementById('tbeOptions');
+  var feedbackEl = document.getElementById('tbeFeedback');
+  var scoreEl = document.getElementById('tbeScore');
+  var nextBtn = document.getElementById('tbeNextBtn');
+  var quizBody = document.getElementById('tbeQuizBody');
+  var resultEl = document.getElementById('tbeResult');
+  var resultTitle = document.getElementById('tbeResultTitle');
+  var resultScore = document.getElementById('tbeResultScore');
+  var resultText = document.getElementById('tbeResultText');
+  var resultIcon = document.getElementById('tbeResultIcon');
+  var restartBtn = document.getElementById('tbeRestartBtn');
+
+  // ===== ПРОГРЕСС-БАР =====
+  function buildProgress() {
+    progressEl.innerHTML = '';
+    for (var i = 0; i < questions.length; i++) {
+      var dot = document.createElement('div');
+      dot.className = 'tbe-quiz__dot';
+      progressEl.appendChild(dot);
+    }
+  }
+
+  function updateProgress() {
+    var dots = progressEl.querySelectorAll('.tbe-quiz__dot');
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].className = 'tbe-quiz__dot';
+      if (i < current) {
+        dots[i].classList.add(results[i] ? 'tbe-quiz__dot--done' : 'tbe-quiz__dot--wrong');
+      } else if (i === current) {
+        dots[i].classList.add('tbe-quiz__dot--active');
+      }
+    }
+  }
+
+  // ===== РЕНДЕР ВОПРОСА =====
+  function renderQuestion() {
+    answered = false;
+    var q = questions[current];
+
+    questionEl.textContent = q.question;
+
+    // Подсветка пропуска
+    sentenceEl.innerHTML = q.sentence.replace('___', '<span class="tbe-blank">?</span>');
+
+    // Опции
+    optionsEl.innerHTML = '';
+    q.options.forEach(function(opt) {
+      var btn = document.createElement('button');
+      btn.className = 'tbe-quiz__option';
+      btn.textContent = opt;
+      btn.setAttribute('data-value', opt);
+      btn.addEventListener('click', function() { selectOption(opt, btn); });
+      optionsEl.appendChild(btn);
+    });
+
+    // Сброс
+    feedbackEl.className = 'tbe-quiz__feedback';
+    feedbackEl.innerHTML = '';
+    nextBtn.disabled = true;
+    nextBtn.innerHTML = (current === questions.length - 1)
+      ? 'Результат <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+      : 'Далее <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+    updateProgress();
+    updateScore();
+  }
+
+  // ===== ОБНОВЛЕНИЕ СЧЁТА =====
+  function updateScore() {
+    scoreEl.innerHTML = 'Счёт: <strong>' + score + '</strong> / ' + questions.length;
+  }
+
+  // ===== ВЫБОР ОПЦИИ =====
+  function selectOption(value, btn) {
+    if (answered) return;
+    answered = true;
+
+    var q = questions[current];
+    var isCorrect = (value === q.correct);
+
+    // Отключаем все кнопки
+    var allOptions = optionsEl.querySelectorAll('.tbe-quiz__option');
+    allOptions.forEach(function(b) { b.disabled = true; });
+
+    // Подсветка
+    if (isCorrect) {
+      btn.classList.add('tbe-quiz__option--correct');
+      score++;
+      results[current] = true;
+      feedbackEl.className = 'tbe-quiz__feedback tbe-quiz__feedback--show tbe-quiz__feedback--correct';
+      feedbackEl.innerHTML = '✅ Верно! ' + q.explanation;
+    } else {
+      btn.classList.add('tbe-quiz__option--wrong');
+      results[current] = false;
+      // Показать правильный
+      allOptions.forEach(function(b) {
+        if (b.getAttribute('data-value') === q.correct) {
+          b.classList.add('tbe-quiz__option--correct');
+        }
+      });
+      feedbackEl.className = 'tbe-quiz__feedback tbe-quiz__feedback--show tbe-quiz__feedback--wrong';
+      feedbackEl.innerHTML = '❌ Неверно. Правильный ответ: <strong>' + q.correct + '</strong>. ' + q.explanation;
+    }
+
+    // Обновить предложение с правильной формой
+    sentenceEl.innerHTML = q.sentence.replace('___', '<span class="tbe-blank" style="border-bottom-style: solid; color: ' + (isCorrect ? 'var(--tbe-green)' : 'var(--tbe-red)') + ';">' + q.correct + '</span>');
+
+    nextBtn.disabled = false;
+    updateProgress();
+    updateScore();
+  }
+
+  // ===== СЛЕДУЮЩИЙ ВОПРОС =====
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  // ===== РЕЗУЛЬТАТ =====
+  function showResult() {
+    quizBody.style.display = 'none';
+    resultEl.classList.add('tbe-result--show');
+
+    var total = questions.length;
+    var pct = Math.round((score / total) * 100);
+
+    resultScore.textContent = score + '/' + total;
+
+    if (pct === 100) {
+      resultTitle.textContent = 'Идеально! 🏆';
+      resultText.textContent = 'Вы полностью освоили спряжение to be. Так держать!';
+      resultIcon.innerHTML = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2e9e6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>';
+      resultIcon.style.background = 'var(--tbe-green-soft)';
+    } else if (pct >= 67) {
+      resultTitle.textContent = 'Хороший результат! 👍';
+      resultText.textContent = 'Основы усвоены. Повторите правила для форм, где были ошибки.';
+      resultIcon.innerHTML = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>';
+      resultIcon.style.background = 'var(--tbe-accent-soft)';
+    } else {
+      resultTitle.textContent = 'Есть над чем поработать';
+      resultText.textContent = 'Вернитесь к таблице спряжения и правилам выше — затем попробуйте снова.';
+      resultIcon.innerHTML = '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#d64545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>';
+      resultIcon.style.background = 'var(--tbe-red-soft)';
+    }
+  }
+
+  // ===== ПЕРЕЗАПУСК =====
+  function restart() {
+    current = 0;
+    score = 0;
+    answered = false;
+    results = [];
+    resultEl.classList.remove('tbe-result--show');
+    quizBody.style.display = 'block';
+    renderQuestion();
+  }
+
+  // ===== ИНИЦИАЛИЗАЦИЯ =====
+  buildProgress();
+  renderQuestion();
+
+  nextBtn.addEventListener('click', nextQuestion);
+  restartBtn.addEventListener('click', restart);
+
+  // Клавиатурная навигация
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !nextBtn.disabled && quizBody.style.display !== 'none') {
+      nextQuestion();
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,699 @@
+<div class="ps-wrap" id="psWrap">
+<style>
+  .ps-wrap{all:unset;display:block;box-sizing:border-box;width:100%;isolation:isolate;position:relative;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    background:linear-gradient(180deg,#fbfcff 0%,#f4f7fe 100%);
+    color:#0f1729;padding:60px 16px 72px;line-height:1.55;-webkit-font-smoothing:antialiased;font-size:17px}
+  .ps-wrap *,.ps-wrap *::before,.ps-wrap *::after{box-sizing:border-box;margin:0;padding:0;font-family:inherit}
+  .ps-wrap button{display:inline-flex;align-items:center;font:inherit;border:none;background:none;cursor:pointer;color:inherit}
+  .ps-inner{max-width:960px;margin:0 auto;position:relative;z-index:2}
+
+  /* фон */
+  .ps-deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+  .ps-deco svg{position:absolute;opacity:.4}
+
+  /* header */
+  .ps-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+  .ps-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:2px solid #e3e9f7;
+    border-radius:999px;padding:10px 20px;font-size:14px;font-weight:900;color:#2f6bff;
+    box-shadow:0 4px 14px rgba(30,39,64,.07);letter-spacing:.02em}
+  .ps-sound-toggle{display:inline-flex;align-items:center;gap:10px;background:#fff;
+    border:2px solid #e3e9f7;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:900;
+    color:#1e2a4a;box-shadow:0 4px 14px rgba(30,39,64,.07);transition:all .25s}
+  .ps-sound-toggle:hover{transform:translateY(-1px);border-color:#aab6e8}
+  .ps-sound-toggle.on{background:linear-gradient(135deg,#2f6bff,#5b6cff);color:#fff;border-color:transparent;
+    box-shadow:0 8px 22px rgba(47,107,255,.38)}
+  .ps-sound-toggle .on-ic{display:none}
+  .ps-sound-toggle.on .on-ic{display:inline-flex}
+  .ps-sound-toggle.on .off-ic{display:none}
+
+  .ps-h1{font-size:clamp(32px,5.5vw,50px);font-weight:900;margin:22px 0 14px;
+    letter-spacing:-.035em;line-height:1.05}
+  .ps-h1 em{font-style:normal;color:#2f6bff;border-bottom:5px solid #2f6bff;padding-bottom:2px}
+  .ps-sub{font-size:19px;color:#3d4a6b;max-width:720px;font-weight:600;line-height:1.6}
+
+  /* секции */
+  .ps-sec{margin-top:56px}
+  .ps-sec-title{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900;
+    margin-bottom:10px;letter-spacing:-.025em}
+  .ps-sec-num{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#5b6cff,#7c8cff);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;
+    box-shadow:0 8px 22px rgba(91,108,255,.42);flex:none;transform:rotate(-3deg)}
+  .ps-sec-hint{font-size:16px;color:#6b7896;margin-bottom:26px;font-weight:600;max-width:740px;line-height:1.6}
+  .ps-card{background:#fff;border:2px solid #e7ecf8;border-radius:26px;
+    box-shadow:0 16px 44px rgba(30,39,64,.09);padding:32px;position:relative}
+
+  /* ключевые слова */
+  .ps-kw{padding-bottom:2px;font-weight:900}
+  .ps-kw-v{color:#2f6bff;border-bottom:4px solid #2f6bff}
+  .ps-kw-s{color:#0d9488;border-bottom:4px solid #0d9488}
+  .ps-kw-o{color:#ef7a1a;border-bottom:4px solid #ef7a1a}
+
+  /* 1. МОДЕЛЬ */
+  .ps-model{display:flex;flex-direction:column;gap:18px}
+  .ps-model-row{display:flex;align-items:center;gap:16px;padding:18px 22px;border-radius:16px;
+    background:linear-gradient(135deg,#fafbff,#f3f6fd);border:2px solid #e7ecf8}
+  .ps-model-tag{flex:none;font-size:12px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;
+    color:#6b7896;min-width:110px}
+  .ps-model-text{font-size:19px;font-weight:800;color:#0f1729;line-height:1.5;flex:1}
+  .ps-model-text .plus{color:#0d9488}
+  .ps-model-text .minus{color:#e11d48}
+  .ps-model-text .q{color:#7c5cff}
+
+  /* 2. DRILL */
+  .ps-drill-head{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    margin-bottom:18px;flex-wrap:wrap}
+  .ps-stat{font-size:14px;font-weight:900;color:#5d6a8a;background:#f0f3fb;
+    border-radius:999px;padding:9px 18px}
+  .ps-stat b{color:#0f1729}
+  .ps-prog{height:8px;background:#eef1fa;border-radius:99px;overflow:hidden;margin-bottom:26px}
+  .ps-prog-bar{height:100%;width:0;background:linear-gradient(90deg,#5b6cff,#0d9488);
+    border-radius:99px;transition:width .4s cubic-bezier(.2,.8,.3,1)}
+
+  .ps-stim{background:linear-gradient(135deg,#fff7e8,#fffbf0);border:2.5px solid #f5b658;
+    border-radius:20px;padding:26px 28px;margin-bottom:20px;position:relative;overflow:hidden}
+  .ps-stim::before{content:'СТИМУЛ';position:absolute;top:10px;right:14px;font-size:11px;
+    font-weight:900;letter-spacing:.1em;color:#b8730f;opacity:.7}
+  .ps-stim-line{font-size:22px;font-weight:900;color:#0f1729;line-height:1.45;letter-spacing:-.015em}
+  .ps-stim-line .blank{display:inline-block;min-width:90px;border-bottom:4px dashed #b8730f;
+    color:#b8730f;padding:0 8px;text-align:center}
+  .ps-stim-hint{margin-top:10px;font-size:15px;font-weight:700;color:#8a5a0f;
+    display:flex;align-items:center;gap:8px}
+
+  .ps-answer-zone{background:#fff;border:2px dashed #c9d6ff;border-radius:20px;
+    padding:24px 26px;margin-bottom:20px;transition:all .3s}
+  .ps-answer-zone.revealed{background:#ecfdf5;border-style:solid;border-color:#10b981}
+  .ps-answer-zone.revealed.wrong{background:#fff1f2;border-color:#f43f5e}
+  .ps-answer-label{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+    color:#6b7896;margin-bottom:8px}
+  .ps-answer-text{font-size:22px;font-weight:900;color:#0f1729;line-height:1.45;letter-spacing:-.015em;
+    min-height:32px}
+  .ps-answer-text.pending{color:#8590ad;font-weight:700;font-size:17px;font-style:italic}
+
+  .ps-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .ps-btn{border-radius:14px;padding:14px 26px;font-size:15px;font-weight:900;
+    transition:all .25s;letter-spacing:.01em;justify-content:center;gap:8px}
+  .ps-btn-main{background:linear-gradient(135deg,#0f1729,#2a3a5c);color:#fff;
+    box-shadow:0 8px 22px rgba(15,23,41,.28)}
+  .ps-btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,41,.35)}
+  .ps-btn-ok{background:linear-gradient(135deg,#0d9488,#10b981);color:#fff;
+    box-shadow:0 8px 22px rgba(13,148,136,.3)}
+  .ps-btn-ok:hover{transform:translateY(-2px)}
+  .ps-btn-no{background:#fff1f2;color:#be123c;border:2px solid #fecdd3}
+  .ps-btn-no:hover{background:#ffe4e6}
+  .ps-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+
+  .ps-score-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .ps-pill{font-size:13px;font-weight:900;padding:8px 14px;border-radius:999px;background:#f0f3fb;color:#5d6a8a}
+  .ps-pill b{color:#0f1729}
+  .ps-pill.ok{background:#ecfdf5;color:#047857}
+  .ps-pill.no{background:#fff1f2;color:#be123c}
+
+  /* 3. РЕЖИМЫ */
+  .ps-modes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .ps-mode{border:2px solid #e7ecf8;border-radius:18px;padding:20px;background:#fff;
+    text-align:left;transition:all .25s;display:flex;flex-direction:column;gap:10px}
+  .ps-mode:hover{border-color:#c9d6ff;transform:translateY(-3px);box-shadow:0 12px 28px rgba(30,39,64,.1)}
+  .ps-mode.active{border-color:#2f6bff;background:#eef3ff;box-shadow:0 12px 28px rgba(47,107,255,.18)}
+  .ps-mode-ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:#eef3ff}
+  .ps-mode-title{font-size:16px;font-weight:900;color:#0f1729}
+  .ps-mode-desc{font-size:13px;font-weight:600;color:#6b7896;line-height:1.5}
+
+  /* 4. ТАБЛИЦА ФОРМ */
+  .ps-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .ps-tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:16px;min-width:600px}
+  .ps-tbl th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;
+    color:#6b7896;padding:14px 16px;border-bottom:3px solid #eef1fa;font-weight:900}
+  .ps-tbl td{padding:16px;border-bottom:1.5px solid #f0f3fb;color:#2a3555;
+    vertical-align:top;font-weight:600;line-height:1.55}
+  .ps-tbl tr:last-child td{border-bottom:none}
+  .ps-tbl .ps-strong{font-weight:900;color:#0f1729;font-size:17px}
+  .ps-tbl .ps-form{font-weight:900;font-size:16px}
+  .ps-tbl .ps-form.plus{color:#0d9488}
+  .ps-tbl .ps-form.minus{color:#e11d48}
+  .ps-tbl .ps-form.q{color:#7c5cff}
+  .ps-say-btn{width:36px;height:36px;border-radius:50%;background:#f0f3fb;border:2px solid #e3e9f7;
+    display:inline-flex;align-items:center;justify-content:center;flex:none;transition:all .2s;
+    vertical-align:middle;margin-left:8px}
+  .ps-say-btn:hover{background:#2f6bff;border-color:#2f6bff}
+  .ps-say-btn:hover svg{stroke:#fff}
+  .ps-say-btn svg{stroke:#3d4a6b;transition:stroke .2s}
+  .ps-say-btn.playing{background:#2f6bff;border-color:#2f6bff;animation:psPulse 1s infinite}
+  .ps-say-btn.playing svg{stroke:#fff}
+  @keyframes psPulse{0%,100%{box-shadow:0 0 0 0 rgba(47,107,255,.45)}50%{box-shadow:0 0 0 10px rgba(47,107,255,0)}}
+
+  /* финал */
+  .ps-final{display:none;text-align:center;padding:30px 12px}
+  .ps-final.show{display:block;animation:psFade .4s ease}
+  .ps-final-ic{width:88px;height:88px;margin:0 auto 18px;border-radius:50%;
+    background:linear-gradient(135deg,#ecfdf5,#d1fae5);display:flex;align-items:center;justify-content:center}
+  .ps-final-score{font-size:60px;font-weight:900;line-height:1;letter-spacing:-.04em;
+    background:linear-gradient(90deg,#2f6bff,#0d9488);-webkit-background-clip:text;
+    background-clip:text;color:transparent;margin-bottom:6px}
+  .ps-final-label{font-size:14px;font-weight:900;color:#8590ad;letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:20px}
+  .ps-final-msg{font-size:18px;color:#3d4a6b;font-weight:700;max-width:500px;
+    margin:0 auto 26px;line-height:1.55}
+  @keyframes psFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  @media (max-width:760px){
+    .ps-wrap{padding:44px 14px 56px;font-size:16px}
+    .ps-card{padding:22px 18px;border-radius:22px}
+    .ps-modes{grid-template-columns:1fr}
+    .ps-model-row{flex-direction:column;align-items:flex-start;gap:6px;padding:16px}
+    .ps-model-tag{min-width:0}
+    .ps-stim{padding:20px 18px}
+    .ps-stim-line{font-size:19px}
+    .ps-answer-zone{padding:18px}
+    .ps-answer-text{font-size:19px}
+    .ps-actions{flex-direction:column}
+    .ps-btn{width:100%}
+    .ps-h1{font-size:28px}
+    .ps-sec-title{font-size:21px;gap:12px}
+    .ps-sec-num{width:36px;height:36px;font-size:15px}
+    .ps-sub{font-size:17px}
+    .ps-top{flex-direction:column;align-items:stretch}
+    .ps-sound-toggle{justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ps-wrap *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  }
+</style>
+
+<div class="ps-deco" aria-hidden="true">
+  <svg width="180" height="180" viewBox="0 0 24 24" style="top:4%;right:3%;fill:none;stroke:#2f6bff;stroke-width:.6;opacity:.13"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+  <svg width="150" height="150" viewBox="0 0 24 24" style="bottom:6%;left:4%;fill:none;stroke:#0d9488;stroke-width:.6;opacity:.14"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+  <svg width="130" height="130" viewBox="0 0 24 24" style="top:38%;right:2%;fill:none;stroke:#ef7a1a;stroke-width:.6;opacity:.13"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</div>
+
+<div class="ps-inner">
+
+  <div class="ps-top">
+    <div class="ps-badge">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      English Grammar · A2 · Drill
+    </div>
+    <button class="ps-sound-toggle on" id="psSound" aria-pressed="true">
+      <svg class="on-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/></svg>
+      <svg class="off-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+      <span id="psSoundLabel">Звук включён</span>
+    </button>
+  </div>
+
+  <h1 class="ps-h1">Present Simple: <em>drill</em>-тренажёр</h1>
+  <p class="ps-sub">Методика pattern practice: смотрите модель, слушайте стимул, стройте ответ вслух, проверяйте себя. Повторяйте, пока не станет автоматически.</p>
+
+  <!-- 1. МОДЕЛЬ -->
+  <section class="ps-sec">
+    <div class="ps-sec-title"><span class="ps-sec-num">1</span>Модель</div>
+    <p class="ps-sec-hint">Три формы Present Simple. Слушайте образцы — на них будем строить ответы.</p>
+    <div class="ps-card">
+      <div class="ps-model">
+        <div class="ps-model-row">
+          <span class="ps-model-tag">Утверждение</span>
+          <span class="ps-model-text"><span class="ps-kw ps-kw-s">She works</span> at a <span class="ps-kw ps-kw-o">bookshop</span>.</span>
+          <button class="ps-say-btn" data-speak="She works at a bookshop." aria-label="Прослушать">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+          </button>
+        </div>
+        <div class="ps-model-row">
+          <span class="ps-model-tag">Отрицание</span>
+          <span class="ps-model-text"><span class="ps-kw ps-kw-v">She doesn't work</span> at a bank.</span>
+          <button class="ps-say-btn" data-speak="She doesn't work at a bank." aria-label="Прослушать">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+          </button>
+        </div>
+        <div class="ps-model-row">
+          <span class="ps-model-tag">Вопрос</span>
+          <span class="ps-model-text"><span class="ps-kw ps-kw-v">Does she work</span> at a bookshop?</span>
+          <button class="ps-say-btn" data-speak="Does she work at a bookshop?" aria-label="Прослушать">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+          </button>
+        </div>
+        <div class="ps-model-row">
+          <span class="ps-model-tag">Короткий ответ</span>
+          <span class="ps-model-text">— Yes, she does. / No, she doesn't.</span>
+          <button class="ps-say-btn" data-speak="Yes, she does. No, she doesn't." aria-label="Прослушать">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. DRILL -->
+  <section class="ps-sec">
+    <div class="ps-sec-title"><span class="ps-sec-num">2</span>Drill: постройте ответ</div>
+    <p class="ps-sec-hint">Прочитайте стимул и подсказку. Скажите ответ вслух. Потом нажмите «Показать ответ» и проверьте себя.</p>
+    <div class="ps-card">
+      <div id="psDrill">
+        <div class="ps-drill-head">
+          <span class="ps-stat">Стимул <b id="psNum">1</b> из <b id="psTotal">12</b></span>
+          <span class="ps-stat">Верно: <b id="psScore">0</b></span>
+        </div>
+        <div class="ps-prog"><div class="ps-prog-bar" id="psBar"></div></div>
+
+        <div class="ps-stim">
+          <div class="ps-stim-line" id="psStim"></div>
+          <div class="ps-stim-hint" id="psStimHint"></div>
+        </div>
+
+        <div class="ps-answer-zone" id="psAnsZone">
+          <div class="ps-answer-label">Ваш ответ</div>
+          <div class="ps-answer-text pending" id="psAnsText">Скажите ответ вслух — потом нажмите «Показать»</div>
+        </div>
+
+        <div class="ps-actions">
+          <button class="ps-btn ps-btn-main" id="psReveal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            Показать ответ
+          </button>
+          <button class="ps-btn ps-btn-ok" id="psOk" style="display:none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Я ответил верно
+          </button>
+          <button class="ps-btn ps-btn-no" id="psNo" style="display:none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            Ошибся
+          </button>
+          <button class="ps-btn ps-btn-main" id="psNext" style="display:none">
+            Следующий
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+
+        <div class="ps-score-row" id="psScoreRow"></div>
+      </div>
+
+      <div class="ps-final" id="psFinal">
+        <div class="ps-final-ic">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div class="ps-final-score" id="psFinalScore">0 / 12</div>
+        <div class="ps-final-label">верных ответов</div>
+        <div class="ps-final-msg" id="psFinalMsg"></div>
+        <button class="ps-btn ps-btn-main" id="psRestart">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          Прогнать заново
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. РЕЖИМЫ -->
+  <section class="ps-sec">
+    <div class="ps-sec-title"><span class="ps-sec-num">3</span>Режимы практики</div>
+    <p class="ps-sec-hint">Drill — это не «пройти один раз». Выберите режим и повторяйте, пока структура не станет автоматической.</p>
+    <div class="ps-modes">
+      <button class="ps-mode active" data-mode="normal">
+        <div class="ps-mode-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f6bff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="ps-mode-title">Обычный</div>
+        <div class="ps-mode-desc">Стимулы по порядку. Видите текст и подсказку. Базовый режим.</div>
+      </button>
+      <button class="ps-mode" data-mode="audio">
+        <div class="ps-mode-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </div>
+        <div class="ps-mode-title">Только аудио</div>
+        <div class="ps-mode-desc">Слышите стимул, текста нет. Отвечаете вслух. Проверяете.</div>
+      </button>
+      <button class="ps-mode" data-mode="speed">
+        <div class="ps-mode-ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef7a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="ps-mode-title">Скорость</div>
+        <div class="ps-mode-desc">15 секунд на ответ. Если не успели — считаем ошибкой. Гонка за автоматизмом.</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- 4. ТАБЛИЦА -->
+  <section class="ps-sec">
+    <div class="ps-sec-title"><span class="ps-sec-num">4</span>Шпаргалка: формы</div>
+    <p class="ps-sec-hint">Если что-то забыли — вот все формы Present Simple в одном месте.</p>
+    <div class="ps-card">
+      <div class="ps-tbl-wrap">
+        <table class="ps-tbl">
+          <thead>
+            <tr>
+              <th>Лицо</th>
+              <th>Утверждение</th>
+              <th>Отрицание</th>
+              <th>Вопрос</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ps-strong">I / You / We / They</td>
+              <td class="ps-form plus">work</td>
+              <td class="ps-form minus">don't work</td>
+              <td class="ps-form q">Do … work?</td>
+            </tr>
+            <tr>
+              <td class="ps-strong">He / She / It</td>
+              <td class="ps-form plus">works</td>
+              <td class="ps-form minus">doesn't work</td>
+              <td class="ps-form q">Does … work?</td>
+            </tr>
+            <tr>
+              <td class="ps-strong">Короткий ответ</td>
+              <td>— Yes, I do.</td>
+              <td>— No, I don't.</td>
+              <td>— Yes, she does. / No, she doesn't.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var W = document.getElementById('psWrap');
+
+  /* ===== SPEECH ===== */
+  var speech = (function(){
+    var supported = 'speechSynthesis' in window;
+    var voice = null, enabled = true;
+    function load(){
+      if(!supported) return;
+      var vs = window.speechSynthesis.getVoices() || [];
+      var pref = ['Google UK English Female','Google UK English Male','Daniel','Kate','Serena'];
+      for(var i=0;i<pref.length;i++){
+        voice = vs.find(function(v){return v.name===pref[i];});
+        if(voice) break;
+      }
+      if(!voice) voice = vs.find(function(v){return v.lang && v.lang.replace('_','-').indexOf('en-GB')===0;});
+      if(!voice) voice = vs.find(function(v){return v.lang && v.lang.indexOf('en')===0;});
+    }
+    if(supported){
+      load();
+      if(typeof window.speechSynthesis.onvoiceschanged !== 'undefined'){
+        window.speechSynthesis.onvoiceschanged = load;
+      }
+    }
+    function speak(text, cb){
+      if(!supported || !enabled || !text){ if(cb) cb(); return; }
+      try{ window.speechSynthesis.cancel(); }catch(e){}
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang='en-GB'; u.rate=.9; u.pitch=1; u.volume=1;
+      if(voice) u.voice = voice;
+      u.onend = function(){ if(cb) cb(); };
+      u.onerror = function(){ if(cb) cb(); };
+      window.speechSynthesis.speak(u);
+    }
+    function stop(){ if(supported){ try{ window.speechSynthesis.cancel(); }catch(e){} } }
+    function setEnabled(v){ enabled = !!v; if(!enabled) stop(); }
+    function isEnabled(){ return enabled; }
+    return {supported:supported, speak:speak, stop:stop, setEnabled:setEnabled, isEnabled:isEnabled};
+  })();
+
+  /* ===== Sound toggle ===== */
+  var soundBtn = W.querySelector('#psSound');
+  var soundLbl = W.querySelector('#psSoundLabel');
+  var STOR = 'ps_sound_enabled';
+  try {
+    if(localStorage.getItem(STOR) === '0'){
+      speech.setEnabled(false);
+      soundBtn.classList.remove('on');
+      soundBtn.setAttribute('aria-pressed','false');
+      soundLbl.textContent = 'Звук выключен';
+    }
+  } catch(e){}
+  soundBtn.addEventListener('click', function(){
+    var now = !speech.isEnabled();
+    speech.setEnabled(now);
+    soundBtn.classList.toggle('on', now);
+    soundBtn.setAttribute('aria-pressed', now ? 'true' : 'false');
+    soundLbl.textContent = now ? 'Звук включён' : 'Звук выключен';
+    try{ localStorage.setItem(STOR, now ? '1' : '0'); }catch(e){}
+    if(now) speech.speak('Sound on');
+  });
+  if(!speech.supported){
+    soundBtn.disabled = true;
+    soundBtn.style.opacity = '.5';
+    soundLbl.textContent = 'Озвучка недоступна';
+  }
+
+  /* bind speak buttons */
+  function bindSpeak(scope){
+    (scope||W).querySelectorAll('[data-speak]').forEach(function(b){
+      if(b.dataset.bound) return;
+      b.dataset.bound='1';
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(!speech.isEnabled()) return;
+        var txt = b.getAttribute('data-speak');
+        var was = b.classList.contains('playing');
+        W.querySelectorAll('.ps-say-btn.playing').forEach(function(x){x.classList.remove('playing');});
+        if(was){ speech.stop(); return; }
+        b.classList.add('playing');
+        speech.speak(txt, function(){ b.classList.remove('playing'); });
+      });
+    });
+  }
+  bindSpeak();
+
+  /* ===== DRILL DATA =====
+     Взято из Ex. 89-104 (Матюшкина-Герке), обновлена лексика,
+     добавлены подсказки-объяснения.
+  */
+  var tasks = [
+    {stim:'She ___ at a bookshop.', hint:'утверждение · work', ans:'She works at a bookshop.', why:'He/She/It → глагол + s'},
+    {stim:'He ___ at a bank.', hint:'отрицание · work', ans:"He doesn't work at a bank.", why:"He/She/It → doesn't + глагол"},
+    {stim:'___ she ___ at a bookshop?', hint:'вопрос · work', ans:'Does she work at a bookshop?', why:'Вопрос: Does + she + глагол'},
+    {stim:'They ___ coffee in the morning.', hint:'утверждение · drink', ans:'They drink coffee in the morning.', why:'They → глагол без s'},
+    {stim:'We ___ TV in the evening.', hint:'отрицание · watch', ans:"We don't watch TV in the evening.", why:'We → don\'t + глагол'},
+    {stim:'___ you ___ English books?', hint:'вопрос · read', ans:'Do you read English books?', why:'You → Do + глагол'},
+    {stim:'My brother ___ to the gym every day.', hint:'утверждение · go', ans:'My brother goes to the gym every day.', why:'He → go + es (окончание -es после -o)'},
+    {stim:'She ___ meat.', hint:'отрицание · eat', ans:"She doesn't eat meat.", why:"She → doesn't + eat"},
+    {stim:'___ he ___ in London?', hint:'вопрос · live', ans:'Does he live in London?', why:'He → Does + live'},
+    {stim:'The children ___ in the yard after school.', hint:'утверждение · play', ans:'The children play in the yard after school.', why:'They (children) → play без s'},
+    {stim:'My sister ___ French.', hint:'отрицание · speak', ans:"My sister doesn't speak French.", why:"She (sister) → doesn't + speak"},
+    {stim:'___ they ___ to the cinema on Sundays?', hint:'вопрос · go', ans:'Do they go to the cinema on Sundays?', why:'They → Do + go'}
+  ];
+
+  var idx = 0, score = 0;
+  var stimEl = W.querySelector('#psStim');
+  var hintEl = W.querySelector('#psStimHint');
+  var ansZone = W.querySelector('#psAnsZone');
+  var ansText = W.querySelector('#psAnsText');
+  var numEl = W.querySelector('#psNum');
+  var totalEl = W.querySelector('#psTotal');
+  var scoreEl = W.querySelector('#psScore');
+  var barEl = W.querySelector('#psBar');
+  var scoreRow = W.querySelector('#psScoreRow');
+  var drillEl = W.querySelector('#psDrill');
+  var finalEl = W.querySelector('#psFinal');
+  var finalScore = W.querySelector('#psFinalScore');
+  var finalMsg = W.querySelector('#psFinalMsg');
+
+  var revealBtn = W.querySelector('#psReveal');
+  var okBtn = W.querySelector('#psOk');
+  var noBtn = W.querySelector('#psNo');
+  var nextBtn = W.querySelector('#psNext');
+  var restartBtn = W.querySelector('#psRestart');
+
+  var mode = 'normal';
+  var answered = false;
+  var timer = null, timeLeft = 0;
+
+  totalEl.textContent = tasks.length;
+
+  function renderScoreRow(){
+    scoreRow.innerHTML = '';
+    tasks.forEach(function(t, i){
+      var p = document.createElement('span');
+      p.className = 'ps-pill';
+      p.textContent = (i+1);
+      if(t._result === 'ok') p.classList.add('ok');
+      else if(t._result === 'no') p.classList.add('no');
+      scoreRow.appendChild(p);
+    });
+  }
+
+  function render(){
+    answered = false;
+    var t = tasks[idx];
+    // стимул: заменить ___ на визуальный blank
+    if(mode === 'audio'){
+      stimEl.innerHTML = '<span style="color:#8590ad;font-style:italic;font-weight:700">🔊 Слушайте стимул...</span>';
+      hintEl.textContent = 'Нажмите «Показать ответ» после того, как ответите вслух';
+      // озвучиваем стимул без пропуска
+      var audioText = t.ans.replace(/\.$/, '') + '?';
+      // фактически озвучим правильный ответ — но ученик его ещё не знает,
+      // поэтому озвучим стимул с подсказкой
+      speech.speak(t.ans);
+    } else {
+      stimEl.innerHTML = t.stim.replace(/___/g, '<span class="blank">?</span>');
+      hintEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> ' + t.hint;
+    }
+    ansZone.classList.remove('revealed','wrong');
+    ansText.className = 'ps-answer-text pending';
+    ansText.textContent = mode === 'audio'
+      ? 'Скажите ответ вслух — потом нажмите «Показать»'
+      : 'Скажите ответ вслух — потом нажмите «Показать»';
+    numEl.textContent = idx + 1;
+    barEl.style.width = (idx / tasks.length * 100) + '%';
+    scoreEl.textContent = score;
+
+    revealBtn.style.display = '';
+    revealBtn.disabled = false;
+    okBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+
+    // speed mode
+    if(timer){ clearInterval(timer); timer = null; }
+    var speedTag = W.querySelector('#psSpeedTag');
+    if(speedTag) speedTag.remove();
+    if(mode === 'speed'){
+      timeLeft = 15;
+      var tag = document.createElement('div');
+      tag.id = 'psSpeedTag';
+      tag.style.cssText = 'font-size:15px;font-weight:900;color:#ef7a1a;margin-bottom:14px;padding:10px 16px;background:#fff7e8;border-radius:12px;display:inline-block';
+      tag.textContent = '⏱ Осталось: ' + timeLeft + ' сек';
+      drillEl.insertBefore(tag, stimEl.parentNode);
+      timer = setInterval(function(){
+        timeLeft--;
+        tag.textContent = '⏱ Осталось: ' + timeLeft + ' сек';
+        if(timeLeft <= 0){
+          clearInterval(timer); timer = null;
+          tag.textContent = '⏱ Время вышло';
+          // считаем ошибкой
+          if(!answered){ markAnswer(false, true); }
+        }
+      }, 1000);
+    }
+  }
+
+  function markAnswer(isCorrect, auto){
+    if(answered) return;
+    answered = true;
+    var t = tasks[idx];
+    t._result = isCorrect ? 'ok' : 'no';
+    if(isCorrect) score++;
+    scoreEl.textContent = score;
+
+    ansZone.classList.add('revealed');
+    if(!isCorrect) ansZone.classList.add('wrong');
+    ansText.className = 'ps-answer-text';
+    ansText.innerHTML = t.ans + ' <button class="ps-say-btn" data-speak="' + t.ans + '" aria-label="Прослушать" style="width:30px;height:30px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>';
+    bindSpeak(ansZone);
+    hintEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.5.4.9 1 1 1.6h6c.1-.6.5-1.2 1-1.6A7 7 0 0012 2z"/></svg> ' + t.why;
+
+    // озвучиваем правильный ответ
+    if(speech.isEnabled()) speech.speak(t.ans);
+
+    // обновляем кнопки
+    revealBtn.style.display = 'none';
+    okBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+    nextBtn.style.display = '';
+
+    renderScoreRow();
+
+    if(timer){ clearInterval(timer); timer = null; }
+  }
+
+  revealBtn.addEventListener('click', function(){
+    var t = tasks[idx];
+    ansZone.classList.add('revealed');
+    ansText.className = 'ps-answer-text';
+    ansText.innerHTML = t.ans + ' <button class="ps-say-btn" data-speak="' + t.ans + '" aria-label="Прослушать" style="width:30px;height:30px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></button>';
+    bindSpeak(ansZone);
+    hintEl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.5.4.9 1 1 1.6h6c.1-.6.5-1.2 1-1.6A7 7 0 0012 2z"/></svg> ' + t.why;
+    if(speech.isEnabled()) speech.speak(t.ans);
+    if(timer){ clearInterval(timer); timer = null; }
+    var tag = W.querySelector('#psSpeedTag');
+    if(tag) tag.remove();
+
+    revealBtn.style.display = 'none';
+    okBtn.style.display = '';
+    noBtn.style.display = '';
+    nextBtn.style.display = 'none';
+  });
+
+  okBtn.addEventListener('click', function(){
+    answered = true;
+    var t = tasks[idx];
+    t._result = 'ok';
+    score++;
+    scoreEl.textContent = score;
+    renderScoreRow();
+    // не перезаписываем ansZone
+    okBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+    nextBtn.style.display = '';
+  });
+
+  noBtn.addEventListener('click', function(){
+    answered = true;
+    var t = tasks[idx];
+    t._result = 'no';
+    renderScoreRow();
+    noBtn.style.display = 'none';
+    okBtn.style.display = 'none';
+    nextBtn.style.display = '';
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if(idx < tasks.length - 1){
+      idx++;
+      render();
+    } else {
+      showFinal();
+    }
+  });
+
+  function showFinal(){
+    drillEl.style.display = 'none';
+    finalEl.classList.add('show');
+    finalScore.textContent = score + ' / ' + tasks.length;
+    var ratio = score / tasks.length;
+    var msg;
+    if(ratio === 1) msg = 'Идеально! Формы Present Simple в активном владении. Теперь прогоните ещё раз в режиме «Скорость».';
+    else if(ratio >= .75) msg = 'Хороший результат. Повторите стимулы, где ошиблись — и закрепите в режиме «Скорость».';
+    else if(ratio >= .5) msg = 'Основа есть. Прогоните блок ещё раз: drill работает именно повторением.';
+    else msg = 'Не сдавайтесь. Вернитесь к модели и шпаргалке, потом прогоните снова — с каждым разом будет легче.';
+    finalMsg.textContent = msg;
+  }
+
+  restartBtn.addEventListener('click', function(){
+    idx = 0; score = 0;
+    tasks.forEach(function(t){ delete t._result; });
+    scoreEl.textContent = '0';
+    finalEl.classList.remove('show');
+    drillEl.style.display = 'block';
+    renderScoreRow();
+    render();
+  });
+
+  /* ===== MODES ===== */
+  W.querySelectorAll('.ps-mode').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      W.querySelectorAll('.ps-mode').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      mode = btn.dataset.mode;
+      idx = 0; score = 0;
+      tasks.forEach(function(t){ delete t._result; });
+      scoreEl.textContent = '0';
+      finalEl.classList.remove('show');
+      drillEl.style.display = 'block';
+      renderScoreRow();
+      render();
+    });
+  });
+
+  /* init */
+  renderScoreRow();
+  render();
+
+})();
+</script>
+</div>

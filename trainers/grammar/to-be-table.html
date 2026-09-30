@@ -1,0 +1,524 @@
+<div class="tb-wrap" id="tbWrap">
+  <style>
+    .tb-wrap{all:initial;display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(180deg,#f8faff 0%,#f2f5fc 100%);color:#1e2740;padding:56px 16px;line-height:1.5;-webkit-font-smoothing:antialiased;box-sizing:border-box;width:100%;overflow:hidden}
+    .tb-wrap *,.tb-wrap *::before,.tb-wrap *::after{box-sizing:border-box;margin:0;padding:0;font-family:inherit}
+    .tb-inner{max-width:960px;margin:0 auto}
+    .tb-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e3e9f7;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;color:#5b6cff;box-shadow:0 2px 8px rgba(30,39,64,.06)}
+    .tb-h1{font-size:clamp(28px,5vw,42px);font-weight:800;margin:18px 0 10px;letter-spacing:-.02em}
+    .tb-h1 span{background:linear-gradient(90deg,#5b6cff,#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tb-sub{font-size:16px;color:#5d6a8a;max-width:640px}
+    .tb-sec{margin-top:48px}
+    .tb-sec-title{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800;margin-bottom:6px}
+    .tb-sec-num{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#5b6cff,#7c8cff);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;box-shadow:0 4px 12px rgba(91,108,255,.35);flex:none}
+    .tb-sec-hint{font-size:14px;color:#7b87a6;margin-bottom:20px}
+    .tb-card{background:#fff;border:1px solid #e7ecf8;border-radius:20px;box-shadow:0 8px 30px rgba(30,39,64,.07);padding:26px}
+    /* map */
+    .tb-map{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tb-form{border-radius:18px;padding:20px 16px;text-align:center;border:2px solid #eef1fa;background:#fbfcff;transition:all .35s cubic-bezier(.2,.8,.3,1)}
+    .tb-form.tb-on{transform:translateY(-4px)}
+    .tb-form.tb-on.tb-am{border-color:#5b6cff;background:#f0f2ff;box-shadow:0 10px 24px rgba(91,108,255,.22)}
+    .tb-form.tb-on.tb-is{border-color:#14b8a6;background:#ecfdf9;box-shadow:0 10px 24px rgba(20,184,166,.22)}
+    .tb-form.tb-on.tb-are{border-color:#f59e0b;background:#fffbeb;box-shadow:0 10px 24px rgba(245,158,11,.22)}
+    .tb-form-word{font-size:30px;font-weight:800;letter-spacing:-.02em}
+    .tb-am .tb-form-word{color:#5b6cff}.tb-is .tb-form-word{color:#0d9488}.tb-are .tb-form-word{color:#d97706}
+    .tb-pros{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+    .tb-pro{border:1.5px solid #dde4f5;background:#fff;color:#33406b;border-radius:999px;padding:7px 15px;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s}
+    .tb-pro:hover{transform:translateY(-2px);border-color:#aab6e8}
+    .tb-pro.tb-sel{color:#fff;border-color:transparent}
+    .tb-am .tb-pro.tb-sel{background:#5b6cff}.tb-is .tb-pro.tb-sel{background:#14b8a6}.tb-are .tb-pro.tb-sel{background:#f59e0b}
+    .tb-live{margin-top:18px;background:#fff;border:1px dashed #ccd6ef;border-radius:16px;padding:16px 20px;display:flex;align-items:center;gap:14px;min-height:64px}
+    .tb-live svg{flex:none}
+    .tb-live-txt{font-size:17px;font-weight:600}
+    .tb-live-txt b{padding:2px 8px;border-radius:8px;background:#eef1ff;color:#5b6cff}
+    .tb-live-ru{font-size:13px;color:#8590ad;margin-top:2px}
+    /* tabs */
+    .tb-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+    .tb-tab{border:1.5px solid #dde4f5;background:#fff;border-radius:12px;padding:9px 18px;font-size:14px;font-weight:700;color:#5d6a8a;cursor:pointer;transition:all .25s}
+    .tb-tab.tb-act{background:linear-gradient(135deg,#5b6cff,#7c8cff);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(91,108,255,.3)}
+    .tb-tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:15px}
+    .tb-tbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#8590ad;padding:10px 14px;border-bottom:2px solid #eef1fa}
+    .tb-tbl td{padding:13px 14px;border-bottom:1px solid #f0f3fb}
+    .tb-tbl tr:last-child td{border-bottom:none}
+    .tb-tbl .tb-strong{font-weight:800}
+    .tb-chip{display:inline-block;padding:2px 10px;border-radius:8px;font-weight:800;font-size:14px}
+    .tb-chip.c-am{background:#eef1ff;color:#5b6cff}.tb-chip.c-is{background:#e6faf6;color:#0d9488}.tb-chip.c-are{background:#fef6e4;color:#d97706}
+    .tb-ex-txt{color:#5d6a8a;font-size:14px}
+    /* accordion */
+    .tb-acc{background:#fff;border:1px solid #e7ecf8;border-radius:16px;margin-bottom:12px;box-shadow:0 4px 14px rgba(30,39,64,.05);overflow:hidden}
+    .tb-acc summary{list-style:none;cursor:pointer;padding:18px 22px;font-weight:700;font-size:16px;display:flex;align-items:center;gap:12px;user-select:none}
+    .tb-acc summary::-webkit-details-marker{display:none}
+    .tb-acc-ic{flex:none;transition:transform .3s}
+    .tb-acc[open] .tb-acc-ic{transform:rotate(90deg)}
+    .tb-acc-body{padding:0 22px 20px 58px;color:#4a5878;font-size:15px}
+    .tb-acc-body code{background:#f0f3fb;border-radius:6px;padding:2px 7px;font-weight:700;color:#33406b;font-family:inherit}
+    /* mistakes */
+    .tb-mist{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .tb-mist-card{background:#fff;border:1px solid #e7ecf8;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(30,39,64,.05)}
+    .tb-wrong{color:#e11d48;font-weight:700;font-size:15px;text-decoration:line-through;text-decoration-thickness:2px}
+    .tb-right{color:#059669;font-weight:800;font-size:16px;margin-top:6px}
+    .tb-why{font-size:13px;color:#8590ad;margin-top:8px}
+    /* flashcards */
+    .tb-fc-zone{display:flex;flex-direction:column;align-items:center;gap:18px}
+    .tb-fc{width:100%;max-width:440px;height:190px;perspective:1200px;cursor:pointer}
+    .tb-fc-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.8,.3,1);transform-style:preserve-3d}
+    .tb-fc.tb-flip .tb-fc-in{transform:rotateY(180deg)}
+    .tb-fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center}
+    .tb-fc-front{background:#fff;border:2px solid #e7ecf8;box-shadow:0 10px 30px rgba(30,39,64,.1)}
+    .tb-fc-back{background:linear-gradient(135deg,#5b6cff,#14b8a6);color:#fff;transform:rotateY(180deg);box-shadow:0 10px 30px rgba(91,108,255,.3)}
+    .tb-fc-q{font-size:22px;font-weight:800}
+    .tb-fc-tip{font-size:12px;color:#8590ad;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+    .tb-fc-back .tb-fc-tip{color:rgba(255,255,255,.75)}
+    .tb-fc-nav{display:flex;align-items:center;gap:16px}
+    .tb-btn{border:none;border-radius:12px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;background:#fff;border:1.5px solid #dde4f5;color:#33406b}
+    .tb-btn:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(30,39,64,.1)}
+    .tb-btn-main{background:linear-gradient(135deg,#5b6cff,#7c8cff);color:#fff;border:none;box-shadow:0 6px 16px rgba(91,108,255,.3)}
+    .tb-fc-cnt{font-size:13px;font-weight:700;color:#8590ad}
+    /* quiz */
+    .tb-qz-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+    .tb-qz-progress{height:8px;background:#eef1fa;border-radius:99px;overflow:hidden;margin-bottom:22px}
+    .tb-qz-bar{height:100%;width:0;background:linear-gradient(90deg,#5b6cff,#14b8a6);border-radius:99px;transition:width .4s cubic-bezier(.2,.8,.3,1)}
+    .tb-qz-q{font-size:20px;font-weight:800;margin-bottom:18px}
+    .tb-qz-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .tb-opt{border:2px solid #e7ecf8;background:#fbfcff;border-radius:14px;padding:15px;font-size:17px;font-weight:800;cursor:pointer;transition:all .25s;color:#33406b}
+    .tb-opt:hover:not(:disabled){border-color:#aab6e8;transform:translateY(-2px)}
+    .tb-opt.tb-ok{border-color:#10b981;background:#ecfdf5;color:#059669}
+    .tb-opt.tb-no{border-color:#f43f5e;background:#fff1f2;color:#e11d48;animation:tbshake .4s}
+    @keyframes tbshake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .tb-qz-fb{margin-top:16px;padding:14px 18px;border-radius:14px;font-size:14px;font-weight:600;display:none}
+    .tb-qz-fb.tb-show{display:block;animation:tbfade .35s}
+    .tb-qz-fb.f-ok{background:#ecfdf5;color:#065f46}.tb-qz-fb.f-no{background:#fff1f2;color:#9f1239}
+    @keyframes tbfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .tb-qz-next{margin-top:16px;display:none}
+    .tb-qz-result{text-align:center;padding:20px 0;display:none}
+    .tb-qz-score{font-size:44px;font-weight:800;background:linear-gradient(90deg,#5b6cff,#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tb-qz-msg{font-size:16px;color:#5d6a8a;margin:8px 0 20px}
+    .tb-stars{margin-bottom:6px}
+    @media(max-width:720px){.tb-wrap{padding:40px 12px}.tb-map{grid-template-columns:1fr}.tb-mist{grid-template-columns:1fr}.tb-qz-opts{grid-template-columns:1fr}.tb-card{padding:20px 16px}.tb-acc-body{padding-left:22px}.tb-tbl{font-size:14px}.tb-tbl th,.tb-tbl td{padding:10px 8px}}
+  </style>
+  <div class="tb-inner">
+    <div class="tb-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 2l2.4 6.4L21 9l-5 4.4L17.5 20 12 16.4 6.5 20 8 13.4 3 9l6.6-.6L12 2z"
+          fill="#5b6cff"
+        /></svg
+      >English Grammar · Beginner
+    </div>
+    <h1 class="tb-h1">Глагол <span>to be</span> за 10 минут</h1>
+    <p class="tb-sub">
+      Интерактивная схема: изучите спряжение, потренируйтесь на карточках и
+      проверьте себя в квизе. Нажимайте, переворачивайте, отвечайте — так
+      грамматика запоминается сама.
+    </p>
+
+    <!-- 1. MAP -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">1</span>Схема спряжения
+      </div>
+      <p class="tb-sec-hint">
+        Нажмите на местоимение — форма подсветится, а ниже появится живой
+        пример.
+      </p>
+      <div class="tb-card">
+        <div class="tb-map">
+          <div class="tb-form tb-am" id="f-am">
+            <div class="tb-form-word">am</div>
+            <div class="tb-pros">
+              <button
+                class="tb-pro"
+                data-f="am"
+                data-en="I |am| a student."
+                data-ru="Я студент."
+              >
+                I
+              </button>
+            </div>
+          </div>
+          <div class="tb-form tb-is" id="f-is">
+            <div class="tb-form-word">is</div>
+            <div class="tb-pros">
+              <button
+                class="tb-pro"
+                data-f="is"
+                data-en="He |is| my brother."
+                data-ru="Он мой брат."
+              >
+                He</button
+              ><button
+                class="tb-pro"
+                data-f="is"
+                data-en="She |is| a doctor."
+                data-ru="Она врач."
+              >
+                She</button
+              ><button
+                class="tb-pro"
+                data-f="is"
+                data-en="It |is| a sunny day."
+                data-ru="Сегодня солнечный день."
+              >
+                It
+              </button>
+            </div>
+          </div>
+          <div class="tb-form tb-are" id="f-are">
+            <div class="tb-form-word">are</div>
+            <div class="tb-pros">
+              <button
+                class="tb-pro"
+                data-f="are"
+                data-en="You |are| my friend."
+                data-ru="Ты мой друг."
+              >
+                You</button
+              ><button
+                class="tb-pro"
+                data-f="are"
+                data-en="We |are| at home."
+                data-ru="Мы дома."
+              >
+                We</button
+              ><button
+                class="tb-pro"
+                data-f="are"
+                data-en="They |are| happy."
+                data-ru="Они счастливы."
+              >
+                They
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="tb-live" id="tbLive">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#eef1ff" />
+            <path
+              d="M9 12l2 2 4-4"
+              stroke="#5b6cff"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <div>
+            <div class="tb-live-txt" id="tbLiveEn">
+              Нажмите на любое местоимение выше 👆
+            </div>
+            <div class="tb-live-ru" id="tbLiveRu">Пример появится здесь</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. FORMS -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">2</span>Три формы: + − ?
+      </div>
+      <p class="tb-sec-hint">
+        Переключайте вкладки: утверждение, отрицание и вопрос.
+      </p>
+      <div class="tb-card">
+        <div class="tb-tabs">
+          <button class="tb-tab tb-act" data-t="0">➕ Утверждение</button
+          ><button class="tb-tab" data-t="1">➖ Отрицание</button
+          ><button class="tb-tab" data-t="2">❓ Вопрос</button>
+        </div>
+        <div id="tbTabBody"></div>
+      </div>
+    </div>
+
+    <!-- 3. RULES -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">3</span>Правила и лайфхаки
+      </div>
+      <p class="tb-sec-hint">Раскройте карточки — коротко и по делу.</p>
+      <details class="tb-acc" open>
+        <summary>
+          <svg
+            class="tb-acc-ic"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="#5b6cff"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >🎯 Когда нужен to be
+        </summary>
+        <div class="tb-acc-body">
+          Когда описываем <b>кто/какой/где</b> кто-то есть — без другого глагола
+          действия: профессия (<code>She is a teacher</code>), состояние (<code
+            >I am tired</code
+          >), место (<code>We are at home</code>), возраст (<code>He is 10</code
+          >).
+        </div>
+      </details>
+      <details class="tb-acc">
+        <summary>
+          <svg
+            class="tb-acc-ic"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="#5b6cff"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >✂️ Сокращения
+        </summary>
+        <div class="tb-acc-body">
+          В речи почти всегда сокращаем: <code>I'm</code>,
+          <code>he's / she's / it's</code>,
+          <code>you're / we're / they're</code>. Отрицания: <code>isn't</code>,
+          <code>aren't</code>. Внимание: <code>am not</code> не сокращается до
+          «amn't» — только <code>I'm not</code>.
+        </div>
+      </details>
+      <details class="tb-acc">
+        <summary>
+          <svg
+            class="tb-acc-ic"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="#5b6cff"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >➖ Как строить отрицание
+        </summary>
+        <div class="tb-acc-body">
+          Просто добавьте <code>not</code> после формы to be:
+          <code>She is not (isn't) here.</code> ·
+          <code>They are not (aren't) ready.</code> Никаких don't/doesn't с to
+          be!
+        </div>
+      </details>
+      <details class="tb-acc">
+        <summary>
+          <svg
+            class="tb-acc-ic"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="#5b6cff"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >❓ Как задать вопрос
+        </summary>
+        <div class="tb-acc-body">
+          Поменяйте to be и подлежащее местами: <code>You are ready</code> →
+          <code>Are you ready?</code> · <code>He is at work</code> →
+          <code>Is he at work?</code>
+        </div>
+      </details>
+      <details class="tb-acc">
+        <summary>
+          <svg
+            class="tb-acc-ic"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="#5b6cff"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            /></svg
+          >🧠 Мнемоника для запоминания
+        </summary>
+        <div class="tb-acc-body">
+          Запомните рифму:
+          <b
+            >«I am, he is, she is, it is — you are, we are, they are —
+            легко!»</b
+          >
+          И правило одного: один человек (кроме I и you) → <code>is</code>,
+          много → <code>are</code>, я → <code>am</code>.
+        </div>
+      </details>
+    </div>
+
+    <!-- 4. MISTAKES -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">4</span>Типичные ошибки
+      </div>
+      <p class="tb-sec-hint">Так говорить нельзя — а вот как правильно.</p>
+      <div class="tb-mist">
+        <div class="tb-mist-card">
+          <div class="tb-wrong">❌ I is happy</div>
+          <div class="tb-right">✅ I am happy</div>
+          <div class="tb-why">С «I» — всегда только am.</div>
+        </div>
+        <div class="tb-mist-card">
+          <div class="tb-wrong">❌ He are tall</div>
+          <div class="tb-right">✅ He is tall</div>
+          <div class="tb-why">He / She / It — всегда is.</div>
+        </div>
+        <div class="tb-mist-card">
+          <div class="tb-wrong">❌ They is students</div>
+          <div class="tb-right">✅ They are students</div>
+          <div class="tb-why">Множественное число — are.</div>
+        </div>
+        <div class="tb-mist-card">
+          <div class="tb-wrong">❌ You is right</div>
+          <div class="tb-right">✅ You are right</div>
+          <div class="tb-why">You — всегда are, даже про одного человека.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. FLASHCARDS -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">5</span>Быстрый повтор
+      </div>
+      <p class="tb-sec-hint">
+        Подумайте, какая форма пропущена, и нажмите на карточку, чтобы проверить
+        себя.
+      </p>
+      <div class="tb-card tb-fc-zone">
+        <div class="tb-fc" id="tbFc">
+          <div class="tb-fc-in">
+            <div class="tb-fc-face tb-fc-front">
+              <div class="tb-fc-tip">Заполните пропуск</div>
+              <div class="tb-fc-q" id="fcFront"></div>
+              <div class="tb-fc-tip">👆 нажмите, чтобы перевернуть</div>
+            </div>
+            <div class="tb-fc-face tb-fc-back">
+              <div class="tb-fc-tip">Ответ</div>
+              <div class="tb-fc-q" id="fcBack"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tb-fc-nav">
+          <button class="tb-btn" id="fcPrev">← Назад</button
+          ><span class="tb-fc-cnt" id="fcCnt"></span
+          ><button class="tb-btn tb-btn-main" id="fcNext">Дальше →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. QUIZ -->
+    <div class="tb-sec">
+      <div class="tb-sec-title">
+        <span class="tb-sec-num">6</span>Квиз: проверьте себя
+      </div>
+      <p class="tb-sec-hint">
+        8 вопросов. Отвечайте — объяснение появится сразу.
+      </p>
+      <div class="tb-card">
+        <div id="tbQuiz">
+          <div class="tb-qz-head">
+            <span class="tb-fc-cnt" id="qzStep"></span
+            ><span class="tb-fc-cnt" id="qzScoreLive">⭐ 0 баллов</span>
+          </div>
+          <div class="tb-qz-progress">
+            <div class="tb-qz-bar" id="qzBar"></div>
+          </div>
+          <div class="tb-qz-q" id="qzQ"></div>
+          <div class="tb-qz-opts" id="qzOpts"></div>
+          <div class="tb-qz-fb" id="qzFb"></div>
+          <button class="tb-btn tb-btn-main tb-qz-next" id="qzNext">
+            Следующий вопрос →
+          </button>
+        </div>
+        <div class="tb-qz-result" id="qzRes">
+          <div class="tb-stars" id="qzStars"></div>
+          <div class="tb-qz-score" id="qzScore"></div>
+          <div class="tb-qz-msg" id="qzMsg"></div>
+          <button class="tb-btn tb-btn-main" id="qzRestart">
+            Пройти ещё раз 🔄
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+    var W=document.getElementById('tbWrap');
+    /* MAP */
+    var pros=W.querySelectorAll('.tb-pro'),liveEn=W.querySelector('#tbLiveEn'),liveRu=W.querySelector('#tbLiveRu');
+    pros.forEach(function(p){p.addEventListener('click',function(){
+    pros.forEach(function(x){x.classList.remove('tb-sel')});
+    W.querySelectorAll('.tb-form').forEach(function(f){f.classList.remove('tb-on')});
+    p.classList.add('tb-sel');
+    W.querySelector('#f-'+p.dataset.f).classList.add('tb-on');
+    liveEn.innerHTML=p.dataset.en.replace(/\|(.+?)\|/,'<b>$1</b>');
+    liveRu.textContent=p.dataset.ru;
+    });});
+    /* TABS */
+    var tabs=[
+    "<table class='tb-tbl'><tr><th>Кто</th><th>Форма</th><th>Пример</th></tr><tr><td class='tb-strong'>I</td><td><span class='tb-chip c-am'>am</span></td><td>I am a student. <span class='tb-ex-txt'>(I'm)</span></td></tr><tr><td class='tb-strong'>He / She / It</td><td><span class='tb-chip c-is'>is</span></td><td>She is from London. <span class='tb-ex-txt'>(She's)</span></td></tr><tr><td class='tb-strong'>You / We / They</td><td><span class='tb-chip c-are'>are</span></td><td>They are happy. <span class='tb-ex-txt'>(They're)</span></td></tr></table>",
+    "<table class='tb-tbl'><tr><th>Кто</th><th>Форма</th><th>Пример</th></tr><tr><td class='tb-strong'>I</td><td><span class='tb-chip c-am'>am not</span></td><td>I am not tired. <span class='tb-ex-txt'>(I'm not)</span></td></tr><tr><td class='tb-strong'>He / She / It</td><td><span class='tb-chip c-is'>is not</span></td><td>It is not cold. <span class='tb-ex-txt'>(isn't)</span></td></tr><tr><td class='tb-strong'>You / We / They</td><td><span class='tb-chip c-are'>are not</span></td><td>We are not late. <span class='tb-ex-txt'>(aren't)</span></td></tr></table>",
+    "<table class='tb-tbl'><tr><th>Форма</th><th>Вопрос</th><th>Ответ</th></tr><tr><td><span class='tb-chip c-am'>Am</span></td><td class='tb-strong'>Am I right?</td><td class='tb-ex-txt'>Yes, you are. / No, you aren't.</td></tr><tr><td><span class='tb-chip c-is'>Is</span></td><td class='tb-strong'>Is he at home?</td><td class='tb-ex-txt'>Yes, he is. / No, he isn't.</td></tr><tr><td><span class='tb-chip c-are'>Are</span></td><td class='tb-strong'>Are you ready?</td><td class='tb-ex-txt'>Yes, I am. / No, I'm not.</td></tr></table>"];
+    var tabBody=W.querySelector('#tbTabBody'),tabBtns=W.querySelectorAll('.tb-tab');
+    function setTab(i){tabBody.innerHTML=tabs[i];tabBtns.forEach(function(b,j){b.classList.toggle('tb-act',j==i)});}
+    tabBtns.forEach(function(b){b.addEventListener('click',function(){setTab(+b.dataset.t)})});setTab(0);
+    /* FLASHCARDS */
+    var cards=[["I ___ ready.","I am ready. · I → am"],["___ they at school?","Are they at school? · they → are"],["She ___ not tired.","She is not (isn't) tired. · she → is"],["You ___ my best friend.","You are my best friend. · you → are"],["It ___ a sunny day.","It is a sunny day. · it → is"],["We ___ not late.","We are not (aren't) late. · we → are"]];
+    var fci=0,fc=W.querySelector('#tbFc'),fF=W.querySelector('#fcFront'),fB=W.querySelector('#fcBack'),fC=W.querySelector('#fcCnt');
+    function showFc(){fc.classList.remove('tb-flip');setTimeout(function(){fF.textContent=cards[fci][0];fB.textContent=cards[fci][1];fC.textContent=(fci+1)+' / '+cards.length;},fc.classList.contains('tb-flip')?300:0);fF.textContent=cards[fci][0];fB.textContent=cards[fci][1];fC.textContent=(fci+1)+' / '+cards.length;}
+    fc.addEventListener('click',function(){fc.classList.toggle('tb-flip')});
+    W.querySelector('#fcNext').addEventListener('click',function(){fci=(fci+1)%cards.length;showFc()});
+    W.querySelector('#fcPrev').addEventListener('click',function(){fci=(fci-1+cards.length)%cards.length;showFc()});
+    showFc();
+    /* QUIZ */
+    var qs=[
+    {q:"I ___ a student.",o:["am","is","are"],c:0,e:"С «I» всегда am: I am a student."},
+    {q:"She ___ from London.",o:["am","is","are"],c:1,e:"She — один человек → is."},
+    {q:"They ___ happy.",o:["am","is","are"],c:2,e:"They — много → are."},
+    {q:"___ you tired?",o:["Am","Is","Are"],c:2,e:"You всегда идёт с are: Are you tired?"},
+    {q:"It ___ not cold today.",o:["am","is","are"],c:1,e:"It → is. Отрицание: it isn't cold."},
+    {q:"We ___ good friends.",o:["am","is","are"],c:2,e:"We — множественное число → are."},
+    {q:"He ___ at home now.",o:["am","is","are"],c:1,e:"He / She / It → is."},
+    {q:"My parents ___ doctors.",o:["am","is","are"],c:2,e:"My parents = they → are."}];
+    var qi=0,score=0,locked=false;
+    var qQ=W.querySelector('#qzQ'),qO=W.querySelector('#qzOpts'),qF=W.querySelector('#qzFb'),qN=W.querySelector('#qzNext'),qB=W.querySelector('#qzBar'),qS=W.querySelector('#qzStep'),qSL=W.querySelector('#qzScoreLive'),qzBox=W.querySelector('#tbQuiz'),qzRes=W.querySelector('#qzRes');
+    function renderQ(){locked=false;var q=qs[qi];qQ.textContent=(qi+1)+'. '+q.q;qS.textContent='Вопрос '+(qi+1)+' из '+qs.length;qB.style.width=(qi/qs.length*100)+'%';qF.className='tb-qz-fb';qN.style.display='none';qO.innerHTML='';
+    q.o.forEach(function(opt,idx){var b=document.createElement('button');b.className='tb-opt';b.textContent=opt;b.addEventListener('click',function(){if(locked)return;locked=true;
+    if(idx===q.c){b.classList.add('tb-ok');score++;qF.textContent='✅ Верно! '+q.e;qF.className='tb-qz-fb tb-show f-ok';}
+    else{b.classList.add('tb-no');qO.children[q.c].classList.add('tb-ok');qF.textContent='❌ Не совсем. '+q.e;qF.className='tb-qz-fb tb-show f-no';}
+    qSL.textContent='⭐ '+score+(score==1?' балл':score<5&&score>0?' балла':' баллов');
+    qB.style.width=((qi+1)/qs.length*100)+'%';
+    qN.style.display='inline-block';qN.textContent=qi<qs.length-1?'Следующий вопрос →':'Показать результат 🏁';
+    });qO.appendChild(b);});}
+    qN.addEventListener('click',function(){if(qi<qs.length-1){qi++;renderQ();}else{qzBox.style.display='none';qzRes.style.display='block';
+    W.querySelector('#qzScore').textContent=score+' / '+qs.length;
+    var stars=Math.max(1,Math.round(score/qs.length*5)),s='';for(var i=0;i<5;i++){s+="<svg width='30' height='30' viewBox='0 0 24 24' style='margin:0 2px'><path d='M12 2l2.6 6.6L21.5 9.2l-5.2 4.6L17.9 21 12 17.2 6.1 21l1.6-7.2L2.5 9.2l6.9-.6L12 2z' fill='"+(i<stars?'#f59e0b':'#e5e9f5')+"'/></svg>";}
+    W.querySelector('#qzStars').innerHTML=s;
+    var msg=score===qs.length?'Идеально! Вы полностью освоили to be 🎉':score>=6?'Отличный результат! Ещё чуть-чуть до идеала 💪':score>=4?'Хорошее начало! Загляните в правила выше и попробуйте снова 📖':'Не сдавайтесь! Пересмотрите схему спряжения и повторите квиз 🚀';
+    W.querySelector('#qzMsg').textContent=msg;}});
+    W.querySelector('#qzRestart').addEventListener('click',function(){qi=0;score=0;qSL.textContent='⭐ 0 баллов';qzRes.style.display='none';qzBox.style.display='block';renderQ();});
+    renderQ();
+    })();
+  </script>
+</div>
