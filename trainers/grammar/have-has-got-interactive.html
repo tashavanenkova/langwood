@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Have got / Has got — интерактивный тренажёр | LangWood</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKCRWCMYTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PKCRWCMYTH');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113252697', 'ym');
+
+    ym(113252697, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113252697" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta name="description" content="Интерактивный тренажёр Have got / Has got: 4 режима — утверждение, отрицание, вопросы, wh-слова. 32 задания с озвучкой плюс Worksheet.">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <meta property="og:title" content="Have got / Has got — интерактивный тренажёр | LangWood">
+    <meta property="og:description" content="4 режима, 32 задания с озвучкой, плюс Worksheet из 3 упражнений. Уровни A1–A2.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            "name": "Have got / Has got — интерактивный тренажёр",
+            "description": "Интерактивный тренажёр для отработки конструкции have got / has got в 4 режимах и Worksheet из 3 упражнений.",
+            "educationalLevel": ["A1", "A2"],
+            "teaches": "Английская грамматика: have got / has got",
+            "inLanguage": ["en", "ru"],
+            "provider": {
+                "@type": "EducationalOrganization",
+                "name": "LangWood",
+                "founder": {
+                    "@type": "Person",
+                    "jobTitle": "Преподаватель английского языка",
+                    "description": "30 лет опыта преподавания"
+                }
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [{
+                "@type": "Question",
+                "name": "Чем этот тренажёр отличается от других?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Тренажёр охватывает сразу 4 режима: утверждение, отрицание, вопросы и wh-слова. Плюс внизу страницы — Worksheet из 3 упражнений с постепенным усложнением."
+                }
+            }, {
+                "@type": "Question",
+                "name": "Для какого уровня подходит?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Тренажёр рассчитан на уровни A1–A2. Подойдёт школьникам, начинающим взрослым и всем, кто хочет закрепить конструкцию have got / has got."
+                }
+            }]
+        }
+    </script>
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --accent: #7b2d3b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.6;
+        }
+
+        /* ШАПКА */
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .lw-logo-wrapper { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+        .lw-logo { text-decoration: none; color: var(--lw-ivory); font-size: 28px; font-weight: 700; letter-spacing: .02em; }
+        .lw-logo:hover { opacity: .85; }
+        .lw-slogan { color: var(--lw-ivory); font-size: 16px; font-weight: 300; font-style: italic; opacity: .7; }
+        .lw-nav { display: flex; align-items: center; gap: 4px; list-style: none; flex-wrap: wrap; }
+        .lw-nav-link { color: var(--lw-ivory); text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: background .2s; }
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+        .lw-burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 4px; }
+        .lw-burger span { display: block; width: 22px; height: 2px; background: var(--lw-ivory); border-radius: 2px; }
+        @media (max-width: 900px) { .lw-slogan { display: none; } }
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        /* ХЛЕБНЫЕ КРОШКИ */
+        .lw-breadcrumbs { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; font-size: 13px; color: #8a8a92; }
+        .lw-breadcrumbs a { color: var(--lw-teal); text-decoration: none; }
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+        .lw-breadcrumbs span { margin: 0 6px; color: #c0c0c8; }
+        .lw-breadcrumbs .lw-current { color: #6a6a72; font-weight: 500; }
+
+        /* ОСНОВНОЙ КОНТЕНТ */
+        .lw-main { max-width: 1200px; margin: 0 auto; padding: 16px 20px 48px; }
+
+        .lw-seo { max-width: 800px; margin: 0 auto 24px; font-size: 15px; color: #5c5c66; line-height: 1.7; }
+        .lw-seo details { background: #ffffff; border: 1px solid rgba(0,128,128,.2); border-radius: 12px; padding: 0; overflow: hidden; }
+        .lw-seo summary { cursor: pointer; padding: 14px 20px; font-weight: 600; color: var(--lw-teal); font-size: 15px; list-style: none; position: relative; user-select: none; }
+        .lw-seo summary::after { content: '▼'; position: absolute; right: 20px; font-size: 12px; transition: transform .3s; }
+        .lw-seo details[open] summary::after { transform: rotate(180deg); }
+        .lw-seo .lw-seo-content { padding: 0 20px 20px; color: #5c5c66; font-size: 14px; }
+        .lw-seo .lw-seo-content h3 { font-size: 16px; color: var(--lw-ink); margin: 16px 0 8px; }
+        .lw-seo .lw-seo-content p { margin-bottom: 12px; }
+
+        /* РАЗДЕЛИТЕЛЬ */
+        .lw-divider { margin: 48px 0; text-align: center; color: #c5a456; font-size: 24px; letter-spacing: .5em; }
+
+        /* БЛОК-ПРИГЛАШЕНИЕ К WORKSHEET */
+        .lw-ws-invite {
+            max-width: 800px;
+            margin: 0 auto 32px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .lw-ws-invite-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: #b98a3c;
+            background: rgba(197,164,86,.12);
+            border: 1px solid rgba(197,164,86,.4);
+            padding: 8px 18px;
+            border-radius: 100px;
+            margin-bottom: 18px;
+        }
+        .lw-ws-invite h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            color: #0b2a6b;
+            margin-bottom: 14px;
+        }
+        .lw-ws-invite h2 em {
+            font-style: italic;
+            color: #e88c00;
+        }
+        .lw-ws-invite p {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            line-height: 1.6;
+            color: #4a5f8a;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* ПОХОЖИЕ ТРЕНАЖЁРЫ */
+        .lw-related { max-width: 1200px; margin: 48px auto 0; padding: 0 20px; }
+        .lw-related-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .lw-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .lw-related-card { background: #ffffff; border: 1px solid rgba(0,128,128,.15); border-radius: 16px; padding: 20px; text-decoration: none; color: var(--lw-ink); transition: box-shadow .2s, transform .2s; }
+        .lw-related-card:hover { box-shadow: 0 8px 20px rgba(0,128,128,.1); transform: translateY(-2px); }
+        .lw-related-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--lw-teal); }
+        .lw-related-card p { font-size: 14px; color: #6a6a72; }
+        @media (max-width: 760px) { .lw-related-grid { grid-template-columns: 1fr; } }
+
+        /* ВСЕ ТРЕНАЖЁРЫ */
+        .lw-links-block { max-width: 1200px; margin: 32px auto 0; padding: 0 20px; }
+        .lw-links-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+        .lw-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+        .lw-links-list a { color: var(--lw-teal); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 16px; border: 1px solid rgba(0,128,128,.3); border-radius: 999px; transition: background .2s, color .2s; }
+        .lw-links-list a:hover { background: var(--lw-teal); color: #ffffff; }
+
+        /* КНОПКА НАВЕРХ */
+        .lw-to-top { position: fixed; bottom: 24px; left: 24px; width: 44px; height: 44px; background: var(--lw-teal); color: #ffffff; border: none; border-radius: 50%; cursor: pointer; font-size: 20px; opacity: 0; pointer-events: none; transition: opacity .3s, transform .2s; z-index: 900; }
+        .lw-to-top.is-visible { opacity: 1; pointer-events: auto; }
+
+        /* ПОДВАЛ */
+        .lw-footer { background: var(--lw-teal); color: #ffffff; padding: 48px 24px 32px; margin-top: 24px; }
+        .lw-footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; }
+        .lw-footer-logo { font-size: 28px; color: #ffffff; text-decoration: none; font-weight: 700; }
+        .lw-footer-text { font-size: 14px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: #ffffff; text-decoration: none; font-size: 14px; opacity: .75; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+        @media (max-width: 900px) { .lw-footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 24px; }
+        }
+
+        /* ===== НЕБЕСНЫЙ ТРЕНАЖЁР ===== */
+        #hgt {
+            all: initial;
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        #hgt *, #hgt *::before, #hgt *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        #hgt .hgt-stage { position: relative; overflow: hidden; border-radius: 28px; background: linear-gradient(175deg,#0b2a6b 0%,#1d4fb8 34%,#4f8ee8 62%,#a7d3ff 88%,#eaf6ff 100%); box-shadow: 0 24px 60px rgba(13,42,107,.35), inset 0 1px 0 rgba(255,255,255,.25); isolation: isolate; }
+        #hgt .hgt-sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+        #hgt .hgt-sun { position: absolute; top: -70px; right: -70px; width: 240px; height: 240px; }
+        #hgt .hgt-cloud { position: absolute; will-change: transform; opacity: .95; filter: drop-shadow(0 14px 24px rgba(11,42,107,.25)); }
+        #hgt .hgt-c1 { top: 8%; width: 220px; animation: hgtDrift 46s linear infinite; }
+        #hgt .hgt-c2 { top: 26%; width: 150px; opacity: .8; animation: hgtDrift 64s linear infinite; animation-delay: -22s; }
+        #hgt .hgt-c3 { top: 55%; width: 280px; opacity: .55; animation: hgtDrift 80s linear infinite; animation-delay: -40s; }
+        #hgt .hgt-c4 { top: 74%; width: 180px; opacity: .7; animation: hgtDrift 56s linear infinite; animation-delay: -10s; }
+        @keyframes hgtDrift { from { transform: translateX(-320px); } to { transform: translateX(calc(100vw + 320px)); } }
+        @media (prefers-reduced-motion: reduce) { #hgt .hgt-cloud { animation: none; left: 10%; } }
+
+        #hgt .hgt-inner { position: relative; z-index: 1; padding: 28px 24px 30px; }
+        #hgt .hgt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+        #hgt h2 { font-size: clamp(22px, 4vw, 34px); font-weight: 800; color: #fff; letter-spacing: .3px; text-shadow: 0 2px 14px rgba(9,30,80,.45); }
+        #hgt h2 em { font-style: normal; background: linear-gradient(90deg,#ffe9a3,#ffc94d,#ffe9a3); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        #hgt .hgt-sub { color: #dcecff; font-size: 14px; margin-top: 4px; }
+        #hgt .hgt-sound { display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.14); backdrop-filter: blur(8px); color: #fff; padding: 10px 16px; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 600; transition: .25s; }
+        #hgt .hgt-sound:hover { background: rgba(255,255,255,.28); }
+        #hgt .hgt-sound.off { opacity: .65; }
+        #hgt .hgt-sound svg { width: 20px; height: 20px; }
+
+        #hgt .hgt-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 16px; }
+        #hgt .hgt-tab { flex: 1 1 auto; min-width: 110px; text-align: center; padding: 11px 14px; border-radius: 14px; border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.12); color: #eaf3ff; font-weight: 700; font-size: 14px; cursor: pointer; backdrop-filter: blur(6px); transition: .25s; font-family: inherit; }
+        #hgt .hgt-tab:hover { background: rgba(255,255,255,.24); }
+        #hgt .hgt-tab.act { background: linear-gradient(120deg,#ffd75e,#ffb42e); color: #3a2500; border-color: transparent; box-shadow: 0 10px 26px rgba(255,180,46,.45); }
+
+        #hgt .hgt-rule { border-radius: 16px; background: rgba(9,30,80,.35); border: 1px solid rgba(255,255,255,.22); color: #eaf3ff; overflow: hidden; margin-bottom: 16px; }
+        #hgt .hgt-rule summary { cursor: pointer; padding: 12px 16px; font-weight: 700; font-size: 14px; list-style: none; display: flex; align-items: center; gap: 8px; }
+        #hgt .hgt-rule summary::-webkit-details-marker { display: none; }
+        #hgt .hgt-rule .hgt-rulebody { padding: 0 16px 14px; font-size: 14px; line-height: 1.65; }
+        #hgt .hgt-rule b { color: #ffd75e; }
+
+        #hgt .hgt-card { border-radius: 22px; background: rgba(255,255,255,.92); box-shadow: 0 18px 44px rgba(9,30,80,.35), inset 0 1px 0 #fff; padding: 26px 24px; }
+        #hgt .hgt-meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+        #hgt .hgt-badge { font-size: 12px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: #1d4fb8; background: #e3efff; padding: 6px 12px; border-radius: 999px; }
+        #hgt .hgt-score { display: flex; gap: 14px; font-size: 13px; font-weight: 700; color: #0b2a6b; }
+        #hgt .hgt-score span b { color: #e88c00; }
+        #hgt .hgt-bar { height: 8px; border-radius: 99px; background: #e3efff; overflow: hidden; margin-bottom: 20px; }
+        #hgt .hgt-fill { height: 100%; width: 0%; border-radius: 99px; background: linear-gradient(90deg,#4f8ee8,#ffd75e); transition: width .5s cubic-bezier(.2,.8,.2,1); }
+        #hgt .hgt-task { font-size: 13px; color: #5a6f96; margin-bottom: 8px; }
+        #hgt .hgt-sent { font-size: clamp(20px,3.4vw,27px); font-weight: 800; color: #0b2a6b; line-height: 1.4; min-height: 2.4em; }
+        #hgt .hgt-gap { display: inline-block; min-width: 120px; border-bottom: 3px dashed #4f8ee8; color: #4f8ee8; text-align: center; padding: 0 8px; border-radius: 6px; transition: .3s; }
+        #hgt .hgt-gap.ok { color: #0c8a4d; border-bottom-color: #0c8a4d; background: #e3f9ec; border-bottom-style: solid; }
+        #hgt .hgt-gap.bad { color: #d0335a; border-bottom-color: #d0335a; background: #ffe6ec; border-bottom-style: solid; }
+        #hgt .hgt-tr { font-size: 14px; color: #7a8db2; margin-top: 6px; font-style: italic; }
+        #hgt .hgt-opts { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+        #hgt .hgt-opt { flex: 1 1 140px; padding: 15px 18px; font-size: 17px; font-weight: 700; color: #0b2a6b; background: linear-gradient(180deg,#ffffff,#eef5ff); border: 2px solid #cfe1fb; border-radius: 16px; cursor: pointer; transition: .2s; box-shadow: 0 4px 14px rgba(29,79,184,.12); font-family: inherit; }
+        #hgt .hgt-opt:hover:not(:disabled) { transform: translateY(-3px); border-color: #4f8ee8; box-shadow: 0 10px 22px rgba(29,79,184,.22); }
+        #hgt .hgt-opt:disabled { cursor: default; opacity: .55; }
+        #hgt .hgt-opt.ok { opacity: 1; background: linear-gradient(180deg,#e9fbf1,#d2f5e2); border-color: #0c8a4d; color: #0c8a4d; }
+        #hgt .hgt-opt.bad { opacity: 1; background: linear-gradient(180deg,#ffeef2,#ffdbe4); border-color: #d0335a; color: #d0335a; animation: hgtShake .4s; }
+        @keyframes hgtShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+
+        #hgt .hgt-fb { margin-top: 18px; border-radius: 14px; padding: 14px 16px; font-size: 14.5px; line-height: 1.6; display: none; }
+        #hgt .hgt-fb.show { display: block; animation: hgtPop .35s cubic-bezier(.2,.9,.3,1.3); }
+        @keyframes hgtPop { from { opacity: 0; transform: scale(.96) translateY(6px); } to { opacity: 1; transform: none; } }
+        #hgt .hgt-fb.good { background: #e3f9ec; color: #0a6b3d; border: 1px solid #9fe0bd; }
+        #hgt .hgt-fb.wrong { background: #ffe9ef; color: #a1224a; border: 1px solid #f4b6c8; }
+        #hgt .hgt-next { margin-top: 16px; display: none; width: 100%; padding: 15px; font-size: 16px; font-weight: 800; color: #3a2500; border: none; border-radius: 16px; cursor: pointer; background: linear-gradient(120deg,#ffd75e,#ffb42e); box-shadow: 0 12px 28px rgba(255,180,46,.5); transition: .25s; font-family: inherit; }
+        #hgt .hgt-next:hover { transform: translateY(-2px); }
+        #hgt .hgt-next.show { display: block; }
+
+        #hgt .hgt-final { display: none; text-align: center; padding: 14px 6px 6px; }
+        #hgt .hgt-final.show { display: block; animation: hgtPop .4s; }
+        #hgt .hgt-stars { display: flex; justify-content: center; gap: 10px; margin: 14px 0; }
+        #hgt .hgt-stars svg { width: 46px; height: 46px; }
+        #hgt .hgt-final h3 { font-size: 24px; color: #0b2a6b; font-weight: 800; }
+        #hgt .hgt-final p { color: #5a6f96; margin-top: 8px; font-size: 15px; }
+        #hgt .hgt-restart { margin-top: 18px; padding: 14px 34px; font-size: 16px; font-weight: 800; color: #fff; border: none; border-radius: 999px; cursor: pointer; background: linear-gradient(120deg,#1d4fb8,#4f8ee8); box-shadow: 0 12px 28px rgba(29,79,184,.4); transition: .25s; font-family: inherit; }
+        #hgt .hgt-restart:hover { transform: translateY(-2px); }
+
+        @media (max-width: 560px) {
+            #hgt .hgt-inner { padding: 20px 14px 22px; }
+            #hgt .hgt-card { padding: 20px 16px; }
+            #hgt .hgt-opt { flex: 1 1 100%; }
+            #hgt .hgt-tab { min-width: calc(50% - 8px); }
+        }
+
+        /* ===== WORKSHEET ===== */
+        #hgtWorksheet, #hgtWorksheet * { box-sizing: border-box; margin: 0; padding: 0; }
+        #hgtWorksheet {
+            --ws-bg1: #eaf6ff;
+            --ws-bg2: #c8e3ff;
+            --ws-ink: #0b2a6b;
+            --ws-ink-muted: #4a5f8a;
+            --ws-cream: #fffef8;
+            --ws-gold: #ffb42e;
+            --ws-gold-deep: #e88c00;
+            --ws-blue: #1d4fb8;
+            --ws-blue-light: #4f8ee8;
+            --ws-green: #0c8a4d;
+            --ws-green-light: #e3f9ec;
+            --ws-red: #d0335a;
+            --ws-red-light: #ffe6ec;
+            --ws-border: rgba(29,79,184,.18);
+            --ws-shadow: rgba(11,42,107,.12);
+            --ws-shadow-strong: rgba(11,42,107,.22);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(175deg, #eaf6ff 0%, #d8ebff 50%, #c8e3ff 100%);
+            color: var(--ws-ink);
+            padding: 60px 16px 70px;
+            border-radius: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid var(--ws-border);
+            box-shadow: 0 12px 40px var(--ws-shadow);
+        }
+
+        #hgtWorksheet .ws-container { max-width: 960px; margin: 0 auto; }
+
+        #hgtWorksheet .ws-header { text-align: center; margin-bottom: 48px; }
+        #hgtWorksheet .ws-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.75); color: var(--ws-blue); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: 8px 18px; border-radius: 100px; border: 1px solid var(--ws-border); margin-bottom: 18px; }
+        #hgtWorksheet .ws-badge svg { width: 14px; height: 14px; }
+        #hgtWorksheet .ws-title { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.025em; color: var(--ws-ink); margin-bottom: 14px; }
+        #hgtWorksheet .ws-title em { font-style: italic; color: var(--ws-gold-deep); }
+        #hgtWorksheet .ws-subtitle { font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.6; color: var(--ws-ink-muted); max-width: 620px; margin: 0 auto; }
+
+        #hgtWorksheet .ws-global-progress { max-width: 500px; margin: 32px auto 0; background: rgba(255,255,255,.6); border-radius: 100px; padding: 6px; border: 1px solid var(--ws-border); }
+        #hgtWorksheet .ws-global-fill { height: 8px; width: 0%; border-radius: 100px; background: linear-gradient(90deg, var(--ws-blue-light), var(--ws-gold)); transition: width .5s cubic-bezier(.2,.8,.2,1); }
+        #hgtWorksheet .ws-global-label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ws-ink-muted); font-weight: 700; text-align: center; margin-bottom: 8px; }
+        #hgtWorksheet .ws-global-label b { color: var(--ws-gold-deep); }
+
+        #hgtWorksheet .ws-exercise { background: var(--ws-cream); border-radius: 24px; padding: 36px 32px; margin-bottom: 28px; box-shadow: 0 6px 24px var(--ws-shadow); border: 1px solid var(--ws-border); }
+        #hgtWorksheet .ws-ex-header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+        #hgtWorksheet .ws-ex-num { width: 44px; height: 44px; border-radius: 14px; background: linear-gradient(135deg, var(--ws-blue), var(--ws-blue-light)); color: #fff; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 6px 16px rgba(29,79,184,.35); }
+        #hgtWorksheet .ws-ex-title { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 800; color: var(--ws-ink); line-height: 1.2; }
+        #hgtWorksheet .ws-ex-desc { font-size: 0.9375rem; line-height: 1.6; color: var(--ws-ink-muted); margin-bottom: 28px; padding-left: 60px; }
+        @media (max-width: 640px) { #hgtWorksheet .ws-ex-desc { padding-left: 0; } }
+
+        #hgtWorksheet .ws-tip { display: flex; gap: 12px; align-items: flex-start; background: #fff8e3; border: 1px solid #ffe08a; border-radius: 14px; padding: 14px 18px; margin-bottom: 24px; font-size: 0.875rem; line-height: 1.55; color: #6b4a00; }
+        #hgtWorksheet .ws-tip svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--ws-gold-deep); margin-top: 2px; }
+        #hgtWorksheet .ws-tip b { color: #4a3200; }
+
+        #hgtWorksheet .ws-task { background: #fff; border: 1px solid var(--ws-border); border-radius: 16px; padding: 20px 22px; margin-bottom: 14px; transition: box-shadow .2s; }
+        #hgtWorksheet .ws-task:hover { box-shadow: 0 4px 14px var(--ws-shadow); }
+        #hgtWorksheet .ws-task-num { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .1em; color: var(--ws-blue); text-transform: uppercase; margin-bottom: 10px; }
+        #hgtWorksheet .ws-task-sentence { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.5; color: var(--ws-ink); margin-bottom: 16px; }
+        #hgtWorksheet .ws-gap { display: inline-block; min-width: 130px; padding: 2px 10px; border-bottom: 2px dashed var(--ws-blue-light); color: var(--ws-blue); text-align: center; font-weight: 700; transition: .3s; }
+        #hgtWorksheet .ws-gap.ok { color: var(--ws-green); border-bottom-color: var(--ws-green); background: var(--ws-green-light); border-bottom-style: solid; }
+        #hgtWorksheet .ws-gap.bad { color: var(--ws-red); border-bottom-color: var(--ws-red); background: var(--ws-red-light); border-bottom-style: solid; }
+        #hgtWorksheet .ws-task-tr { font-size: 0.875rem; font-style: italic; color: var(--ws-ink-muted); margin-bottom: 14px; }
+        #hgtWorksheet .ws-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        #hgtWorksheet .ws-option { padding: 10px 18px; font-size: 0.9375rem; font-weight: 700; color: var(--ws-blue); background: linear-gradient(180deg, #ffffff, #eef5ff); border: 2px solid #cfe1fb; border-radius: 12px; cursor: pointer; transition: .2s; font-family: inherit; box-shadow: 0 3px 10px rgba(29,79,184,.08); }
+        #hgtWorksheet .ws-option:hover:not(:disabled) { transform: translateY(-2px); border-color: var(--ws-blue-light); box-shadow: 0 8px 18px rgba(29,79,184,.18); }
+        #hgtWorksheet .ws-option:disabled { cursor: default; opacity: .55; }
+        #hgtWorksheet .ws-option.ok { background: linear-gradient(180deg, #e9fbf1, #d2f5e2); border-color: var(--ws-green); color: var(--ws-green); }
+        #hgtWorksheet .ws-option.bad { background: linear-gradient(180deg, #ffeef2, #ffdbe4); border-color: var(--ws-red); color: var(--ws-red); animation: wsShake .4s; }
+        @keyframes wsShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+        #hgtWorksheet .ws-scramble-answer { display: flex; flex-wrap: wrap; gap: 8px; min-height: 54px; padding: 12px; background: #f7faff; border: 2px dashed var(--ws-border); border-radius: 12px; margin-bottom: 14px; align-items: center; }
+        #hgtWorksheet .ws-scramble-answer.is-empty::before { content: 'Кликните по словам ниже — они появятся здесь в правильном порядке'; color: #a8b8d6; font-size: 0.875rem; font-style: italic; padding: 0 8px; }
+        #hgtWorksheet .ws-word-chip { display: inline-flex; align-items: center; padding: 8px 14px; background: linear-gradient(180deg, #ffffff, #eef5ff); border: 2px solid #cfe1fb; border-radius: 10px; font-size: 0.9375rem; font-weight: 700; color: var(--ws-blue); cursor: pointer; transition: .15s; user-select: none; }
+        #hgtWorksheet .ws-word-chip:hover { transform: translateY(-2px); border-color: var(--ws-blue-light); box-shadow: 0 6px 14px rgba(29,79,184,.18); }
+        #hgtWorksheet .ws-word-chip.is-placed { opacity: 0.3; pointer-events: none; }
+        #hgtWorksheet .ws-scramble-bank { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+
+        #hgtWorksheet .ws-makeq-input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+        #hgtWorksheet .ws-makeq-input { flex: 1 1 260px; padding: 12px 16px; font-size: 1rem; font-family: Georgia, 'Times New Roman', serif; color: var(--ws-ink); background: #fff; border: 2px solid #cfe1fb; border-radius: 12px; outline: none; transition: .2s; }
+        #hgtWorksheet .ws-makeq-input:focus { border-color: var(--ws-blue-light); box-shadow: 0 0 0 4px rgba(79,142,232,.15); }
+        #hgtWorksheet .ws-makeq-input.ok { border-color: var(--ws-green); background: var(--ws-green-light); }
+        #hgtWorksheet .ws-makeq-input.bad { border-color: var(--ws-red); background: var(--ws-red-light); }
+        #hgtWorksheet .ws-check-btn { padding: 12px 22px; font-size: 0.9375rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--ws-blue), var(--ws-blue-light)); border: none; border-radius: 12px; cursor: pointer; transition: .2s; font-family: inherit; box-shadow: 0 6px 16px rgba(29,79,184,.28); }
+        #hgtWorksheet .ws-check-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(29,79,184,.35); }
+        #hgtWorksheet .ws-check-btn:disabled { opacity: .5; cursor: default; transform: none; }
+        #hgtWorksheet .ws-hint-small { display: block; font-size: 0.8125rem; color: var(--ws-ink-muted); margin-top: 8px; font-style: italic; }
+
+        #hgtWorksheet .ws-feedback { margin-top: 14px; padding: 12px 16px; border-radius: 12px; font-size: 0.9375rem; line-height: 1.5; display: none; }
+        #hgtWorksheet .ws-feedback.show { display: block; animation: wsPop .3s ease; }
+        @keyframes wsPop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+        #hgtWorksheet .ws-feedback.good { background: var(--ws-green-light); border: 1px solid #9fe0bd; color: #0a6b3d; }
+        #hgtWorksheet .ws-feedback.wrong { background: var(--ws-red-light); border: 1px solid #f4b6c8; color: #a1224a; }
+
+        #hgtWorksheet .ws-ex-actions { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 24px; padding-top: 20px; border-top: 1px dashed var(--ws-border); }
+        #hgtWorksheet .ws-ex-score { font-size: 0.9375rem; font-weight: 700; color: var(--ws-ink-muted); }
+        #hgtWorksheet .ws-ex-score b { color: var(--ws-gold-deep); font-size: 1.125rem; }
+
+        /* ===== ВСТАВКА-КАРТИНКА ПЕРЕД УПРАЖНЕНИЕМ 3 ===== */
+        #hgtWorksheet .ws-picture {
+            background: var(--ws-cream);
+            border-radius: 24px;
+            padding: 24px 24px 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 6px 24px var(--ws-shadow);
+            border: 1px solid var(--ws-border);
+            text-align: center;
+        }
+        #hgtWorksheet .ws-picture-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--ws-gold-deep);
+            background: #fff4d6;
+            border: 1px solid #ffd98a;
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+        #hgtWorksheet .ws-picture-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+            font-weight: 800;
+            color: var(--ws-ink);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        #hgtWorksheet .ws-picture-desc {
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            color: var(--ws-ink-muted);
+            max-width: 620px;
+            margin: 0 auto 20px;
+        }
+        #hgtWorksheet .ws-picture-desc b {
+            color: var(--ws-blue);
+            font-weight: 800;
+        }
+        #hgtWorksheet .ws-picture-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 12px 32px var(--ws-shadow-strong);
+            border: 1px solid var(--ws-border);
+        }
+        @media (max-width: 640px) {
+            #hgtWorksheet .ws-picture { padding: 18px 14px 22px; }
+        }
+
+        #hgtWorksheet .ws-final { display: none; text-align: center; background: var(--ws-cream); border: 2px solid var(--ws-gold); border-radius: 28px; padding: 48px 32px; margin-top: 32px; box-shadow: 0 16px 44px rgba(232,140,0,.2); animation: wsFinal .5s ease; }
+        #hgtWorksheet .ws-final.show { display: block; }
+        @keyframes wsFinal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+        #hgtWorksheet .ws-final-stars { display: flex; justify-content: center; gap: 12px; margin-bottom: 18px; }
+        #hgtWorksheet .ws-final-stars svg { width: 54px; height: 54px; animation: wsStar .5s ease both; }
+        #hgtWorksheet .ws-final-stars svg:nth-child(2) { animation-delay: .15s; }
+        #hgtWorksheet .ws-final-stars svg:nth-child(3) { animation-delay: .3s; }
+        @keyframes wsStar { from { opacity: 0; transform: scale(0.4) rotate(-30deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+        #hgtWorksheet .ws-final h3 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--ws-ink); margin-bottom: 10px; }
+        #hgtWorksheet .ws-final p { font-size: 1rem; line-height: 1.6; color: var(--ws-ink-muted); max-width: 520px; margin: 0 auto 24px; }
+        #hgtWorksheet .ws-final-restart { padding: 14px 32px; font-size: 1rem; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--ws-blue), var(--ws-blue-light)); border: none; border-radius: 100px; cursor: pointer; transition: .25s; font-family: inherit; box-shadow: 0 10px 24px rgba(29,79,184,.35); }
+        #hgtWorksheet .ws-final-restart:hover { transform: translateY(-2px); }
+
+        @media (max-width: 640px) {
+            #hgtWorksheet { padding: 40px 12px 50px; border-radius: 24px; }
+            #hgtWorksheet .ws-exercise { padding: 24px 18px; border-radius: 20px; }
+            #hgtWorksheet .ws-ex-num { width: 38px; height: 38px; font-size: 17px; border-radius: 12px; }
+            #hgtWorksheet .ws-option { padding: 9px 14px; font-size: 0.875rem; }
+            #hgtWorksheet .ws-makeq-input { padding: 11px 14px; font-size: 0.9375rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="../../index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="../trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="../../lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="../../board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="../../blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="../../shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="../../about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="../../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="../../index.html">Главная</a><span>→</span><a href="../trainers.html">Тренажёры</a><span>→</span><a href="../grammar.html">Грамматика</a><span>→</span><span class="lw-current">Have got / Has got</span>
+    </nav>
+
+    <main class="lw-main">
+
+        <section class="lw-seo">
+            <details>
+                <summary>📖 О тренажёре: как это работает</summary>
+                <div class="lw-seo-content">
+                    <h3>Что такое Have got / Has got?</h3>
+                    <p>Интерактивный тренажёр для отработки конструкции <em>have got / has got</em> — одной из самых частых в английской речи. Здесь собраны 4 режима: утверждение, отрицание, вопросы и wh-вопросы.</p>
+                    <h3>Как заниматься?</h3>
+                    <p>Выберите режим во вкладке. Нажмите на правильный вариант — тренажёр подскажет, верно ли вы ответили, озвучит полное предложение и объяснит правило. За серию правильных ответов начисляется бонус.</p>
+                    <h3>Что такое Worksheet и зачем он здесь?</h3>
+                    <p>Под тренажёром — <strong>Worksheet</strong> из трёх упражнений: подстановка формы, сборка предложения и сокращённые формы. Если тренажёр тренирует <em>узнавание</em> формы, то Worksheet — <em>активное использование</em>: ученик пишет сам, а не выбирает из готовых вариантов. Это следующий шаг после отработки в тренажёре.</p>
+                    <h3>Почему это работает?</h3>
+                    <p>Тренажёр тренирует узнавание формы в контексте, Worksheet — умение воспроизвести её самостоятельно. Вместе они дают прочное закрепление: сначала узнал → потом выбрал → потом написал.</p>
+                </div>
+            </details>
+        </section>
+
+        <div id="hgt">
+            <div class="hgt-stage">
+                <div class="hgt-sky">
+                    <svg class="hgt-sun" viewBox="0 0 200 200">
+                        <defs>
+                            <radialGradient id="hgtSunG" cx="50%" cy="50%">
+                                <stop offset="0%" stop-color="#fff6d8" />
+                                <stop offset="45%" stop-color="#ffd75e" />
+                                <stop offset="100%" stop-color="#ffb42e" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="96" fill="url(#hgtSunG)" />
+                    </svg>
+                    <svg class="hgt-cloud hgt-c1" viewBox="0 0 220 80">
+                        <defs>
+                            <linearGradient id="hgtClG" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#d8ecff" />
+                            </linearGradient>
+                        </defs>
+                        <g fill="url(#hgtClG)">
+                            <ellipse cx="60" cy="55" rx="55" ry="22" />
+                            <ellipse cx="120" cy="42" rx="48" ry="28" />
+                            <ellipse cx="170" cy="56" rx="46" ry="20" />
+                        </g>
+                    </svg>
+                    <svg class="hgt-cloud hgt-c2" viewBox="0 0 220 80">
+                        <g fill="#ffffff">
+                            <ellipse cx="60" cy="55" rx="55" ry="22" />
+                            <ellipse cx="120" cy="42" rx="48" ry="28" />
+                            <ellipse cx="170" cy="56" rx="46" ry="20" />
+                        </g>
+                    </svg>
+                    <svg class="hgt-cloud hgt-c3" viewBox="0 0 220 80">
+                        <g fill="#ffffff">
+                            <ellipse cx="60" cy="55" rx="55" ry="22" />
+                            <ellipse cx="120" cy="42" rx="48" ry="28" />
+                            <ellipse cx="170" cy="56" rx="46" ry="20" />
+                        </g>
+                    </svg>
+                    <svg class="hgt-cloud hgt-c4" viewBox="0 0 220 80">
+                        <g fill="#eef7ff">
+                            <ellipse cx="60" cy="55" rx="55" ry="22" />
+                            <ellipse cx="120" cy="42" rx="48" ry="28" />
+                            <ellipse cx="170" cy="56" rx="46" ry="20" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="hgt-inner">
+                    <div class="hgt-head">
+                        <div>
+                            <h2>Have got / <em>Has got</em> ☁️</h2>
+                            <div class="hgt-sub">
+                                Грамматической тренажёр: утверждение · отрицание · вопросы · wh-слова
+                            </div>
+                        </div>
+                        <button class="hgt-sound" id="hgtSnd" type="button" aria-pressed="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 5 6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none" />
+                                <path id="hgtWave1" d="M15.5 8.5a5 5 0 0 1 0 7" />
+                                <path id="hgtWave2" d="M18.5 5.5a9.5 9.5 0 0 1 0 13" />
+                            </svg>
+                            <span id="hgtSndTxt">Озвучка: вкл</span>
+                        </button>
+                    </div>
+
+                    <div class="hgt-tabs" id="hgtTabs"></div>
+
+                    <details class="hgt-rule">
+                        <summary>💡 Подсказка-правило (нажмите, если сомневаетесь)</summary>
+                        <div class="hgt-rulebody">
+                            <b>have got</b> — с I, you, we, they · <b>has got</b> — с he, she, it (и любым одним человеком/предметом).<br />
+                            Отрицание: <b>haven't got / hasn't got</b>. Вопрос: <b>Have you got…? / Has she got…?</b> — have/has выходит вперёд.<br />
+                            Вопросительные слова: <b>What</b> — что, <b>Who</b> — кто, <b>How many</b> — сколько, <b>What colour/kind</b> — какого цвета/вида.
+                        </div>
+                    </details>
+
+                    <div class="hgt-card">
+                        <div id="hgtQuiz">
+                            <div class="hgt-meta">
+                                <span class="hgt-badge" id="hgtMode"></span>
+                                <div class="hgt-score">
+                                    <span>⭐ Очки: <b id="hgtPts">0</b></span>
+                                    <span>🔥 Серия: <b id="hgtStreak">0</b></span>
+                                    <span id="hgtCount"></span>
+                                </div>
+                            </div>
+                            <div class="hgt-bar">
+                                <div class="hgt-fill" id="hgtFill"></div>
+                            </div>
+                            <div class="hgt-task">Выберите верный вариант, чтобы предложение было правильным:</div>
+                            <div class="hgt-sent" id="hgtSent"></div>
+                            <div class="hgt-tr" id="hgtTr"></div>
+                            <div class="hgt-opts" id="hgtOpts"></div>
+                            <div class="hgt-fb" id="hgtFb"></div>
+                            <button class="hgt-next" id="hgtNext" type="button">Дальше →</button>
+                        </div>
+                        <div class="hgt-final" id="hgtFinal">
+                            <div class="hgt-stars" id="hgtStars"></div>
+                            <h3 id="hgtFinTitle"></h3>
+                            <p id="hgtFinText"></p>
+                            <button class="hgt-restart" id="hgtRestart" type="button">Пройти ещё раз ☁️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- РАЗДЕЛИТЕЛЬ -->
+        <div class="lw-divider">✦ ✦ ✦</div>
+
+        <!-- ПРИГЛАШЕНИЕ К WORKSHEET -->
+        <section class="lw-ws-invite">
+            <span class="lw-ws-invite-label">Следующий шаг · Письменная практика</span>
+            <h2>Потренировались? Теперь — <em>напишите сами</em></h2>
+            <p>
+                Тренажёр научил вас <strong>узнавать</strong> правильную форму. Worksheet — следующий шаг: здесь вы будете <strong>писать сами</strong>. Три упражнения с постепенным усложнением: подстановка → сборка предложения → сокращённые формы.
+            </p>
+        </section>
+
+        <!-- WORKSHEET -->
+        <div id="hgtWorksheet">
+            <div class="ws-container">
+
+                <div class="ws-header">
+                    <div class="ws-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+                        </svg>
+                        Worksheet · 3 упражнения · A1–A2
+                    </div>
+                    <h2 class="ws-title">Have got / Has got — <em>практика</em></h2>
+                    <p class="ws-subtitle">
+                        Три упражнения с постепенным усложнением: узнайте форму, соберите предложение, напишите короткую форму.
+                    </p>
+
+                    <div class="ws-global-progress">
+                        <div class="ws-global-label">Общий прогресс: <b id="wsGlobalPts">0</b> / 18 заданий</div>
+                        <div class="ws-global-fill" id="wsGlobalFill"></div>
+                    </div>
+                </div>
+
+                <!-- УПРАЖНЕНИЕ 1 -->
+                <div class="ws-exercise" id="wsEx1">
+                    <div class="ws-ex-header">
+                        <div class="ws-ex-num">1</div>
+                        <div class="ws-ex-title">Подставьте правильную форму</div>
+                    </div>
+                    <p class="ws-ex-desc">
+                        Прочитайте предложение и выберите форму, которая подходит по смыслу и грамматике. Следите за подлежащим: I / you / we / they — или he / she / it.
+                    </p>
+
+                    <div class="ws-tip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span><b>Подсказка:</b> <em>has got</em> — только для he / she / it. <em>haven't got</em> — для I / you / we / they. <em>hasn't got</em> — для he / she / it.</span>
+                    </div>
+
+                    <div id="wsEx1Tasks"></div>
+
+                    <div class="ws-ex-actions">
+                        <div class="ws-ex-score">Правильно: <b><span id="wsEx1Correct">0</span> / 6</b></div>
+                    </div>
+                </div>
+
+                <!-- УПРАЖНЕНИЕ 2 -->
+                <div class="ws-exercise" id="wsEx2" style="display:none;">
+                    <div class="ws-ex-header">
+                        <div class="ws-ex-num">2</div>
+                        <div class="ws-ex-title">Соберите предложение из слов</div>
+                    </div>
+                    <p class="ws-ex-desc">
+                        Слова перепутаны. Кликайте по ним в правильном порядке — они появятся в поле выше. Чтобы убрать последнее слово, нажмите на него в поле ответа.
+                    </p>
+
+                    <div class="ws-tip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span><b>Помните:</b> в утверждении порядок такой — подлежащее + have/has + got + дополнение. После завершения сборки ответ проверится автоматически.</span>
+                    </div>
+
+                    <div id="wsEx2Tasks"></div>
+
+                    <div class="ws-ex-actions">
+                        <div class="ws-ex-score">Правильно: <b><span id="wsEx2Correct">0</span> / 6</b></div>
+                    </div>
+                </div>
+
+                <!-- КАРТИНКА-ОПОРА ПЕРЕД УПРАЖНЕНИЕМ 3 -->
+                <div class="ws-picture">
+                    <span class="ws-picture-badge">Визуальная опора</span>
+                    <h3 class="ws-picture-title">Короткие формы: have got → 've got, has got → 's got</h3>
+                    <p class="ws-picture-desc">
+                        Посмотрите на картинку: в утверждении мы сокращаем <b>have → 've</b> и <b>has → 's</b>. А в отрицании — <b>have not → haven't</b> и <b>has not → hasn't</b>. В следующем задании потренируем это.
+                    </p>
+                    <img class="ws-picture-img" src="short-forms.jpg" alt="Have got и has got — короткие формы: I've got a carrot, she hasn't got a fish, he's got a bone" loading="lazy">
+                </div>
+
+                <!-- УПРАЖНЕНИЕ 3 -->
+                <div class="ws-exercise" id="wsEx3" style="display:none;">
+                    <div class="ws-ex-header">
+                        <div class="ws-ex-num">3</div>
+                        <div class="ws-ex-title">Напишите короткую форму</div>
+                    </div>
+                    <p class="ws-ex-desc">
+                        Дано предложение в полной форме. Напишите то же самое, но <strong>с сокращением</strong>. В конце — точка.
+                    </p>
+
+                    <div class="ws-tip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <span><b>Подсказка:</b> <em>have got → 've got</em> · <em>has got → 's got</em> · <em>have not got → haven't got</em> · <em>has not got → hasn't got</em>. Апостроф обязателен: <b>'ve</b> и <b>'s</b> пишутся через него.</span>
+                    </div>
+
+                    <div id="wsEx3Tasks"></div>
+
+                    <div class="ws-ex-actions">
+                        <div class="ws-ex-score">Правильно: <b><span id="wsEx3Correct">0</span> / 6</b></div>
+                    </div>
+                </div>
+
+                <!-- ФИНАЛЬНЫЙ БАННЕР -->
+                <div class="ws-final" id="wsFinal">
+                    <div class="ws-final-stars" id="wsFinalStars"></div>
+                    <h3 id="wsFinalTitle">Отличная работа!</h3>
+                    <p id="wsFinalText"></p>
+                    <button class="ws-final-restart" id="wsFinalRestart" type="button">Пройти Worksheet заново</button>
+                </div>
+
+            </div>
+
+            <script>
+            (function() {
+                'use strict';
+
+                var root = document.getElementById('hgtWorksheet');
+                if (!root) return;
+
+                /* ===== Упражнение 1 ===== */
+                var EX1 = [
+                    { s:['I ', ' a new smartphone.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:0, tr:'У меня есть новый смартфон.', full:'I have got a new smartphone.' },
+                    { s:['My brother ', ' a bike.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:1, tr:'У моего брата есть велосипед.', full:'My brother has got a bike.' },
+                    { s:['They ', ' a big house in the country.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:0, tr:'У них есть большой дом за городом.', full:'They have got a big house in the country.' },
+                    { s:['She ', ' any brothers or sisters.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:3, tr:'У неё нет ни братьев, ни сестёр.', full:'She hasn\'t got any brothers or sisters.' },
+                    { s:['We ', ' time today.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:2, tr:'У нас сегодня нет времени.', full:'We haven\'t got time today.' },
+                    { s:['My cat ', ' green eyes.'], o:['have got','has got','haven\'t got','hasn\'t got'], c:1, tr:'У моей кошки зелёные глаза.', full:'My cat has got green eyes.' }
+                ];
+
+                /* ===== Упражнение 2 ===== */
+                var EX2 = [
+                    { words:['My','sister','has','got','a','dog'], full:'My sister has got a dog.', tr:'У моей сестры есть собака.' },
+                    { words:['I','have','got','two','tickets'], full:'I have got two tickets.', tr:'У меня есть два билета.' },
+                    { words:['They','have','not','got','a','car'], full:'They have not got a car.', tr:'У них нет машины.' },
+                    { words:['Tom','has','got','a','new','bike'], full:'Tom has got a new bike.', tr:'У Тома есть новый велосипед.' },
+                    { words:['We','have','got','a','big','garden'], full:'We have got a big garden.', tr:'У нас есть большой сад.' },
+                    { words:['She','has','not','got','any','money'], full:'She has not got any money.', tr:'У неё нет денег.' }
+                ];
+
+                /* ===== Упражнение 3: короткие формы ===== */
+                /* correct — массив допустимых вариантов (после нормализации, без точки, lowercase).
+                   Апостроф: принимаем и прямой ('), и типографский (’). */
+                var APOS = "['\u2019]";
+                function makeRegex(str) {
+                    // str — шаблон с обычным апострофом '; заменяем на класс апострофов
+                    var pattern = str.replace(/'/g, APOS);
+                    return new RegExp('^' + pattern + '$', 'i');
+                }
+
+                var EX3 = [
+                    { statement:'I have got a cat.', tr:'У меня есть кошка.', regex: makeRegex("i'?ve got a cat"), display:'I\u2019ve got a cat.' },
+                    { statement:'She has got a fish.', tr:'У неё есть рыба.', regex: makeRegex("she'?s got a fish"), display:'She\u2019s got a fish.' },
+                    { statement:'He has not got a bone.', tr:'У него нет косточки.', regex: makeRegex("he hasn'?t got a bone"), display:'He hasn\u2019t got a bone.' },
+                    { statement:'They have got two tickets.', tr:'У них есть два билета.', regex: makeRegex("they'?ve got two tickets"), display:'They\u2019ve got two tickets.' },
+                    { statement:'I have not got a car.', tr:'У меня нет машины.', regex: makeRegex("i haven'?t got a car"), display:'I haven\u2019t got a car.' },
+                    { statement:'It has got a long tail.', tr:'У него (животного) длинный хвост.', regex: makeRegex("it'?s got a long tail"), display:'It\u2019s got a long tail.' }
+                ];
+
+                var state = {
+                    ex1Done: new Array(6).fill(false),
+                    ex2Done: new Array(6).fill(false),
+                    ex3Done: new Array(6).fill(false),
+                    soundOn: true
+                };
+
+                function speak(text) {
+                    if (!state.soundOn || !('speechSynthesis' in window)) return;
+                    try {
+                        speechSynthesis.cancel();
+                        var u = new SpeechSynthesisUtterance(text);
+                        u.lang = 'en-GB'; u.rate = 0.92;
+                        var voices = speechSynthesis.getVoices();
+                        if (voices && voices.length > 0) {
+                            var v = voices.filter(function(x) { return /^en/.test(x.lang); })[0];
+                            if (v) u.voice = v;
+                        }
+                        speechSynthesis.speak(u);
+                    } catch(e) {}
+                }
+
+                function updateGlobal() {
+                    var total = 0;
+                    state.ex1Done.forEach(function(v) { if (v) total++; });
+                    state.ex2Done.forEach(function(v) { if (v) total++; });
+                    state.ex3Done.forEach(function(v) { if (v) total++; });
+                    document.getElementById('wsGlobalPts').textContent = total;
+                    document.getElementById('wsGlobalFill').style.width = (total / 18 * 100) + '%';
+                    if (total === 18) showFinal();
+                }
+
+                /* ===== Упражнение 1 ===== */
+                function buildEx1() {
+                    var wrap = document.getElementById('wsEx1Tasks');
+                    wrap.innerHTML = '';
+                    EX1.forEach(function(task, idx) {
+                        var block = document.createElement('div');
+                        block.className = 'ws-task';
+                        block.dataset.idx = idx;
+                        var sent = '<span class="ws-task-num">Задание ' + (idx+1) + '</span>' +
+                            '<div class="ws-task-sentence">' +
+                                task.s[0] +
+                                '<span class="ws-gap" data-gap="' + idx + '">?</span>' +
+                                task.s[1] +
+                            '</div>' +
+                            '<div class="ws-task-tr">🇷🇺 ' + task.tr + '</div>' +
+                            '<div class="ws-options">';
+                        task.o.forEach(function(opt, oIdx) {
+                            sent += '<button type="button" class="ws-option" data-idx="' + idx + '" data-oidx="' + oIdx + '">' + opt + '</button>';
+                        });
+                        sent += '</div><div class="ws-feedback" data-fb="' + idx + '"></div>';
+                        block.innerHTML = sent;
+                        wrap.appendChild(block);
+                    });
+
+                    wrap.querySelectorAll('.ws-option').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var idx = parseInt(this.dataset.idx, 10);
+                            if (state.ex1Done[idx]) return;
+                            var oIdx = parseInt(this.dataset.oidx, 10);
+                            var task = EX1[idx];
+                            var gap = wrap.querySelector('[data-gap="' + idx + '"]');
+                            var fb = wrap.querySelector('[data-fb="' + idx + '"]');
+                            var parent = this.closest('.ws-task');
+                            var allBtns = parent.querySelectorAll('.ws-option');
+                            var ok = oIdx === task.c;
+
+                            gap.textContent = task.o[task.c];
+                            allBtns.forEach(function(b, i) {
+                                b.disabled = true;
+                                if (i === task.c) b.classList.add('ok');
+                            });
+
+                            if (ok) {
+                                gap.classList.add('ok');
+                                fb.textContent = '✓ Верно! ' + task.full;
+                                fb.className = 'ws-feedback good show';
+                                state.ex1Done[idx] = true;
+                                speak(task.full);
+                            } else {
+                                gap.classList.add('bad');
+                                this.classList.add('bad');
+                                fb.textContent = '✗ Правильный ответ: «' + task.o[task.c] + '». ' + task.full;
+                                fb.className = 'ws-feedback wrong show';
+                                state.ex1Done[idx] = true;
+                                speak(task.full);
+                            }
+
+                            updateExScore('wsEx1Correct', state.ex1Done);
+                            updateGlobal();
+                        });
+                    });
+                }
+
+                /* ===== Упражнение 2 ===== */
+                function buildEx2() {
+                    var wrap = document.getElementById('wsEx2Tasks');
+                    wrap.innerHTML = '';
+                    EX2.forEach(function(task, idx) {
+                        var block = document.createElement('div');
+                        block.className = 'ws-task';
+                        block.dataset.idx = idx;
+
+                        var bank = task.words.slice();
+                        for (var i = bank.length - 1; i > 0; i--) {
+                            var j = Math.floor(Math.random() * (i + 1));
+                            var t = bank[i]; bank[i] = bank[j]; bank[j] = t;
+                        }
+                        if (bank.join(' ') === task.words.join(' ')) {
+                            bank.reverse();
+                        }
+
+                        var html = '<span class="ws-task-num">Задание ' + (idx+1) + '</span>' +
+                            '<div class="ws-task-tr">🇷🇺 ' + task.tr + '</div>' +
+                            '<div class="ws-scramble-answer is-empty" data-answer="' + idx + '"></div>' +
+                            '<div class="ws-scramble-bank" data-bank="' + idx + '">';
+
+                        bank.forEach(function(w, wi) {
+                            html += '<span class="ws-word-chip" data-idx="' + idx + '" data-word="' + w + '" data-wi="' + wi + '">' + w + '</span>';
+                        });
+
+                        html += '</div>' +
+                            '<div class="ws-feedback" data-fb="' + idx + '"></div>';
+                        block.innerHTML = html;
+                        wrap.appendChild(block);
+                    });
+
+                    wrap.querySelectorAll('.ws-word-chip').forEach(function(chip) {
+                        chip.addEventListener('click', function() {
+                            var idx = parseInt(this.dataset.idx, 10);
+                            if (state.ex2Done[idx]) return;
+
+                            if (this.parentElement.classList.contains('ws-scramble-bank')) {
+                                var answer = wrap.querySelector('[data-answer="' + idx + '"]');
+                                this.classList.add('is-placed');
+                                answer.classList.remove('is-empty');
+
+                                var placed = document.createElement('span');
+                                placed.className = 'ws-word-chip';
+                                placed.textContent = this.dataset.word;
+                                placed.dataset.placed = '1';
+                                placed.dataset.originWi = this.dataset.wi;
+
+                                placed.addEventListener('click', function() {
+                                    if (state.ex2Done[idx]) return;
+                                    var bankChip = wrap.querySelector('[data-bank="' + idx + '"] [data-wi="' + this.dataset.originWi + '"]');
+                                    if (bankChip) bankChip.classList.remove('is-placed');
+                                    this.remove();
+                                    if (!answer.querySelector('.ws-word-chip')) answer.classList.add('is-empty');
+                                });
+
+                                answer.appendChild(placed);
+
+                                var bankSize = EX2[idx].words.length;
+                                var placedCount = answer.querySelectorAll('.ws-word-chip').length;
+                                if (placedCount === bankSize) {
+                                    checkEx2(idx, answer);
+                                }
+                            }
+                        });
+                    });
+                }
+
+                function checkEx2(idx, answerEl) {
+                    var placed = answerEl.querySelectorAll('.ws-word-chip');
+                    var userWords = Array.prototype.map.call(placed, function(el) { return el.textContent; });
+                    var correctWords = EX2[idx].words;
+
+                    var isOk = userWords.length === correctWords.length &&
+                        userWords.every(function(w, i) { return w === correctWords[i]; });
+
+                    var fb = document.querySelector('#wsEx2Tasks [data-fb="' + idx + '"]');
+                    state.ex2Done[idx] = true;
+
+                    placed.forEach(function(chip, i) {
+                        if (userWords[i] === correctWords[i]) {
+                            chip.style.background = 'linear-gradient(180deg, #e9fbf1, #d2f5e2)';
+                            chip.style.borderColor = '#0c8a4d';
+                            chip.style.color = '#0c8a4d';
+                        } else {
+                            chip.style.background = 'linear-gradient(180deg, #ffeef2, #ffdbe4)';
+                            chip.style.borderColor = '#d0335a';
+                            chip.style.color = '#d0335a';
+                        }
+                        chip.style.pointerEvents = 'none';
+                    });
+
+                    if (isOk) {
+                        fb.textContent = '✓ Верно! ' + EX2[idx].full;
+                        fb.className = 'ws-feedback good show';
+                        answerEl.style.borderColor = '#0c8a4d';
+                        answerEl.style.background = '#e3f9ec';
+                        speak(EX2[idx].full);
+                    } else {
+                        fb.innerHTML = '✗ Правильный порядок: <b>' + EX2[idx].full + '</b><br>' +
+                            '<span style="font-size:0.875rem;opacity:.8;">Зелёные чипы — на своём месте, красные — не на своём.</span>';
+                        fb.className = 'ws-feedback wrong show';
+                        answerEl.style.borderColor = '#d0335a';
+                        answerEl.style.background = '#ffe6ec';
+                        speak(EX2[idx].full);
+                    }
+
+                    updateExScore('wsEx2Correct', state.ex2Done);
+                    updateGlobal();
+                }
+
+                /* ===== Упражнение 3: короткие формы ===== */
+                function buildEx3() {
+                    var wrap = document.getElementById('wsEx3Tasks');
+                    wrap.innerHTML = '';
+                    EX3.forEach(function(task, idx) {
+                        var block = document.createElement('div');
+                        block.className = 'ws-task';
+                        block.dataset.idx = idx;
+                        block.innerHTML =
+                            '<span class="ws-task-num">Задание ' + (idx+1) + '</span>' +
+                            '<div class="ws-task-sentence">' + task.statement + '</div>' +
+                            '<div class="ws-task-tr">🇷🇺 ' + task.tr + '</div>' +
+                            '<div class="ws-makeq-input-row">' +
+                                '<input type="text" class="ws-makeq-input" data-input="' + idx + '" placeholder="Напишите короткую форму..." autocomplete="off" spellcheck="false">' +
+                                '<button type="button" class="ws-check-btn" data-check="' + idx + '">Проверить</button>' +
+                            '</div>' +
+                            '<span class="ws-hint-small">Не забудьте точку в конце. Апостроф — обязателен: <b>\'ve</b> или <b>\'s</b>.</span>' +
+                            '<div class="ws-feedback" data-fb="' + idx + '"></div>';
+                        wrap.appendChild(block);
+                    });
+
+                    wrap.querySelectorAll('.ws-check-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var idx = parseInt(this.dataset.check, 10);
+                            if (state.ex3Done[idx]) return;
+                            var input = wrap.querySelector('[data-input="' + idx + '"]');
+                            var fb = wrap.querySelector('[data-fb="' + idx + '"]');
+                            var raw = input.value.trim();
+
+                            if (!raw) {
+                                fb.textContent = 'Напишите короткую форму — поле пустое.';
+                                fb.className = 'ws-feedback wrong show';
+                                return;
+                            }
+
+                            // Нормализация: убираем лишние пробелы, обрезаем финальную точку, приводим к lowercase
+                            var clean = raw.replace(/\s+/g, ' ')
+                                            .replace(/[.!]+$/, '')
+                                            .trim()
+                                            .toLowerCase();
+
+                            var isOk = EX3[idx].regex.test(clean);
+
+                            state.ex3Done[idx] = true;
+                            this.disabled = true;
+                            input.disabled = true;
+
+                            if (isOk) {
+                                input.classList.add('ok');
+                                fb.innerHTML = '✓ Отлично! Короткая форма: <b>' + EX3[idx].display + '</b>';
+                                fb.className = 'ws-feedback good show';
+                                speak(EX3[idx].display);
+                            } else {
+                                input.classList.add('bad');
+                                fb.innerHTML = '✗ Правильно было бы: <b>' + EX3[idx].display + '</b><br>' +
+                                    '<span style="font-size:0.875rem;opacity:.85;">В английском сокращение пишется через апостроф.</span>';
+                                fb.className = 'ws-feedback wrong show';
+                                speak(EX3[idx].display);
+                            }
+
+                            updateExScore('wsEx3Correct', state.ex3Done);
+                            updateGlobal();
+                        });
+                    });
+
+                    wrap.querySelectorAll('.ws-makeq-input').forEach(function(input) {
+                        input.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                var idx = this.dataset.input;
+                                wrap.querySelector('[data-check="' + idx + '"]').click();
+                            }
+                        });
+                    });
+                }
+
+                function updateExScore(elId, arr) {
+                    var n = arr.filter(function(v) { return v; }).length;
+                    document.getElementById(elId).textContent = n;
+                }
+
+                function showFinal() {
+                    var fin = document.getElementById('wsFinal');
+                    var starsWrap = document.getElementById('wsFinalStars');
+                    var total = 0;
+                    state.ex1Done.forEach(function(v) { if (v) total++; });
+                    state.ex2Done.forEach(function(v) { if (v) total++; });
+                    state.ex3Done.forEach(function(v) { if (v) total++; });
+
+                    var stars = total === 18 ? 3 : total >= 12 ? 2 : 1;
+                    starsWrap.innerHTML = '';
+                    for (var i = 0; i < 3; i++) {
+                        starsWrap.innerHTML += '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="' + (i < stars ? '#ffb42e' : '#dbe7f7') + '"/></svg>';
+                    }
+
+                    var title = stars === 3 ? 'Wow! Небесный уровень!' : stars === 2 ? 'Отличная работа!' : 'Хорошее начало!';
+                    var text = 'Все 18 заданий пройдены. Хотите закрепить результат в интерактивном тренажёре выше — или пройти Worksheet ещё раз, чтобы стало совсем легко?';
+                    document.getElementById('wsFinalTitle').textContent = title;
+                    document.getElementById('wsFinalText').textContent = text;
+                    fin.classList.add('show');
+
+                    setTimeout(function() {
+                        fin.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 200);
+                }
+
+                document.getElementById('wsFinalRestart').addEventListener('click', function() {
+                    state.ex1Done = new Array(6).fill(false);
+                    state.ex2Done = new Array(6).fill(false);
+                    state.ex3Done = new Array(6).fill(false);
+                    document.getElementById('wsFinal').classList.remove('show');
+                    buildEx1(); buildEx2(); buildEx3();
+                    document.getElementById('wsEx1Correct').textContent = '0';
+                    document.getElementById('wsEx2Correct').textContent = '0';
+                    document.getElementById('wsEx3Correct').textContent = '0';
+                    updateGlobal();
+                    document.getElementById('wsEx1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+
+                document.getElementById('wsEx2').style.display = 'block';
+                document.getElementById('wsEx3').style.display = 'block';
+
+                buildEx1();
+                buildEx2();
+                buildEx3();
+                updateGlobal();
+
+                if ('speechSynthesis' in window) speechSynthesis.getVoices();
+            })();
+            </script>
+        </div>
+        <!-- ===== /WORKSHEET ===== -->
+
+    </main>
+
+    <section class="lw-related">
+        <h2 class="lw-related-title">Похожие тренажёры</h2>
+        <div class="lw-related-grid">
+            <a href="top-adjectives.html" class="lw-related-card"><h3>Top Adjectives</h3><p>10 тем, 120 прилагательных от A0 до B1 — учите слова в контексте.</p></a>
+            <a href="../vocabulary.html" class="lw-related-card"><h3>Лексика</h3><p>Все лексические тренажёры: животные, еда, одежда, погода, цвета и другие.</p></a>
+            <a href="../grammar.html" class="lw-related-card"><h3>Грамматика</h3><p>Правила английского языка в интерактивных упражнениях.</p></a>
+        </div>
+    </section>
+
+    <section class="lw-links-block">
+        <h2 class="lw-links-title">Все тренажёры</h2>
+        <ul class="lw-links-list">
+            <li><a href="../vocabulary.html">Лексика</a></li>
+            <li><a href="../grammar.html">Грамматика</a></li>
+            <li><a href="../reading.html">Чтение</a></li>
+            <li><a href="../speaking.html">Говорение</a></li>
+            <li><a href="../trainers.html">Все тренажёры</a></li>
+        </ul>
+    </section>
+
+    <button class="lw-to-top" id="lwToTop" aria-label="Наверх">↑</button>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div><a href="../../index.html" class="lw-footer-logo">LangWood</a><p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p></div>
+            <div><div class="lw-footer-title">Меню</div><ul class="lw-footer-list"><li><a href="../trainers.html">Тренажёры</a></li><li><a href="../../lessons-english.html">Уроки</a></li><li><a href="../../board.html">Storyboard</a></li><li><a href="../../blog.html">Блог</a></li><li><a href="../../shop.html">Магазин</a></li><li><a href="../../about.html">О сайте</a></li><li><a href="../../contacts.html">Контакты</a></li></ul></div>
+            <div><div class="lw-footer-title">Соцсети</div><ul class="lw-footer-list"><li><a href="https://vk.com/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li><li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li></ul></div>
+            <div><div class="lw-footer-title">Правовая информация</div><ul class="lw-footer-list"><li><a href="../../legal/privacy.html">Политика обработки персональных данных</a></li><li><a href="../../legal/soglasie.html">Согласие на обработку персональных данных</a></li><li><a href="../../legal/terms.html">Пользовательское соглашение</a></li><li><a href="../../legal/offer.html">Публичная оферта</a></li></ul></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.getElementById('lwBurger').addEventListener('click', function() {
+            document.getElementById('lwNavWrapper').classList.toggle('is-open');
+        });
+
+        var btn = document.getElementById('lwToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btn.classList.add('is-visible');
+            } else {
+                btn.classList.remove('is-visible');
+            }
+        });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* ===== ЛОГИКА НЕБЕСНОГО ТРЕНАЖЁРА ===== */
+        (function(){
+            var EXP = {
+                have: "I, you, we, they (и несколько людей/предметов) → <b>have got</b>.",
+                has: "he, she, it (и один человек/предмет) → <b>has got</b>.",
+                havent: "Отрицание для I, you, we, they → <b>haven't got</b> (= have not got).",
+                hasnt: "Отрицание для he, she, it → <b>hasn't got</b> (= has not got).",
+                qhave: "В вопросе <b>Have</b> выходит вперёд: Have + I/you/we/they + got…?",
+                qhas: "В вопросе <b>Has</b> выходит вперёд: Has + he/she/it + got…?",
+                what: "<b>What</b> = «что / какой». What have you got…? — Что у тебя есть…?",
+                who: "<b>Who</b> = «кто». Who has got…? — У кого есть…? После Who всегда <b>has</b>.",
+                how: "<b>How many</b> = «сколько» (для исчисляемых): How many pets has she got?"
+            };
+            var DATA = {
+                aff: { label:"Утверждение ✚", tasks:[
+                    {s:["I "," a new bike."], o:["have got","has got"], c:0, e:EXP.have, tr:"У меня есть новый велосипед.", full:"I have got a new bike."},
+                    {s:["She "," two brothers."], o:["have got","has got"], c:1, e:EXP.has, tr:"У неё есть два брата.", full:"She has got two brothers."},
+                    {s:["My parents "," a big house."], o:["has got","have got"], c:1, e:EXP.have+" «Родители» — это they.", tr:"У моих родителей большой дом.", full:"My parents have got a big house."},
+                    {s:["Tom "," a funny dog."], o:["has got","have got"], c:0, e:EXP.has+" Tom = he.", tr:"У Тома есть забавный пёс.", full:"Tom has got a funny dog."},
+                    {s:["We "," a lot of homework."], o:["has got","have got"], c:1, e:EXP.have, tr:"У нас много домашней работы.", full:"We have got a lot of homework."},
+                    {s:["The cat "," green eyes."], o:["have got","has got"], c:1, e:EXP.has+" The cat = it.", tr:"У кота зелёные глаза.", full:"The cat has got green eyes."},
+                    {s:["You "," a beautiful smile."], o:["have got","has got"], c:0, e:EXP.have, tr:"У тебя красивая улыбка.", full:"You have got a beautiful smile."},
+                    {s:["My sister "," long hair."], o:["have got","has got"], c:1, e:EXP.has+" Sister = she.", tr:"У моей сестры длинные волосы.", full:"My sister has got long hair."}
+                ]},
+                neg: { label:"Отрицание −", tasks:[
+                    {s:["I "," a car."], o:["haven't got","hasn't got"], c:0, e:EXP.havent, tr:"У меня нет машины.", full:"I haven't got a car."},
+                    {s:["He "," any pets."], o:["haven't got","hasn't got"], c:1, e:EXP.hasnt, tr:"У него нет домашних животных.", full:"He hasn't got any pets."},
+                    {s:["They "," time today."], o:["hasn't got","haven't got"], c:1, e:EXP.havent, tr:"У них сегодня нет времени.", full:"They haven't got time today."},
+                    {s:["Mary "," a smartphone."], o:["hasn't got","haven't got"], c:0, e:EXP.hasnt+" Mary = she.", tr:"У Мэри нет смартфона.", full:"Mary hasn't got a smartphone."},
+                    {s:["We "," any milk."], o:["hasn't got","haven't got"], c:1, e:EXP.havent, tr:"У нас нет молока.", full:"We haven't got any milk."},
+                    {s:["The puppy "," a name yet."], o:["haven't got","hasn't got"], c:1, e:EXP.hasnt+" The puppy = it.", tr:"У щенка пока нет имени.", full:"The puppy hasn't got a name yet."},
+                    {s:["You "," my number."], o:["haven't got","hasn't got"], c:0, e:EXP.havent, tr:"У тебя нет моего номера.", full:"You haven't got my number."},
+                    {s:["My brother "," a laptop."], o:["haven't got","hasn't got"], c:1, e:EXP.hasnt+" Brother = he.", tr:"У моего брата нет ноутбука.", full:"My brother hasn't got a laptop."}
+                ]},
+                q: { label:"Вопрос ?", tasks:[
+                    {s:[""," you got a pen?"], o:["Have","Has"], c:0, e:EXP.qhave, tr:"У тебя есть ручка?", full:"Have you got a pen?"},
+                    {s:[""," she got a sister?"], o:["Have","Has"], c:1, e:EXP.qhas, tr:"У неё есть сестра?", full:"Has she got a sister?"},
+                    {s:[""," they got a garden?"], o:["Has","Have"], c:1, e:EXP.qhave, tr:"У них есть сад?", full:"Have they got a garden?"},
+                    {s:[""," your dad got a beard?"], o:["Has","Have"], c:0, e:EXP.qhas+" Dad = he.", tr:"У твоего папы есть борода?", full:"Has your dad got a beard?"},
+                    {s:[""," we got any bread?"], o:["Has","Have"], c:1, e:EXP.qhave, tr:"У нас есть хлеб?", full:"Have we got any bread?"},
+                    {s:[""," the dog got a ball?"], o:["Have","Has"], c:1, e:EXP.qhas+" The dog = it.", tr:"У собаки есть мячик?", full:"Has the dog got a ball?"},
+                    {s:[""," I got a chance?"], o:["Have","Has"], c:0, e:EXP.qhave, tr:"Есть ли у меня шанс?", full:"Have I got a chance?"},
+                    {s:[""," he got blue eyes?"], o:["Have","Has"], c:1, e:EXP.qhas, tr:"У него голубые глаза?", full:"Has he got blue eyes?"}
+                ]},
+                wh: { label:"Wh-вопросы 🔎", tasks:[
+                    {s:[""," have you got in your bag?"], o:["What","Who","How"], c:0, e:EXP.what, tr:"Что у тебя в сумке?", full:"What have you got in your bag?"},
+                    {s:[""," many pets has she got?"], o:["What","How","Who"], c:1, e:EXP.how, tr:"Сколько у неё питомцев?", full:"How many pets has she got?"},
+                    {s:[""," has got my keys?"], o:["What","How","Who"], c:2, e:EXP.who, tr:"У кого мои ключи?", full:"Who has got my keys?"},
+                    {s:["What colour eyes "," he got?"], o:["have","has"], c:1, e:EXP.qhas+" После wh-слова порядок тот же: has + he + got.", tr:"Какого цвета у него глаза?", full:"What colour eyes has he got?"},
+                    {s:["How many brothers "," they got?"], o:["has","have"], c:1, e:EXP.qhave, tr:"Сколько у них братьев?", full:"How many brothers have they got?"},
+                    {s:[""," kind of car has your mum got?"], o:["Who","How","What"], c:2, e:EXP.what+" What kind of… = «какой (вид)…».", tr:"Какая машина у твоей мамы?", full:"What kind of car has your mum got?"},
+                    {s:["What "," we got for dinner?"], o:["has","have"], c:1, e:EXP.qhave, tr:"Что у нас на ужин?", full:"What have we got for dinner?"},
+                    {s:[""," has got the answer?"], o:["What","Who","How"], c:1, e:EXP.who, tr:"У кого есть ответ?", full:"Who has got the answer?"}
+                ]}
+            };
+            var MODES = ["aff","neg","q","wh"];
+            var PRAISE = ["Brilliant! ✨","Отлично! 🌟","Perfect! ☁️","Так держать! 🚀","Superb! 💛","Ты молодец! 🎉"];
+            var state = { mode:"aff", i:0, pts:0, streak:0, correct:0, order:[], sound:true, answered:false };
+
+            var $ = function(id){ return document.getElementById(id); };
+            var tabsEl=$("hgtTabs"), sentEl=$("hgtSent"), optsEl=$("hgtOpts"), fbEl=$("hgtFb"),
+                nextEl=$("hgtNext"), fillEl=$("hgtFill"), trEl=$("hgtTr");
+
+            function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+            function speak(text){
+                if(!state.sound || !window.speechSynthesis) return;
+                try{
+                    speechSynthesis.cancel();
+                    var u = new SpeechSynthesisUtterance(text);
+                    u.lang = "en-GB"; u.rate = 0.92;
+                    var voices = speechSynthesis.getVoices();
+                    if(voices && voices.length > 0){
+                        var v = voices.filter(function(x){ return /^en/.test(x.lang); })[0];
+                        if(v) u.voice = v;
+                    }
+                    speechSynthesis.speak(u);
+                }catch(e){}
+            }
+
+            function renderTabs(){
+                tabsEl.innerHTML = "";
+                MODES.forEach(function(m){
+                    var b = document.createElement("button");
+                    b.type = "button"; b.className = "hgt-tab" + (m===state.mode ? " act":"");
+                    b.textContent = DATA[m].label;
+                    b.onclick = function(){ startMode(m); };
+                    tabsEl.appendChild(b);
+                });
+            }
+
+            function startMode(m){
+                state.mode=m; state.i=0; state.streak=0; state.correct=0; state.answered=false;
+                state.order = shuffle(DATA[m].tasks.slice());
+                $("hgtFinal").classList.remove("show");
+                $("hgtQuiz").style.display="block";
+                renderTabs(); renderTask();
+            }
+
+            function renderTask(){
+                var t = state.order[state.i], total = state.order.length;
+                state.answered = false;
+                $("hgtMode").textContent = DATA[state.mode].label;
+                $("hgtCount").textContent = (state.i+1)+" / "+total;
+                $("hgtPts").textContent = state.pts;
+                $("hgtStreak").textContent = state.streak;
+                fillEl.style.width = (state.i/total*100)+"%";
+                sentEl.innerHTML = "";
+                sentEl.appendChild(document.createTextNode(t.s[0]));
+                var gap = document.createElement("span"); gap.className="hgt-gap"; gap.id="hgtGap"; gap.textContent="?";
+                sentEl.appendChild(gap);
+                sentEl.appendChild(document.createTextNode(t.s[1]));
+                trEl.textContent = "🇷🇺 " + t.tr;
+                fbEl.className="hgt-fb"; fbEl.innerHTML="";
+                nextEl.classList.remove("show");
+                optsEl.innerHTML="";
+                var idx = t.o.map(function(_,i){ return i; }); shuffle(idx);
+                idx.forEach(function(oi){
+                    var b = document.createElement("button");
+                    b.type="button"; b.className="hgt-opt"; b.textContent=t.o[oi];
+                    b.onclick=function(){ answer(oi,b,t); };
+                    optsEl.appendChild(b);
+                });
+            }
+
+            function answer(oi, btn, t){
+                if(state.answered) return;
+                state.answered = true;
+                var ok = oi === t.c;
+                var gap = $("hgtGap");
+                gap.textContent = t.o[t.c];
+                Array.prototype.forEach.call(optsEl.children, function(b){
+                    b.disabled = true;
+                    if(b.textContent === t.o[t.c]) b.classList.add("ok");
+                });
+                if(ok){
+                    state.streak++; state.correct++;
+                    var bonus = state.streak>=3 ? 5 : 0;
+                    state.pts += 10 + bonus;
+                    gap.classList.add("ok");
+                    fbEl.className="hgt-fb good show";
+                    fbEl.innerHTML = "<b>"+PRAISE[Math.floor(Math.random()*PRAISE.length)]+"</b> " +
+                        (bonus? "Серия из "+state.streak+" — бонус +5! " : "") + t.e;
+                } else {
+                    state.streak = 0;
+                    btn.classList.add("bad");
+                    gap.classList.add("bad");
+                    setTimeout(function(){ gap.classList.remove("bad"); gap.classList.add("ok"); }, 700);
+                    fbEl.className="hgt-fb wrong show";
+                    fbEl.innerHTML = "<b>Почти!</b> Правильно: «"+t.full+"». "+t.e;
+                }
+                $("hgtPts").textContent = state.pts;
+                $("hgtStreak").textContent = state.streak;
+                speak(t.full);
+                nextEl.textContent = state.i+1 < state.order.length ? "Дальше →" : "Результат 🏁";
+                nextEl.classList.add("show");
+            }
+
+            nextEl.onclick = function(){
+                if(state.i+1 < state.order.length){ state.i++; renderTask(); }
+                else finish();
+            };
+
+            function finish(){
+                var total = state.order.length, acc = state.correct/total;
+                fillEl.style.width = "100%";
+                $("hgtQuiz").style.display="none";
+                var fin = $("hgtFinal"); fin.classList.add("show");
+                var stars = acc>=0.9?3 : acc>=0.6?2 : acc>0?1:0;
+                var sEl = $("hgtStars"); sEl.innerHTML="";
+                for(var i=0;i<3;i++){
+                    sEl.innerHTML += '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="'+(i<stars?"#ffb42e":"#dbe7f7")+'"/></svg>';
+                }
+                var title = stars===3 ? "Wow! Небесный уровень! ☁️👑" : stars===2 ? "Отличный полёт!" : "Хорошее начало!";
+                $("hgtFinTitle").textContent = title;
+                $("hgtFinText").textContent = "Верно "+state.correct+" из "+total+" · очков всего: "+state.pts+". " +
+                    (stars===3 ? "Попробуй следующий режим — стань мастером have got!" : "Загляни в подсказку-правило и попробуй ещё раз — станет проще!");
+                speak(stars===3 ? "Excellent! You are a superstar!" : "Well done! Try again!");
+            }
+
+            $("hgtRestart").onclick = function(){ startMode(state.mode); };
+
+            $("hgtSnd").onclick = function(){
+                state.sound = !state.sound;
+                this.classList.toggle("off", !state.sound);
+                this.setAttribute("aria-pressed", state.sound);
+                $("hgtSndTxt").textContent = "Озвучка: " + (state.sound ? "вкл" : "выкл");
+                if(!state.sound && window.speechSynthesis) speechSynthesis.cancel();
+                else if(state.sound) speak("Sound is on!");
+            };
+
+            if(window.speechSynthesis) speechSynthesis.getVoices();
+            startMode("aff");
+        })();
+    </script>
+</body>
+</html>
