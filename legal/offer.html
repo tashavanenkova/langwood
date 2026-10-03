@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Публичная оферта — LangWood</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKCRWCMYTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PKCRWCMYTH');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113252697', 'ym');
+
+    ym(113252697, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113252697" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta name="description" content="Публичная оферта на предоставление доступа к интерактивным тренажёрам LangWood. Условия оплаты, порядок доступа, возврат средств.">
+    <meta property="og:title" content="Публичная оферта — LangWood">
+    <meta property="og:description" content="Публичная оферта на предоставление доступа к интерактивным тренажёрам LangWood.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #132a29;
+            --lw-bg: #f6faf9;
+            --lw-muted: #5b6b6a;
+            --lw-teal-dark: #065f5b;
+            --lw-teal-deep: #043d3b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .lw-logo {
+            text-decoration: none;
+            color: var(--lw-ivory);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .lw-logo:hover {
+            opacity: .85;
+        }
+
+        .lw-slogan {
+            color: var(--lw-ivory);
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        .lw-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .lw-nav-link {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .lw-nav-link:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .lw-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lw-burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--lw-ivory);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .lw-slogan { display: none; }
+        }
+
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        .lw-breadcrumbs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px 0;
+            font-size: 13px;
+            color: #8a9a99;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lw-breadcrumbs a {
+            color: var(--lw-teal);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+
+        .lw-main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lw-content {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 48px 52px;
+            box-shadow: 0 10px 30px rgba(4,61,59,.08);
+            border: 1px solid rgba(0,128,128,.1);
+        }
+
+        .lw-content h1 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            letter-spacing: -.02em;
+            color: var(--lw-teal-deep);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .lw-content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--lw-teal-dark);
+            margin: 36px 0 16px;
+        }
+
+        .lw-content p {
+            font-size: 15.5px;
+            color: var(--lw-ink);
+            margin-bottom: 14px;
+            line-height: 1.75;
+        }
+
+        .lw-content ul {
+            margin: 0 0 20px 24px;
+            padding: 0;
+        }
+
+        .lw-content li {
+            font-size: 15.5px;
+            color: var(--lw-ink);
+            margin-bottom: 6px;
+        }
+
+        .lw-content a {
+            color: var(--lw-teal);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .lw-content strong {
+            color: var(--lw-teal-deep);
+        }
+
+        @media (max-width: 760px) {
+            .lw-content { padding: 32px 24px; }
+            .lw-main { padding: 24px 16px 60px; }
+        }
+
+        .lw-footer {
+            background: var(--lw-teal);
+            color: var(--lw-ivory);
+            padding: 48px 24px 32px;
+            margin-top: 24px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo { font-size: 28px; color: var(--lw-ivory); text-decoration: none; font-weight: 700; }
+        .lw-footer-text { font-size: 14px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: var(--lw-ivory); text-decoration: none; font-size: 14px; opacity: .75; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .lw-footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 24px; }
+        }
+
+        .lw-to-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: var(--lw-teal);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s;
+            z-index: 900;
+        }
+
+        .lw-to-top.is-visible { opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="../index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Открыть меню" aria-expanded="false" type="button">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper" role="navigation" aria-label="Основное меню">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="../lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="../board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="../blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="../shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="../about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span style="color:#a9c4c2;">→</span>
+        <span style="color:#5b6b6a;">Публичная оферта</span>
+    </nav>
+
+    <main class="lw-main">
+        <div class="lw-content">
+            <h1>Публичная оферта</h1>
+
+            <p><strong>г. Набережные Челны, 1 октября 2026 года</strong></p>
+
+            <p><strong>Ваненкова Наталья Анатольевна</strong>, самозанятый гражданин, плательщик налога на профессиональный доход, ИНН 165008576406, именуемая в дальнейшем <strong>«Исполнитель»</strong>, с одной стороны, и любое физическое лицо, именуемое в дальнейшем <strong>«Заказчик»</strong>, с другой стороны, заключили настоящий договор о нижеследующем:</p>
+
+            <h2>1. Предмет договора</h2>
+            <p><strong>1.1.</strong> Исполнитель обязуется предоставить Заказчику доступ к интерактивным тренажёрам английского языка, размещённым на сайте <a href="https://langwood.ru">langwood.ru</a>, а Заказчик обязуется оплатить услуги в соответствии с условиями настоящего договора.</p>
+            <p><strong>1.2.</strong> Доступ предоставляется к следующим тренажёрам:</p>
+            <ul>
+                <li>лексические тренажёры (слова, выражения, идиомы);</li>
+                <li>грамматические тренажёры (правила, времена, конструкции);</li>
+                <li>тренажёры по чтению (тексты, понимание, анализ);</li>
+                <li>тренажёры по говорению (произношение, диалоги).</li>
+            </ul>
+            <p><strong>1.3.</strong> Полный перечень тренажёров, доступных после оплаты, указан на сайте в разделе «Тренажёры».</p>
+
+            <h2>2. Стоимость и порядок оплаты</h2>
+            <p><strong>2.1.</strong> Стоимость доступа к тренажёрам составляет <strong> 1500 рублей</strong> (указывается на сайте в разделе «Тренажёры»).</p>
+            <p><strong>2.2.</strong> Оплата производится единовременным платежом через платёжные системы, доступные на сайте.</p>
+            <p><strong>2.3.</strong> Моментом оплаты считается момент зачисления денежных средств на счёт Исполнителя.</p>
+
+            <h2>3. Порядок предоставления доступа</h2>
+            <p><strong>3.1.</strong> После поступления оплаты Исполнитель в течение <strong>24 часов</strong> направляет Заказчику на указанный при оплате адрес электронной почты ссылку для доступа к тренажёрам.</p>
+            <p><strong>3.2.</strong> Доступ предоставляется на срок <strong> 12 месяцев</strong> с момента получения ссылки.</p>
+
+            <h2>4. Возврат денежных средств</h2>
+            <p><strong>4.1.</strong> Возврат денежных средств возможен в течение <strong>14 календарных дней</strong> с момента оплаты при условии, что Заказчик не воспользовался доступом к тренажёрам.</p>
+            <p><strong>4.2.</strong> Для возврата Заказчик направляет Исполнителю письменное заявление на адрес электронной почты <a href="mailto:tasha.vanenkova@yandex.ru">tasha.vanenkova@yandex.ru</a> с пометкой «Возврат денежных средств».</p>
+            <p><strong>4.3.</strong> Возврат производится в течение 10 рабочих дней с момента получения заявления.</p>
+
+            <h2>5. Права и обязанности сторон</h2>
+            <p><strong>5.1. Исполнитель обязуется:</strong></p>
+            <ul>
+                <li>предоставить Заказчику доступ к тренажёрам в соответствии с условиями договора;</li>
+                <li>обеспечить работоспособность тренажёров на протяжении срока действия договора;</li>
+                <li>не разглашать персональные данные Заказчика третьим лицам.</li>
+            </ul>
+            <p><strong>5.2. Заказчик обязуется:</strong></p>
+            <ul>
+                <li>оплатить услуги Исполнителя в соответствии с условиями договора;</li>
+                <li>не передавать ссылку для доступа третьим лицам;</li>
+                <li>использовать тренажёры только в личных целях.</li>
+            </ul>
+
+            <h2>6. Ответственность сторон</h2>
+            <p><strong>6.1.</strong> За неисполнение или ненадлежащее исполнение обязательств по настоящему договору стороны несут ответственность в соответствии с действующим законодательством РФ.</p>
+            <p><strong>6.2.</strong> Исполнитель не несёт ответственности за невозможность использования тренажёров в случае технических сбоев, вызванных действиями третьих лиц или обстоятельствами непреодолимой силы.</p>
+
+            <h2>7. Заключительные положения</h2>
+            <p><strong>7.1.</strong> Настоящий договор является публичной офертой в соответствии со статьёй 437 Гражданского кодекса РФ.</p>
+            <p><strong>7.2.</strong> Акцептом настоящей оферты является оплата услуг Исполнителя.</p>
+            <p><strong>7.3.</strong> Настоящий договор вступает в силу с момента акцепта оферты и действует до полного исполнения обязательств сторонами.</p>
+            <p><strong>7.4.</strong> Все споры и разногласия разрешаются путём переговоров. При невозможности достижения соглашения споры передаются на рассмотрение в суд по месту нахождения Исполнителя.</p>
+
+            <h2>8. Реквизиты Исполнителя</h2>
+            <p><strong>Ваненкова Наталья Анатольевна</strong><br>
+            Самозанятый гражданин (плательщик налога на профессиональный доход)<br>
+            ИНН: 165008576406<br>
+            Электронная почта: <a href="mailto:tasha.vanenkova@yandex.ru">tasha.vanenkova@yandex.ru</a><br>
+            Сайт: <a href="https://langwood.ru">https://langwood.ru</a></p>
+        </div>
+    </main>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div>
+                <a href="../index.html" class="lw-footer-logo">LangWood</a>
+                <p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p>
+            </div>
+            <div>
+                <div class="lw-footer-title">Меню</div>
+                <ul class="lw-footer-list">
+                    <li><a href="../trainers/trainers.html">Тренажёры</a></li>
+                    <li><a href="../lessons-english.html">Уроки</a></li>
+                    <li><a href="../board.html">Storyboard</a></li>
+                    <li><a href="../blog.html">Блог</a></li>
+                    <li><a href="../shop.html">Магазин</a></li>
+                    <li><a href="../about.html">О сайте</a></li>
+                    <li><a href="../contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Соцсети</div>
+                <ul class="lw-footer-list">
+                    <li><a href="https://vk.com/neiroschooling" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li>
+                    <li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li>
+                    <li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Правовая информация</div>
+                <ul class="lw-footer-list">
+                    <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+                    <li><a href="soglasie.html">Согласие на обработку персональных данных</a></li>
+                    <li><a href="terms.html">Пользовательское соглашение</a></li>
+                    <li><a href="offer.html">Публичная оферта</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <button class="lw-to-top" id="lwToTop" aria-label="Наверх" type="button">↑</button>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        var burger = document.getElementById('lwBurger');
+        var navWrapper = document.getElementById('lwNavWrapper');
+
+        function closeMenu() {
+            navWrapper.classList.remove('is-open');
+            burger.setAttribute('aria-label', 'Открыть меню');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+
+        burger.addEventListener('click', function() {
+            var isOpen = navWrapper.classList.contains('is-open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                navWrapper.classList.add('is-open');
+                burger.setAttribute('aria-label', 'Закрыть меню');
+                burger.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        var btn = document.getElementById('lwToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                btn.classList.add('is-visible');
+            } else {
+                btn.classList.remove('is-visible');
+            }
+        });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
