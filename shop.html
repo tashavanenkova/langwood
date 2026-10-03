@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин авторских учебных материалов — LangWood</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKCRWCMYTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PKCRWCMYTH');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113252697', 'ym');
+
+    ym(113252697, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113252697" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta name="description" content="Авторские учебные материалы и игры на липучках для изучения английского языка. Изготовлено вручную. Проверено временем.">
+    <meta property="og:title" content="Магазин авторских учебных материалов — LangWood">
+    <meta property="og:description" content="Авторские учебные материалы и игры на липучках для изучения английского языка.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #1a1a1a;
+            --lw-bg: #fafafa;
+            --accent: #7b2d3b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.5;
+        }
+
+        /* ===== ШАПКА ===== */
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+        .lw-logo { text-decoration: none; color: var(--lw-ivory); font-size: 28px; font-weight: 800; letter-spacing: .02em; }
+        .lw-logo:hover { opacity: .85; }
+        .lw-slogan { color: var(--lw-ivory); font-size: 16px; font-weight: 300; font-style: italic; opacity: .7; }
+        .lw-nav { display: flex; align-items: center; gap: 4px; list-style: none; flex-wrap: wrap; }
+        .lw-nav-link { color: var(--lw-ivory); text-decoration: none; font-size: 15px; font-weight: 600; padding: 8px 14px; border-radius: 8px; transition: background .2s; }
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+        .lw-burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 4px; }
+        .lw-burger span { display: block; width: 22px; height: 2px; background: var(--lw-ivory); border-radius: 2px; }
+
+        @media (max-width: 900px) { .lw-slogan { display: none; } }
+
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .lw-breadcrumbs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 20px 0;
+            font-size: 14px;
+            color: #6a6a72;
+            font-weight: 600;
+        }
+
+        .lw-breadcrumbs a { color: var(--lw-teal); text-decoration: none; font-weight: 700; }
+        .lw-breadcrumbs a:hover { text-decoration: underline; }
+        .lw-breadcrumbs span { margin: 0 6px; color: #c0c0c8; }
+        .lw-breadcrumbs .lw-current { color: var(--lw-ink); font-weight: 700; }
+
+        /* ===== МАГАЗИН ===== */
+        .shop-intro {
+            text-align: center;
+            padding: 50px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .shop-intro h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 800;
+            color: var(--lw-teal);
+            margin-bottom: 15px;
+            line-height: 1.1;
+            letter-spacing: -.01em;
+        }
+
+        .shop-intro .shop-made-with-love {
+            font-size: 14px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .shop-intro p {
+            font-size: 18px;
+            color: var(--lw-ink);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* ===== ПРЕИМУЩЕСТВА ===== */
+        .shop-features {
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .shop-feature {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid rgba(0,128,128,.15);
+            box-shadow: 0 4px 14px rgba(0,128,128,.07);
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .shop-feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,128,128,.14);
+        }
+
+        .shop-feature-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 128, 128, .1);
+            color: var(--lw-teal);
+        }
+
+        .shop-feature-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .shop-feature-title {
+            font-family: Georgia, serif;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--lw-teal);
+            margin-bottom: 8px;
+            letter-spacing: -.01em;
+        }
+
+        .shop-feature-text {
+            font-size: 14px;
+            color: #5a5a62;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        @media (max-width: 760px) {
+            .shop-features {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-bottom: 36px;
+            }
+            .shop-feature {
+                padding: 20px 16px;
+            }
+            .shop-feature-icon {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 10px;
+            }
+            .shop-feature-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+            .shop-feature-title { font-size: 17px; }
+        }
+
+        .shop-catalog {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        /* ===== КАРТОЧКА ТОВАРА ===== */
+        .shop-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,128,128,.1);
+            transition: transform .25s, box-shadow .25s, border-color .25s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,128,128,.15);
+        }
+
+        .shop-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 32px rgba(0,128,128,.18);
+            border-color: var(--lw-teal);
+        }
+
+        /* Изображение: фиксированные пропорции 16:9, без полос */
+        .shop-card-img {
+            aspect-ratio: 16 / 9;
+            height: 200px; /* фолбэк для старых браузеров */
+            overflow: hidden;
+            background: linear-gradient(160deg, #f0f7f7 0%, #e6f2f2 100%);
+        }
+
+        .shop-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .4s ease;
+            will-change: transform;
+        }
+
+        .shop-card:hover .shop-card-img img {
+            transform: scale(1.06);
+        }
+
+        .shop-card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card-title {
+            font-family: Georgia, serif;
+            font-size: 19px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: var(--lw-ink);
+            letter-spacing: -.01em;
+        }
+
+        .shop-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .shop-tag {
+            font-size: 12px;
+            padding: 4px 12px;
+            background: rgba(0,128,128,.1);
+            color: var(--lw-teal);
+            border-radius: 12px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .shop-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .shop-card-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -.02em;
+        }
+
+        .shop-order-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--lw-teal);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 10px 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+        }
+
+        .shop-order-btn:hover {
+            background: #006666;
+            transform: scale(1.05);
+        }
+
+        /* ===== ПОДВАЛ ===== */
+        .lw-footer {
+            background: var(--lw-teal);
+            color: #ffffff;
+            padding: 48px 24px 32px;
+            margin-top: 40px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo { font-size: 30px; color: #ffffff; text-decoration: none; font-weight: 800; }
+        .lw-footer-text { font-size: 15px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: #ffffff; text-decoration: none; font-size: 15px; opacity: .75; font-weight: 500; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+
+        @media (max-width: 900px) { .lw-footer-inner { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 26px; }
+            .shop-card-title { font-size: 17px; }
+            .shop-card-price { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Меню"><span></span><span></span><span></span></button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="shop.html" style="opacity:.5;pointer-events:none;">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lw-breadcrumbs">
+        <a href="index.html">Главная</a><span>→</span><span class="lw-current">Магазин</span>
+    </nav>
+
+    <section class="shop-intro">
+        <div class="shop-made-with-love">Сделано с любовью к ученикам</div>
+        <h1>Магазин авторских учебных материалов</h1>
+        <p>Изготовлено вручную. Каждое пособие прошло проверку временем и хорошо зарекомендовало себя в обучении детей и взрослых.</p>
+    </section>
+
+    <section class="shop-features">
+        <div class="shop-feature">
+            <div class="shop-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 10L12 5 2 10l10 5 10-5z"/>
+                    <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/>
+                    <path d="M22 10v6"/>
+                </svg>
+            </div>
+            <div class="shop-feature-title">Создано педагогом</div>
+            <div class="shop-feature-text">Авторские материалы, проверенные на реальных уроках</div>
+        </div>
+
+        <div class="shop-feature">
+            <div class="shop-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                </svg>
+            </div>
+            <div class="shop-feature-title">30 игр +</div>
+            <div class="shop-feature-text">Готовые пособия на липучках для разных тем и уровней</div>
+        </div>
+
+        <div class="shop-feature">
+            <div class="shop-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <div class="shop-feature-title">Прочно и долговечно</div>
+            <div class="shop-feature-text">Плотная ламинация и качественные липучки</div>
+        </div>
+    </section>
+
+    <section class="shop-catalog" id="shopCatalog"></section>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div><a href="index.html" class="lw-footer-logo">LangWood</a><p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p></div>
+            <div><div class="lw-footer-title">Меню</div><ul class="lw-footer-list"><li><a href="trainers/trainers.html">Тренажёры</a></li><li><a href="lessons-english.html">Уроки</a></li><li><a href="board.html">StoryBoard</a></li><li><a href="blog.html">Блог</a></li><li><a href="shop.html" style="opacity:.5;pointer-events:none;">Магазин</a></li><li><a href="about.html">О сайте</a></li><li><a href="contacts.html">Контакты</a></li></ul></div>
+            <div><div class="lw-footer-title">Соцсети</div><ul class="lw-footer-list"><li><a href="https://vk.ru/english_langwood" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li><li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li><li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li></ul></div>
+            <div><div class="lw-footer-title">Правовая информация</div><ul class="lw-footer-list"><li><a href="legal/privacy.html">Политика обработки персональных данных</a></li><li><a href="legal/soglasie.html">Согласие на обработку персональных данных</a></li><li><a href="legal/terms.html">Пользовательское соглашение</a></li><li><a href="legal/offer.html">Публичная оферта</a></li></ul></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        document.getElementById('lwBurger').addEventListener('click', function() {
+            document.getElementById('lwNavWrapper').classList.toggle('is-open');
+        });
+
+        const ORDER_EMAIL = 'tasha.vanenkova@yandex.ru'; // ← ЗАМЕНИТЕ НА ВАШ EMAIL
+
+        const MOCK_PRODUCTS = [
+            {id:1,title:'Подводное приключение: Учим глагол TO BE',category:'Грамматика + Лексика',price:1300,img:'shop/underwater.jpg'},
+            {id:2,title:'Говорим об эмоциях: Палитра ЭМОЦИЙ',category:'Лексика',price:900,img:'shop/emotions.jpg'},
+            {id:3,title:'Сафари с буквами: Учим ЗОО-АЛФАВИТ',category:'Алфавит',price:900,img:'shop/alphabet.jpg'},
+            {id:4,title:'В гостях у волшебников: Учим ЦВЕТА И ОТТЕНКИ',category:'Лексика',price:1400,img:'shop/colors.jpg'},
+            {id:5,title:'Собираем команду: Игра на НОВЫЙ ГОД и РОЖДЕСТВО',category:'Лексика',price:900,img:'shop/christmas.jpg'},
+            {id:6,title:'Идём в кино: Практикуем ЧИСЛИТЕЛЬНЫЕ и ОДЕЖДУ',category:'Лексика + Грамматика',price:1700,img:'shop/cinema.jpg'},
+            {id:7,title:'Фэшн-подиум: Учим НАЗВАНИЯ ОДЕЖДЫ',category:'Лексика',price:1700,img:'shop/catwalk.jpg'},
+            {id:8,title:'Прогноз погоды: Примеряем РОЛЬ СИНОПТИКА',category:'Лексика',price:1500,img:'shop/weather.jpg'},
+            {id:9,title:'Кабинет английского: УКРАШАЕМ по СЕЗОНАМ',category:'Декор',price:400,img:'shop/seasons.jpg'},
+            {id:10,title:'Путешествие в страну НАРЕЧИЙ: many/much/little/few',category:'Грамматика + Лексика',price:1400,img:'shop/voyage.jpg'},
+            {id:11,title:'Наш уютный ДОМ: there is/there are + ПРЕДЛОГИ',category:'Грамматика + Лексика',price:1200,img:'shop/house.jpg'},
+            {id:12,title:'Бинго единорога: мощная РАЗГОВОРНАЯ ПРАКТИКА',category:'Грамматика + Лексика',price:2800,img:'shop/bingo.jpg'},
+            {id:13,title:'Интерактивные ВРЕМЕНА: Present Simple & Continuous',category:'Грамматика + Лексика',price:2000,img:'shop/actions.jpg'},
+            {id:14,title:'Английские постеры: ШКОЛЬНОЕ РАСПИСАНИЕ',category:'Декор',price:450,img:'shop/schedule.jpg'},
+            {id:15,title:'Описываем животных: Базовые ПРИЛАГАТЕЛЬНЫЕ',category:'Лексика',price:1400,img:'shop/animal_adjectives.jpg'},
+            {id:16,title:'Изучаем пространство: ПРЕДЛОГИ МЕСТА',category:'Грамматика + Лексика',price:2500,img:'shop/placeprep.jpg'},
+            {id:17,title:'Описываем людей: ВНЕШНОСТЬ И ХАРАКТЕР',category:'Лексика',price:1400,img:'shop/people.jpg'},
+            {id:18,title:'Время ДОСУГА: Чем мы любим ЗАНИМАТЬСЯ на неделе',category:'Лексика',price:1200,img:'shop/leasure.jpg'},
+            {id:19,title:'WH-вопросы: Базовые ВОПРОСИТЕЛЬНЫЕ слова',category:'Грамматика + Лексика',price:900,img:'shop/wh.jpg'},
+            {id:20,title:'Зоо-домино: Практикуем HAVE/HAS GOT',category:'Грамматика + Лексика',price:900,img:'shop/domino.jpg'},
+            {id:21,title:'Простые МЕСТОИМЕНИЯ',category:'Грамматика',price:400,img:'shop/pronouns.jpg'},
+            {id:22,title:'Чарт ПООЩРЕНИЯ 1: Бонусы от МЕДВЕДЯ',category:'Лексика',price:500,img:'shop/praize2.jpg'},
+            {id:23,title:'Чарт ПООЩРЕНИЯ 2: Бонусы от ТИГРА',category:'Лексика',price:500,img:'shop/praize.jpg'},
+            {id:24,title:'Прописи английского: ПИШЕМ КРАСИВО',category:'Письмо',price:200,img:'shop/propisi.jpg'},
+            {id:25,title:'6 видов РУТИНЫ: Базовые ВЫРАЖЕНИЯ',category:'Лексика',price:1500,img:'shop/routine.jpg'},
+            {id:26,title:'Погода сегодня: РАЗГОВОРНАЯ ПРАКТИКА',category:'Лексика',price:900,img:'shop/weatherchart.jpg'},
+            {id:27,title:'Present Simple: НАСТОЛЬНАЯ игра с ВОПРОСАМИ',category:'Грамматика',price:700,img:'shop/presentsimplegame.jpg'},
+            {id:28,title:'To be: УТВЕРЖДЕНИЕ, ОТРИЦАНИЕ, ВОПРОС',category:'Грамматика',price:500,img:'shop/be.jpg'},
+            {id:29,title:'Тематическое БИНГО: Закрепляем СЛОВА',category:'Лексика',price:2000,img:'shop/bingotheme.jpg'},
+            {id:30,title:'АНГЛИЙСКАЯ кружка-ШПАРГАЛКА',category:'Лексика',price:1200,img:'shop/mug.jpg'}
+        ];
+
+        function renderCatalog() {
+            const el = document.getElementById('shopCatalog');
+            el.innerHTML = MOCK_PRODUCTS.map(p => {
+                const subject = encodeURIComponent(`Заказ: ${p.title}`);
+                const body = encodeURIComponent(`Здравствуйте! Хочу заказать: ${p.title} (${p.price} руб.)\n\nМоё имя: \nКонтактный телефон: \nСпособ доставки: `);
+                return `
+                    <article class="shop-card">
+                        <div class="shop-card-img"><img src="${p.img}" alt="${p.title}" loading="lazy"></div>
+                        <div class="shop-card-body">
+                            <div class="shop-card-title">${p.title}</div>
+                            <div class="shop-card-tags"><span class="shop-tag">${p.category}</span></div>
+                            <div class="shop-card-footer">
+                                <span class="shop-card-price">${p.price} ₽</span>
+                                <a href="mailto:${ORDER_EMAIL}?subject=${subject}&body=${body}" class="shop-order-btn">✉️ Подробно</a>
+                            </div>
+                        </div>
+                    </article>`;
+            }).join('');
+        }
+
+        renderCatalog();
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо! | LangWood</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PKCRWCMYTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PKCRWCMYTH');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113252697', 'ym');
+
+    ym(113252697, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/113252697" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+    <meta name="description" content="Спасибо за подписку! Доступ к тренажёрам LangWood скоро будет отправлен на вашу почту.">
+    <meta property="og:title" content="Спасибо! | LangWood">
+    <meta property="og:description" content="Спасибо за подписку на тренажёры LangWood.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --lw-teal: #008080;
+            --lw-ivory: #ffffff;
+            --lw-ink: #132a29;
+            --lw-bg: #f6faf9;
+            --lw-teal-dark: #065f5b;
+            --lw-teal-deep: #043d3b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--lw-ink);
+            background: var(--lw-bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .lw-header {
+            background: var(--lw-teal);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .lw-header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 56px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .lw-logo-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            white-space: nowrap;
+        }
+
+        .lw-logo {
+            text-decoration: none;
+            color: var(--lw-ivory);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        .lw-logo:hover { opacity: .85; }
+
+        .lw-slogan {
+            color: var(--lw-ivory);
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            opacity: .7;
+        }
+
+        .lw-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .lw-nav-link {
+            color: var(--lw-ivory);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        .lw-nav-link:hover { background: rgba(255,255,255,.12); }
+
+        .lw-burger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .lw-burger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--lw-ivory);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .lw-slogan { display: none; }
+        }
+
+        @media (max-width: 760px) {
+            .lw-header-inner { padding: 0 14px; min-height: 48px; }
+            .lw-logo { font-size: 22px; }
+            .lw-burger { display: flex; }
+            .lw-nav-wrapper { display: none; width: 100%; position: absolute; top: 48px; left: 0; right: 0; background: var(--lw-teal); z-index: 999; }
+            .lw-nav-wrapper.is-open { display: block; }
+            .lw-nav { flex-direction: column; align-items: stretch; padding: 8px 16px 16px; gap: 0; }
+            .lw-nav-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+        }
+
+        /* ===== TEASER ===== */
+        .teaser,
+        .teaser * { box-sizing: border-box; }
+        .teaser input,
+        .teaser textarea,
+        .teaser select { font: inherit; }
+
+        .teaser {
+            min-height: calc(100vh - 56px);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(160deg, #F5F0EB 0%, #EDE6DF 50%, #E8E0D6 100%);
+            color: #2C2420;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teaser::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(176,123,106,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .teaser__container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .teaser__grid {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .teaser__image-wrap {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .teaser__image-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(106,168,79,0.15) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .teaser__spirit {
+            width: 220px;
+            height: 240px;
+            filter: drop-shadow(0 16px 30px rgba(50,80,40,.25));
+            animation: spiritFloat 3.4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes spiritFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .teaser__content {
+            padding-right: 20px;
+        }
+
+        .teaser__eyebrow {
+            display: block;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #B07B6A;
+            margin-bottom: 20px;
+        }
+
+        .teaser__title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 1.2;
+            color: #2C2420;
+            margin: 0 0 24px 0;
+        }
+
+        .teaser__text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #4A3F39;
+            margin: 0 0 30px 0;
+            max-width: 480px;
+        }
+
+        .teaser__divider {
+            width: 48px;
+            height: 1px;
+            background: #B07B6A;
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
+
+        .teaser__sign {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #6D5E55;
+            margin: 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 959px) {
+            .teaser { padding: 60px 0; }
+            .teaser__grid { grid-template-columns: 1fr; gap: 40px; }
+            .teaser__image-wrap { max-width: 300px; margin: 0 auto; }
+            .teaser__content { padding-right: 0; text-align: center; max-width: 560px; margin: 0 auto; }
+            .teaser__text { max-width: 100%; font-size: 16px; margin-left: auto; margin-right: auto; }
+            .teaser__divider { margin-left: auto; margin-right: auto; }
+            .teaser__spirit { width: 180px; height: 200px; }
+        }
+
+        @media (max-width: 639px) {
+            .teaser { padding: 48px 0; }
+            .teaser__title { font-size: 28px; }
+            .teaser__text { font-size: 15px; }
+            .teaser__spirit { width: 150px; height: 165px; }
+        }
+
+        @media (max-width: 479px) {
+            .teaser { padding: 40px 0; }
+            .teaser__title { font-size: 24px; margin-bottom: 20px; }
+            .teaser__eyebrow { margin-bottom: 16px; }
+            .teaser__text { margin-bottom: 24px; }
+        }
+
+        .lw-footer {
+            background: var(--lw-teal);
+            color: var(--lw-ivory);
+            padding: 48px 24px 32px;
+        }
+
+        .lw-footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .lw-footer-logo { font-size: 28px; color: var(--lw-ivory); text-decoration: none; font-weight: 700; }
+        .lw-footer-text { font-size: 14px; line-height: 1.7; opacity: .9; }
+        .lw-footer-title { font-size: 14px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; opacity: .8; }
+        .lw-footer-list { list-style: none; padding: 0; margin: 0; }
+        .lw-footer-list li { margin-bottom: 10px; }
+        .lw-footer-list a { color: var(--lw-ivory); text-decoration: none; font-size: 14px; opacity: .75; }
+        .lw-footer-list a:hover { opacity: 1; text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .lw-footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 760px) {
+            .lw-footer-inner { grid-template-columns: 1fr; text-align: center; }
+            .lw-footer-logo { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="lw-header">
+        <div class="lw-header-inner">
+            <div class="lw-logo-wrapper">
+                <a href="index.html" class="lw-logo">LangWood</a>
+                <span class="lw-slogan">английский, который радует</span>
+            </div>
+            <button class="lw-burger" id="lwBurger" aria-label="Открыть меню" aria-expanded="false" type="button">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="lw-nav-wrapper" id="lwNavWrapper" role="navigation" aria-label="Основное меню">
+                <ul class="lw-nav">
+                    <li><a class="lw-nav-link" href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><a class="lw-nav-link" href="lessons-english.html">Уроки</a></li>
+                    <li><a class="lw-nav-link" href="board.html">Storyboard</a></li>
+                    <li><a class="lw-nav-link" href="blog.html">Блог</a></li>
+                    <li><a class="lw-nav-link" href="shop.html">Магазин</a></li>
+                    <li><a class="lw-nav-link" href="about.html">О сайте</a></li>
+                    <li><a class="lw-nav-link" href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="teaser">
+        <div class="teaser__container">
+            <div class="teaser__grid">
+                <div class="teaser__image-wrap">
+                    <svg class="teaser__spirit" viewBox="0 0 200 220" role="img" aria-label="Лесной Дух LangWood">
+                        <defs>
+                            <radialGradient id="fswBodyThanks" cx="50%" cy="38%" r="70%">
+                                <stop offset="0%" stop-color="#9ccc65"/>
+                                <stop offset="100%" stop-color="#689f38"/>
+                            </radialGradient>
+                            <linearGradient id="fswLeafThanks" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#aed581"/>
+                                <stop offset="100%" stop-color="#7cb342"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- ножки -->
+                        <path d="M82 188 q-3 14 -10 20" stroke="#8d6e63" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <path d="M118 188 q3 14 10 20" stroke="#8d6e63" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <!-- тапочки -->
+                        <ellipse cx="70" cy="208" rx="12" ry="6" fill="url(#fswLeafThanks)" transform="rotate(-20 70 208)"/>
+                        <ellipse cx="130" cy="208" rx="12" ry="6" fill="url(#fswLeafThanks)" transform="rotate(20 130 208)"/>
+                        <!-- ручки -->
+                        <path d="M60 130 q-22 6 -30 24" stroke="#8d6e63" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <ellipse cx="28" cy="156" rx="11" ry="6" fill="url(#fswLeafThanks)" transform="rotate(-35 28 156)"/>
+                        <path d="M140 130 q22 6 30 24" stroke="#8d6e63" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <ellipse cx="172" cy="156" rx="11" ry="6" fill="url(#fswLeafThanks)" transform="rotate(35 172 156)"/>
+                        <!-- тело -->
+                        <path d="M100 40 C 145 40 160 85 156 130 C 152 172 130 192 100 192 C 70 192 48 172 44 130 C 40 85 55 40 100 40 Z" fill="url(#fswBodyThanks)"/>
+                        <ellipse cx="70" cy="160" rx="14" ry="7" fill="#7cb342" opacity=".7" transform="rotate(-20 70 160)"/>
+                        <ellipse cx="130" cy="160" rx="14" ry="7" fill="#7cb342" opacity=".7" transform="rotate(20 130 160)"/>
+                        <ellipse cx="100" cy="172" rx="15" ry="7" fill="#558b2f" opacity=".5"/>
+                        <!-- животик -->
+                        <ellipse cx="100" cy="138" rx="30" ry="34" fill="#dcedc8" opacity=".85"/>
+                        <!-- росток -->
+                        <path d="M100 42 q0 -16 4 -24" stroke="#8d6e63" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <ellipse cx="92" cy="14" rx="13" ry="7" fill="url(#fswLeafThanks)" transform="rotate(-30 92 14)"/>
+                        <ellipse cx="116" cy="16" rx="12" ry="6" fill="url(#fswLeafThanks)" transform="rotate(28 116 16)"/>
+                        <!-- ушки -->
+                        <ellipse cx="52" cy="66" rx="14" ry="7" fill="url(#fswLeafThanks)" transform="rotate(-40 52 66)"/>
+                        <ellipse cx="148" cy="66" rx="14" ry="7" fill="url(#fswLeafThanks)" transform="rotate(40 148 66)"/>
+                        <!-- глазки -->
+                        <circle cx="80" cy="92" r="8" fill="#2e2a26"/>
+                        <circle cx="83" cy="89" r="2.6" fill="#fff"/>
+                        <circle cx="120" cy="92" r="8" fill="#2e2a26"/>
+                        <circle cx="123" cy="89" r="2.6" fill="#fff"/>
+                        <!-- щёчки -->
+                        <ellipse cx="70" cy="106" rx="7" ry="4" fill="#f8bbd0" opacity=".8"/>
+                        <ellipse cx="130" cy="106" rx="7" ry="4" fill="#f8bbd0" opacity=".8"/>
+                        <!-- улыбка -->
+                        <path d="M90 108 q10 9 20 0" stroke="#4e3b31" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="teaser__content">
+                    <span class="teaser__eyebrow">Спасибо за доверие!</span>
+                    <h1 class="teaser__title">Добро пожаловать в Лес Знаний!</h1>
+                    <p class="teaser__text">Ссылка для доступа к тренажёрам скоро придёт на Вашу электронную почту. А пока — загляните в мой <a href="blog.html">блог</a> или <a href="shop.html">магазин авторских игр на липучках</a>.</p>
+                    <div class="teaser__divider"></div>
+                    <p class="teaser__sign">С теплом,<br>Наталья Ваненкова</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="lw-footer">
+        <div class="lw-footer-inner">
+            <div>
+                <a href="index.html" class="lw-footer-logo">LangWood</a>
+                <p class="lw-footer-text">© <span id="currentYear"></span> LangWood<br>Все права защищены</p>
+            </div>
+            <div>
+                <div class="lw-footer-title">Меню</div>
+                <ul class="lw-footer-list">
+                    <li><a href="trainers/trainers.html">Тренажёры</a></li>
+                    <li><a href="lessons-english.html">Уроки</a></li>
+                    <li><a href="board.html">StoryBoard</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="shop.html">Магазин</a></li>
+                    <li><a href="about.html">О сайте</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Соцсети</div>
+                <ul class="lw-footer-list">
+                    <li><a href="https://vk.com/neiroschooling" target="_blank" rel="noopener noreferrer">ВКонтакте</a></li>
+                    <li><a href="https://ok.ru/group/70000050582565" target="_blank" rel="noopener noreferrer">Одноклассники</a></li>
+                    <li><a href="https://ru.pinterest.com/estessa2025" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="lw-footer-title">Правовая информация</div>
+                <ul class="lw-footer-list">
+<li><a href="legal/privacy.html">Политика обработки персональных данных</a></li>
+<li><a href="legal/soglasie.html">Согласие на обработку персональных данных</a></li>
+<li><a href="legal/terms.html">Пользовательское соглашение</a></li>
+<li><a href="legal/offer.html">Публичная оферта</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        var burger = document.getElementById('lwBurger');
+        var navWrapper = document.getElementById('lwNavWrapper');
+
+        function closeMenu() {
+            navWrapper.classList.remove('is-open');
+            burger.setAttribute('aria-label', 'Открыть меню');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+
+        burger.addEventListener('click', function() {
+            var isOpen = navWrapper.classList.contains('is-open');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                navWrapper.classList.add('is-open');
+                burger.setAttribute('aria-label', 'Закрыть меню');
+                burger.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
